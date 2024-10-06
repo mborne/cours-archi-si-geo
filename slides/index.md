@@ -31,7 +31,7 @@ Adaptation de l'ancien plan :
  * Les protocoles et les formats : SOAP/XML (WFS, WMS, WMTS,...), REST/JSON (OGC API), gRPC (HTTP/2 + Protocol Buffers)
  * L'authentification (compte utilisateurs vs compte de service, token, JWT,...)
 
-## Les patrons d'architecture
+## Les styles d'architecture
 
 > Remplace "Architectures client/serveur multi-tiers / API/ ServiceWeb"
 
