@@ -1,0 +1,16 @@
+{
+  "name": "bduni-presentation",
+  "version": "0.1.0",
+  "description": "[ENSG] Introduction à l'architecture des SI",
+  "main": "index.js",
+  "scripts": {
+    "start": "marp --html=true -s ./slides/",
+    "build": "rm -rf public && cp -r slides public && cd public && marp --theme=./marp-ensg.css --html=true index.md -o index.html"
+  },
+  "author": "Mickaël Borne <mborne@users.noreply.github.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "@marp-team/marp-cli": "^4.0.0"
+  }
+}
