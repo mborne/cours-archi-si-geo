@@ -19,6 +19,12 @@ header: '<div><img src="img/logo-ensg.png" alt="ENSG" height="64px"/></div>'
 
 ## Introduction
 
+- [Définition d'un SI](#définition-dun-si)
+- [Les différents types de SI](#les-différents-types-de-si)
+- [Le système d'information géographique (SIG)](#le-système-dinformation-géographique-sig)
+
+---
+
 ### Définition d'un SI
 
 Selon [fr.wikipedia.org](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27information) :
@@ -32,7 +38,7 @@ Le SI se décompose en un **système organisationnel** et un **système techniqu
 
 ## Introduction
 
-### Plusieurs types de SI
+### Les différents types de SI
 
 Nous trouverons plusieurs types de systèmes d'information :
 
@@ -48,16 +54,16 @@ Nous trouverons plusieurs types de systèmes d'information :
 
 ### Le système d'information géographique (SIG)
 
-Le SIG sera un type de SI se focalisant sur la composante spatiale des données :
+Le SIG sera un type de SI se focalisant sur la gestion des données spatiales :
 
 > "Un **système d'information géographique ou SIG** est un système d'information conçu pour recueillir, stocker, traiter, analyser, gérer et présenter tous les types de données spatiales et géographiques"
-
-Source : [fr.wikipedia.org - Système d'information géographique](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27information_g%C3%A9ographique)
+> 
+> (Source : [fr.wikipedia.org - Système d'information géographique](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27information_g%C3%A9ographique))
 
 Pour cette introduction à l'architecture des SI :
 
 - Nous nous concentrerons sur l'architecture des SI avec une forte composante spatiale.
-- Nous remarquerons que la composante spatiale peut être exploitée dans d'autres types de SI (ex : cartographie dans un système d'aide à la décision). 
+- Nous remarquerons que la composante spatiale peut toutefois être exploitée dans d'autres types de SI (ex : cartographie dans un système d'aide à la décision). 
 
 ---
 
@@ -92,7 +98,7 @@ Il sera important de **documenter l'architecture** tant sur le plan **logique** 
 
 ### Documenter l'architecture (2/2)
 
-Nous soulignerons toutefois que :
+Toutefois :
 
 - **Présenter le bon niveau de détail aux différents acteurs ne sera pas évident** (d'où des approches telles [C4 model](https://c4model.com))
 - Des libertés seront souvent prises par rapport au formalisme UML.
@@ -127,15 +133,45 @@ Toutefois, **imposer un cadre technique précis et figé** induira un **risque d
 
 La recherche d'une communication efficace entre les services se retrouve dans l'évolution des formats et protocoles au niveau des services web :
 
-* Fin des années 90, le **format XML** domine avec **WSDL** (Web Services Description Language) et **SOAP** (Simple Object Access Protocol).
-* Depuis 2000, le **format JSON** gagne du terrain dans les API REST.
-* 2011, [WebSocket](https://fr.wikipedia.org/wiki/WebSocket) permettant une communication bidirectionnelle.
-* 2012, [GraphQL](https://graphql.org/) limitant le nombre de requêtes par rapport aux API REST.
-* 2015, gRPC s'appuyant sur le **format [Protocol Buffers](https://protobuf.dev/)** et HTTP/2 avec une communication bidirectionnelle en temps réel.
+* Fin des années 90, le **format [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language)** domine avec **[WSDL](https://fr.wikipedia.org/wiki/Web_Services_Description_Language)** (Web Services Description Language) et **[SOAP](https://fr.wikipedia.org/wiki/SOAP)** (Simple Object Access Protocol).
+* Depuis ~2005, les API [REST](https://fr.wikipedia.org/wiki/Representational_state_transfer) et le **format [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation)** gagnent du terrain.
+* 2011, [WebSocket](https://fr.wikipedia.org/wiki/WebSocket) permet une communication bidirectionnelle.
+* 2012, [GraphQL](https://graphql.org/) vise à limiter le nombre de requêtes et le volume de données transférée.
+* 2015, gRPC s'appuie sur le **format [Protocol Buffers](https://protobuf.dev/)** et HTTP/2.
 
 ---
 
 ## Les principes d'architecture
+
+<div class="left">
+
+- [Séparation des préoccupations](#séparation-des-préoccupations-separation-of-concerns)
+- [Modularité](#modularité)
+- [Abstraction](#abstraction)
+- [Encapsulation](#encapsulation)
+- [Couplage faible](#couplage-faible)
+- [Cohésion forte](#cohésion-forte)
+- [Réutilisabilité](#réutilisabilité)
+- [Interopérabilité](#interopérabilité)
+- [Conformité aux normes](#conformité-aux-normes)
+
+</div>
+
+<div class="right">
+
+- [Évolutivité](#évolutivité)
+- [Portabilité](#portabilité)
+- [Scalabilité](#scalabilité)
+- [Observabilité](#observabilité)
+- [Résilience et tolérance aux pannes](#résilience-et-tolérance-aux-pannes)
+- [Intégrer la sécurité dans la conception](#intégrer-la-sécurité-dans-la-conception)
+
+</div>
+
+---
+
+## Les principes d'architecture
+
 
 ### Séparation des préoccupations (*Separation of Concerns*)
 
@@ -171,7 +207,7 @@ Nous la retrouverons sous plusieurs formes à l'échelle d'un SI en considérant
 
 ### Encapsulation
 
-Les détails internes d'un module doivent être cachés aux autres modules. Les interactions entre modules se font uniquement via des interfaces bien définies. 
+Les **interactions entre modules** se font uniquement **via des interfaces bien définies**. Les détails internes sont cachés aux autres modules.
 
 ---
 
@@ -189,9 +225,7 @@ Les modules doivent être aussi indépendants que possible les uns des autres. U
 
 ### Cohésion forte
 
-> TODO : reformuler
-
-Les composants d'un module doivent être liés et centrés sur une tâche spécifique. Cela rend le module plus compréhensible et maintenable.
+Les composants d'un module doivent être **liés et centrés sur une tâche spécifique**. Cela rend le module plus compréhensible et maintenable.
 
 ---
 
@@ -199,19 +233,7 @@ Les composants d'un module doivent être liés et centrés sur une tâche spéci
 
 ### Réutilisabilité
 
-> TODO : reformuler
-
-Encourager la création de composants réutilisables permet d'optimiser le développement et d'améliorer la qualité du SI en réduisant les redondances de code.
-
----
-
-## Les principes d'architecture
-
-### Scalabilité
-
-> TODO : reformuler
-
-L'architecture doit être conçue pour supporter la montée en charge (scalabilité horizontale ou verticale) afin que le système puisse évoluer en fonction des besoins (évolution du nombre des appels de service, évolution du volume des données,...).
+Produire des composants réutilisables permet d'optimiser le développement et d'améliorer la qualité du SI en réduisant les redondances de code.
 
 ---
 
@@ -219,9 +241,7 @@ L'architecture doit être conçue pour supporter la montée en charge (scalabili
 
 ### Interopérabilité
 
-> TODO : reformuler
-
-Les composants doivent être capables de communiquer entre eux, même s'ils proviennent de systèmes différents.
+Les composants doivent être **capables de communiquer entre eux** même s'ils proviennent de **systèmes différents**.
 
 ---
 
@@ -229,7 +249,43 @@ Les composants doivent être capables de communiquer entre eux, même s'ils prov
 
 ### Conformité aux normes
 
-Respecter les standards et bonnes pratiques de l’industrie (comme les architectures REST, SOA, ou microservices) facilitera l'**interopérabilité**, la **réutilisation**, et la **maintenabilité**.
+Le respect des standards (ex : [standards OGC](https://www.ogc.org/standards/)) et bonnes pratiques de l’industrie facilitera l'**interopérabilité**, la **réutilisation**, et la **maintenabilité**.
+
+---
+
+## Les principes d'architecture
+
+### Évolutivité
+
+L'architecture doit **permettre des évolutions futures** sans remettre en cause l'ensemble du système.
+
+En complément du respect des principes précédents, il sera par exemple intéressant de **versionner les API**.
+
+---
+
+## Les principes d'architecture
+
+### Portabilité
+
+Les composants doivent être **capables de fonctionner dans différents environnements** (ex. cloud, on-premise) sans nécessiter de modifications majeures.
+
+---
+
+## Les principes d'architecture
+
+### Scalabilité
+
+L'architecture doit être conçue pour **supporter la montée en charge en adaptant le dimensionnement** afin que le système puisse évoluer en fonction des besoins (nombre de clients, volume des données,...).
+
+Permettre la **scalabilité verticale** (modification du dimensionnement des machines) demandera moins d'effort que permettre la **scalabilité horizontale** (multiplication du nombre de machines).
+
+---
+
+## Les principes d'architecture
+
+### Observabilité
+
+Le système doit être instrumenté pour **permettre l'identification et résolution** rapide des problèmes.
 
 ---
 
@@ -239,32 +295,11 @@ Respecter les standards et bonnes pratiques de l’industrie (comme les architec
 
 Le système doit être conçu pour continuer à fonctionner (ou se dégrader de façon contrôlée) en cas de défaillance d’un ou plusieurs composants.
 
----
-
-## Les principes d'architecture
-
-### Évolutivité
-
-L'architecture doit permettre des évolutions futures sans remettre en cause l'ensemble du système, en utilisant des principes comme le versionnage des APIs ou l'intégration continue.
+> Nous inspecterons le [patron de conception "nouvelle tentative" (retry)](https://learn.microsoft.com/fr-fr/azure/architecture/patterns/retry) qui traite le cas d'une indisponibilité temporaire d'un service tiers. Nous traiterons dans le cours DevOps la **réplication des services** pour limiter le **risque d'indisponibilité** (le cas plus complexe de la **perte d'un composant de stockage** sera laissé au cours sur le stockage NoSQL qui abordera logiquement la **réplication et la distribution du stockage**).
 
 ---
 
 ## Les principes d'architecture
-
-### Portabilité
-
-Les composants doivent être capables de fonctionner dans différents environnements (ex. cloud, on-premise) sans nécessiter de modifications majeures.
-
----
-
-## Les principes d'architecture
-
-### Observabilité
-
-Le système doit être instrumenté pour permettre l'identification et résolution rapide des problèmes.
-
-
----
 
 ### Intégrer la sécurité dans la conception
 
@@ -280,15 +315,121 @@ L’architecture doit intégrer la sécurité dès la conception. Par exemple, l
 
 ## Les styles d'architecture
 
-> Remplace "Architectures client/serveur multi-tiers / API/ ServiceWeb"
+- [Architecture monolithique](#architecture-monolithique)
+- [Architecture client/serveur](#architecture-clientserveur)
+- [Architecture 3-tiers](#architecture-3-tiers)
+- [Architecture n-tiers](#architecture-n-tiers)
+- [Architecture pilotée par les événements (EDA)](#architecture-pilotée-par-les-événements-eda)
+- [Architecture orientée services (SOA)](#architecture-orientée-services-soa)
+- [Architecture microservices](#architecture-microservices)
+- [Architecture serverless](#architecture-serverless)
 
-* Architecture client/serveur (ex : QGIS + PostgreSQL)
-* Architecture n-tiers (ex : WAF -> LB -> API -> BDD)
-* Architecture monolithique (ex : GeoServer?)
-* Architecture orientée services (SOA) (standards OGC, api.gouv.fr,...) 
-* Architecture microservices (ex : GeoServer cloud)
-* Event-Driven Architecture (ex : orchestrateur GéoPlateforme)
-* Serverless Architecture (microservice + EDA)
+---
+
+### Architecture monolithique
+
+> TODO : ex : Overpass-API (API + BDD)
+> TODO : ex : GeoServer (WFS + WMS + WMTS + stockage de fichier SHP + ...)?
+> TODO : ex : Application Web (front+backend côté serveur)
+
+---
+
+## Les styles d'architecture
+
+### Architecture client/serveur
+
+L'architecture client / serveur est la plus simple **architecture en couche** :
+
+<div class="illustration">
+
+![h:300px](img/archi-client-server-qgis.drawio.png)
+
+Illustration d'une architecture Client / Server avec [QGIS](https://qgis.org/) branché directement sur une base de données.
+
+</div>
+
+---
+
+## Les styles d'architecture
+
+### Architecture 3-tiers
+
+Nous aurons généralement au moins une couche supplémentaire :
+
+<div class="illustration">
+
+![h:350px](img/archi-3-tiers-osm.drawio.png)
+
+Illustration d'une architecture 3 tiers avec l'API OSM.
+
+</div>
+
+---
+
+## Les styles d'architecture
+
+### Architecture n-tiers
+
+En pratique, nous aurons plus généralement des **architecture n-tiers** avec par exemple une couche pour **répartir la charge sur plusieurs serveurs** :
+
+<div class="illustration">
+
+![h:250px](img/archi-ntiers-web.drawio.png)
+
+Illustration du principe des architectures n-tiers avec la répartition de charge.
+
+</div>
+
+> Nous trouverons régulièrement des couches supplémentaires pour **mettre en cache les réponses** ou **filtrer les attaques** ([WAF](https://fr.wikipedia.org/wiki/Web_application_firewall)).
+
+---
+
+## Les styles d'architecture
+
+### Architecture pilotée par les événements (EDA)
+
+> ex : orchestrateur GéoPlateforme?
+
+
+---
+
+## Les styles d'architecture
+
+### Architecture orientée services (SOA)
+
+Dans une architecture orientée services (SOA), les applications communiquent entre elles à travers un [Enterprise Service Bus](https://fr.wikipedia.org/wiki/Enterprise_service_bus) qui offre un **cadre pour l'interface de services hétérogènes** :
+
+<div class="illustration">
+
+![h:200px](img/archi-soa-esb.drawio.png)
+
+Illustration du principe de l'ESB dans les architectures SOA.
+
+</div>
+
+> Nous en discuterons l'intérêt et les limites en scéance.
+
+---
+
+## Les styles d'architecture
+
+### Architecture microservices 
+
+> ex : [GeoServer cloud](https://github.com/geoserver/geoserver-cloud?tab=readme-ov-file#geoserver-cloud)
+
+
+
+---
+
+## Les styles d'architecture
+
+### Architecture serverless
+
+Dans une architecture **serverless**, les applications dépendent de services cloud pour exécuter des fonctions, stocker des données et gérer des événements **sans que les développeurs aient besoin de gérer directement les serveurs**.
+
+En pratique, il sera souvent question de coupler une approche par **microservices** (1) avec une approche basée sur des **événements** (EDA) pour les traitements longs et asynchrones.
+
+> (1) Hébergement de fonctions simples (AWS Lambda, Azure Functions, ou Google Cloud Functions) voire de conteneur (ex : Google Cloud Run)
 
 ---
 

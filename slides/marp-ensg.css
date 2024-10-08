@@ -38,6 +38,16 @@ img[alt~="center"] {
 }
 
 
+.left {
+    float: left;
+    width: 50%;
+}
+
+.right {
+    float: left;
+    width: 50%;
+}
+
 /* foot notes */
 blockquote p {
     font-size: 0.8em;
