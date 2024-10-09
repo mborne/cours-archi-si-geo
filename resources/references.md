@@ -38,6 +38,9 @@ Architecture SOA et ESB :
 * [www.ibm.com - Qu'est-ce que l'architecture orientée services (SOA, Service-Oriented Architecture) ?](https://www.ibm.com/fr-fr/topics/soa)
 * [www.redhat.com - L'architecture orientée services (SOA), qu'est-ce que c'est ?](https://www.redhat.com/fr/topics/cloud-native-apps/what-is-service-oriented-architecture)
 
+Microservices :
+
+* [aws.amazon.com - Que sont les microservices ?](https://aws.amazon.com/fr/microservices/)
 
 
 ## Sécurité des systèmes d'information

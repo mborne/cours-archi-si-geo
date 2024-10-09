@@ -208,6 +208,8 @@ Nous la retrouverons sous plusieurs formes à l'échelle d'un SI en considérant
 
 Les **interactions entre modules** se font uniquement **via des interfaces bien définies**. Les détails internes sont cachés aux autres modules.
 
+> En pratique, nous encapsulerons par exemple les fonctionnalités en les mettant à disposition via des API.
+
 ---
 
 ## Les principes d'architecture
@@ -232,7 +234,9 @@ Les composants d'un module doivent être **liés et centrés sur une tâche spé
 
 ### Réutilisabilité
 
-Produire des composants réutilisables permet d'optimiser le développement et d'améliorer la qualité du SI en réduisant les redondances de code.
+Produire des **composants réutilisables** permet d'optimiser le développement et d'améliorer la qualité du SI en réduisant les redondances de code.
+
+> NB : Les possibilités de réutilisation varieront en fonction nature du composant (bibliothèque, API en ligne de commande, API REST,...).
 
 ---
 
@@ -258,7 +262,7 @@ Le respect des standards (ex : [standards OGC](https://www.ogc.org/standards/)) 
 
 L'architecture doit **permettre des évolutions futures** sans remettre en cause l'ensemble du système.
 
-En complément du respect des principes précédents, il sera par exemple intéressant de **versionner les API**.
+> A ce titre, en complément du respect des principes précédents (SoC, couplage faible,...), il sera par exemple intéressant de **versionner les API**.
 
 ---
 
@@ -274,7 +278,7 @@ Les composants doivent être **capables de fonctionner dans différents environn
 
 ### Scalabilité
 
-L'architecture doit être conçue pour **supporter la montée en charge en adaptant le dimensionnement** afin que le système puisse évoluer en fonction des besoins (nombre de clients, volume des données,...).
+L'architecture doit être conçue pour **supporter la montée en charge** (évolution du nombre de clients, du volume des données,...).
 
 Permettre la **scalabilité verticale** (modification du dimensionnement des machines) demandera moins d'effort que permettre la **scalabilité horizontale** (multiplication du nombre de machines).
 
@@ -286,15 +290,19 @@ Permettre la **scalabilité verticale** (modification du dimensionnement des mac
 
 Le système doit être instrumenté pour **permettre l'identification et résolution** rapide des problèmes.
 
+> Nous détaillerons ce point dans le cadre du cours DevOps.
+
 ---
 
 ## Les principes d'architecture
 
 ### Résilience et tolérance aux pannes
 
-Le système doit être conçu pour continuer à fonctionner (ou se dégrader de façon contrôlée) en cas de défaillance d’un ou plusieurs composants.
+Le système doit être conçu pour **continuer à fonctionner (ou se dégrader de façon contrôlée) en cas de défaillance** d’un ou plusieurs composants.
 
-> Nous inspecterons le [patron de conception "nouvelle tentative" (retry)](https://learn.microsoft.com/fr-fr/azure/architecture/patterns/retry) qui traite le cas d'une indisponibilité temporaire d'un service tiers. Nous traiterons dans le cours DevOps la **réplication des services** pour limiter le **risque d'indisponibilité** (le cas plus complexe de la **perte d'un composant de stockage** sera laissé au cours sur le stockage NoSQL qui abordera logiquement la **réplication et la distribution du stockage**).
+> Nous inspecterons le [patron de conception "nouvelle tentative" (retry)](https://learn.microsoft.com/fr-fr/azure/architecture/patterns/retry) qui traite le cas d'une indisponibilité temporaire d'un service tiers. Nous traiterons dans le cours DevOps la **réplication des services** pour limiter le **risque d'indisponibilité**.
+>
+> Le cas plus complexe de la **perte d'un composant de stockage** sera laissé au cours sur le stockage NoSQL qui abordera à priori la **réplication et la distribution du stockage** et le [théorème CAP](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_CAP).
 
 ---
 
@@ -302,7 +310,7 @@ Le système doit être conçu pour continuer à fonctionner (ou se dégrader de 
 
 ### Intégrer la sécurité dans la conception
 
-L’architecture doit intégrer la sécurité dès la conception. Par exemple, l'approche [*secure by design*](https://www.oracle.com/fr/security/secure-by-design/) invite entre particulier à :
+Par exemple, l'approche [*secure by design*](https://www.oracle.com/fr/security/secure-by-design/) invite entre autre à :
 
 - **Minimiser la surface d'attaque**
 - Appliquer le **principe de moindre privilège** (i.e. prévoir des mécanismes d'authenfication et d'autorisation)
@@ -335,7 +343,7 @@ Pour illustrer le concept, nous analyserons les avantages et inconvénients avec
 
 - Une application web classique (sans séparation entre le front et back)
 - L'[API Overpass](https://overpass-turbo.eu/), ["*a database engine to query the OpenStreetMap data.*"](https://github.com/drolbr/Overpass-API)
-- [GeoServer](https://geoserver.org/) et ses nombreux services (WFS, WMS, WMTS, stockage,...)
+- [GeoServer](https://geoserver.org/) et ses nombreux services (administration, WFS, WMS, WMTS, stockage,...)
 
 
 
@@ -442,9 +450,17 @@ Illustration du principe de l'ESB dans les architectures SOA.
 
 ### Architecture microservices 
 
-> ex : [GeoServer cloud](https://github.com/geoserver/geoserver-cloud?tab=readme-ov-file#geoserver-cloud)
+L'application est décomposée en **services légers se concentrant sur une tâche spécifique**. Ils sont **développés et déployés indépendamment** et **peuvent communiquer entre eux**.
 
+<div class="illustration">
 
+![h:200px](img/archi-microservice.drawio.png)
+
+Illustration du principe d'une architecture microservice.
+
+</div>
+
+> Nous analyserons en séance le cas de [GeoServer cloud](https://github.com/geoserver/geoserver-cloud?tab=readme-ov-file#geoserver-cloud) correspondant au découpage du monolythe en microservices. Nous discuterons aussi les avantages et inconvénients.
 
 ---
 
@@ -454,40 +470,134 @@ Illustration du principe de l'ESB dans les architectures SOA.
 
 Dans une architecture **serverless**, les applications dépendent de services cloud pour exécuter des fonctions, stocker des données et gérer des événements **sans que les développeurs aient besoin de gérer directement les serveurs**.
 
-En pratique, il sera souvent question de coupler une approche par **microservices** (1) avec une approche basée sur des **événements** (EDA) pour les traitements longs et asynchrones.
+En pratique, le cadre correspondant amènera souvent à coupler une approche par **microservices** (1) avec une approche basée sur des **événements** (EDA) pour les traitements longs ou asynchrones.
 
-> (1) Hébergement de fonctions simples (AWS Lambda, Azure Functions, ou Google Cloud Functions) voire de conteneur (ex : Google Cloud Run)
+> (1) Hébergement de fonctions simples (AWS Lambda, Azure Functions, ou Google Cloud Functions) voire de conteneurs (ex : Google Cloud Run)
 
 ---
 
 ## Les spécificités liées aux données géographiques
 
-- La diversité des données (images, nuages de points, données vectorielles, métadonnées...)
-- Le volume des données
-- Les standards dédiés (INSPIRE, CNIG, OCG,...)
-- Les formats et services spécifiques
+- [La diversité des données](#la-diversité-des-données)
+- [La diversité des acteurs](#la-diversité-des-acteurs)
+- [La diversité des modes de production](#la-diversité-des-modes-de-production)
+- [La directive INSPIRE](#la-directive-inspire)
+- [Des formats dédiés](#des-formats-dédiés)
+- [Des services dédiés](#des-services-dédiés)
+- [Des services gourmands en ressources](#des-services-gourmands-en-ressources)
 
-> (GML, GeoJSON, métadonnées ISO 19115...) + (WMS, WMTS/TMS,...)
+---
 
-> "Spatial is not special" mais les formats ont tendances à mettre la géométrie sur un piédestal (feature GML / feature GeoJSON vs sérialisation des géométrie en XML / JSON).
+## Les spécificités liées aux données géographiques
 
-- La diversité des acteurs (collaboratif (OSM), institutions (INSEE, IGN, collectivités,...), entreprises (Google Maps, LaPoste,...),...)
-- La diversité des modes de production des données (centralisée vs décentralisée)
-  - La validation et d'agrégation des données (GéoPortail de l'Urbanisme, BAN,...)
-  - La gestion des identifiants (avec des objets qui fusionnent ou que l'on découpe)
+### La diversité des données
 
-- Une asymétrie entre la production et la consommation des données (-> CQRS)
-- Des services de calcul gourmand en ressources (calcul géométrique, rendu cartographique, calcul d'itinéraire et d'isochrone,...)
+Les données géographiques prennent **différentes formes** avec des **volumes de données et complexité de modèles de données variables** :
+
+- Des **images**
+- Des **nuages de points**
+- Des **données vectorielles**
+- Des **fiches de métadonnées**
+- ...
+
+---
+
+## Les spécificités liées aux données géographiques
+
+### La diversité des acteurs
+
+Il convient d'être conscient de la diversité des acteurs produisant des données géographiques :
+
+- Les acteurs collaboratifs (OSM)
+- Les acteurs publics nationaux (INSEE, IGN, BRGM...) et infra-nationaux (régions, départements, regroupement de communes, communes,...)
+- Les entreprises privées (Google Maps, Waze, LaPoste,...)
+
+---
+
+## Les spécificités liées aux données géographiques
+
+### La diversité des modes de production
+
+Cette diversité induira une diversité des modes de production des données avec en particulier :
+
+- Une **production centralisée** (directement dans une base nationale ou mondiale)
+- Une **production décentralisée** (à l'échelle infra-nationale)
+
+---
+
+## Les spécificités liées aux données géographiques
+
+### La directive INSPIRE
+
+Dans ce contexte, nous soulignerons l'importance de la [directive européenne INSPIRE](https://www.ecologie.gouv.fr/politiques-publiques/directive-europeenne-inspire) qui impose pour les données géographiques :
+
+- Le **catalogage des données** via les métadonnées pour **permettre la connaissance de l'ensemble des données déjà produites** (1).
+- L'utilisation de **standards pour diffusion des données** (ex : [les standards OGC](https://www.ogc.org/standards/)) pour permettre l'intéropérabilité entre les différentes plateformes.
+
+> (1) Nous remarquerons toutefois que c'est insuffisant pour permettre la construction de référentiel nationaux à partir des productions locales (problématique d'agrégation des données, de validation de la conformité aux standards, de gestion des identifiants...)
+
+---
+
+## Les spécificités liées aux données géographiques
+
+### Des formats dédiés
+
+Nous aurons ainsi par exemple **formats dédiés** pour :
+
+- Les **données vectorielles** (GML basé sur XML, GeoJSON basé sur JSON,...)
+- Les **fiches de métadonnées** (XML / ISO 19115)
+
+> Nous signalerons en séance une tendance fâcheuse à réinventer les formats pour mettre en avant la composante spatiale (ex : [GeoJSON](https://geojson.org/) ne se contente pas de définir un format pour sérialiser des géométries, GeoJSON introduit le concept de `FeatureCollection` et de `Feature` relégant au second plan les `properties` autre que la `geometry`)
+
+---
+
+## Les spécificités liées aux données géographiques
+
+### Des services dédiés
+
+De même, nous aurons aussi des **services standardisés** pour :
+
+- L'accès aux données images (WMS/WMTS/WCS)
+- L'accès aux données vectorielles (WFS) et aux traitements (WPS)
+- L'accès aux métadonnées (CSW)...
+
+Nous notterons que :
+
+- Les standards en vigueur ont une forte dépendance aux technologies XML (XSD, WSDL,...) qui étaient à la pointe en 2007.
+- Des travaux de modernisation de ces standards avec [OGC API](https://ogcapi.ogc.org/)
+
+---
+
+## Les spécificités liées aux données géographiques
+
+### Des services gourmands en ressources
+
+Les services **manipulant des données géographiques** seront souvent **gourmand en ressources** (calcul géométrique, rendu cartographique, calcul d'itinéraire et d'isochrone,...).
+
+Il sera donc intéressant de :
+
+- S'appuyer sur des patrons tels [CQRS](https://learn.microsoft.com/fr-fr/azure/architecture/patterns/cqrs) pour profiter de l'**asymétrie entre la production et la consommation des données**.
+- Distinguer le respect des obligations INSPIRE et la réponse au besoin des principaux clients d'un système.
+
+> ex : INSPIRE n'impose de concevoir un système de recherche interne à une application sur la base de fiches de métadonnées
 
 ---
 
 ## Les infrastructures de données géographiques
 
-> Reprend : "Les infrastructures des données géographiques (IDG) (Infrastructure de Données Spatiale - IDS)" et
-> "Rôle et place des SIG dans les organisations"
-
-* Définition
-
+### Définition
 
 « Une infrastructure de données géographiques est une structure de mutualisation, d’échange et de diffusion de données géographiques à l’échelle d’un territoire et au bénéfice d’acteurs publics, et indirectement des citoyens. », Source : Afigeo
+
+---
+
+TODO
+
+
+
+
+
+
+
+
 
