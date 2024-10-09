@@ -25,6 +25,13 @@
 
 ## Les styles d'architecture
 
+Event Driven Architecture :
+
+* [learn.microsoft.com - Event-driven architecture style](https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/event-driven)
+* [www.redhat.com - Une architecture orientée événements, qu'est-ce que c'est ?](https://www.redhat.com/fr/topics/integration/what-is-event-driven-architecture)
+* [aws.amazon.com - Quelle est la différence entre Kafka et RabbitMQ ?](https://aws.amazon.com/fr/compare/the-difference-between-rabbitmq-and-kafka/)
+* [www.bob-le-developpeur.com - Event-driven Architecture](https://www.bob-le-developpeur.com/notions/event-driven-architectur)
+
 Architecture SOA et ESB :
 
 * [fr.wikipedia.org - Enterprise service bus](https://fr.wikipedia.org/wiki/Enterprise_service_bus)

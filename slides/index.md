@@ -31,7 +31,6 @@ Selon [fr.wikipedia.org](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27informat
 
 > Le **système d'information (SI)** est un ensemble organisé de ressources qui permet de collecter, stocker, traiter et distribuer de l'information, en général grâce à un réseau d'ordinateurs.
 
-
 Le SI se décompose en un **système organisationnel** et un **système technique** : Le **système informatique** (le matériel informatique, les logiciels, les données, les services, les réseaux,...)
 
 ---
@@ -136,7 +135,7 @@ La recherche d'une communication efficace entre les services se retrouve dans l'
 * Fin des années 90, le **format [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language)** domine avec **[WSDL](https://fr.wikipedia.org/wiki/Web_Services_Description_Language)** (Web Services Description Language) et **[SOAP](https://fr.wikipedia.org/wiki/SOAP)** (Simple Object Access Protocol).
 * Depuis ~2005, les API [REST](https://fr.wikipedia.org/wiki/Representational_state_transfer) et le **format [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation)** gagnent du terrain.
 * 2011, [WebSocket](https://fr.wikipedia.org/wiki/WebSocket) permet une communication bidirectionnelle.
-* 2012, [GraphQL](https://graphql.org/) vise à limiter le nombre de requêtes et le volume de données transférée.
+* 2012, [GraphQL](https://graphql.org/) vise à limiter le nombre de requêtes et le volume de données transférées.
 * 2015, gRPC s'appuie sur le **format [Protocol Buffers](https://protobuf.dev/)** et HTTP/2.
 
 ---
@@ -328,9 +327,17 @@ L’architecture doit intégrer la sécurité dès la conception. Par exemple, l
 
 ### Architecture monolithique
 
-> TODO : ex : Overpass-API (API + BDD)
-> TODO : ex : GeoServer (WFS + WMS + WMTS + stockage de fichier SHP + ...)?
-> TODO : ex : Application Web (front+backend côté serveur)
+Selon [aws.amazon.com - Quelle est la différence entre une architecture monolithique et une architecture de microservices ?](https://aws.amazon.com/fr/compare/the-difference-between-monolithic-and-microservices-architecture/) :
+
+> "Une **architecture monolithique** est un modèle de développement logiciel traditionnel qui utilise une **base de code unique** pour exécuter **plusieurs fonctions métier**. Tous les **composants** logiciels d'un système monolithique sont **interdépendants en raison des mécanismes d'échange de données au sein du système**."
+
+Pour illustrer le concept, nous analyserons les avantages et inconvénients avec :
+
+- Une application web classique (sans séparation entre le front et back)
+- L'[API Overpass](https://overpass-turbo.eu/), ["*a database engine to query the OpenStreetMap data.*"](https://github.com/drolbr/Overpass-API)
+- [GeoServer](https://geoserver.org/) et ses nombreux services (WFS, WMS, WMTS, stockage,...)
+
+
 
 ---
 
@@ -338,7 +345,7 @@ L’architecture doit intégrer la sécurité dès la conception. Par exemple, l
 
 ### Architecture client/serveur
 
-L'architecture client / serveur est la plus simple **architecture en couche** :
+L'architecture client / serveur est la plus simple **architecture en couche**.
 
 <div class="illustration">
 
@@ -354,13 +361,13 @@ Illustration d'une architecture Client / Server avec [QGIS](https://qgis.org/) b
 
 ### Architecture 3-tiers
 
-Nous aurons généralement au moins une couche supplémentaire :
+L'architecture 3-tiers se matérialisera souvent par la présence d'un intermédiaire entre le client et le stockage :
 
 <div class="illustration">
 
-![h:350px](img/archi-3-tiers-osm.drawio.png)
+![h:300px](img/archi-3-tiers-osm.drawio.png)
 
-Illustration d'une architecture 3 tiers avec l'API OSM.
+Illustration d'une architecture 3 tiers avec l'[API OSM](https://wiki.openstreetmap.org/wiki/API_v0.6).
 
 </div>
 
@@ -370,26 +377,46 @@ Illustration d'une architecture 3 tiers avec l'API OSM.
 
 ### Architecture n-tiers
 
-En pratique, nous aurons plus généralement des **architecture n-tiers** avec par exemple une couche pour **répartir la charge sur plusieurs serveurs** :
+En pratique, nous aurons plus souvent des **architecture n-tiers** avec par exemple une couche pour **répartir la charge sur plusieurs serveurs** :
 
 <div class="illustration">
 
-![h:250px](img/archi-ntiers-web.drawio.png)
+![h:220px](img/archi-ntiers-web.drawio.png)
 
 Illustration du principe des architectures n-tiers avec la répartition de charge.
 
 </div>
 
-> Nous trouverons régulièrement des couches supplémentaires pour **mettre en cache les réponses** ou **filtrer les attaques** ([WAF](https://fr.wikipedia.org/wiki/Web_application_firewall)).
+...ainsi que des couches **mettre en cache les réponses**, pour **filtrer les attaques** ([WAF](https://fr.wikipedia.org/wiki/Web_application_firewall)),...
 
 ---
 
 ## Les styles d'architecture
 
-### Architecture pilotée par les événements (EDA)
+### Architecture pilotée par les événements (EDA) (1/2)
 
-> ex : orchestrateur GéoPlateforme?
+Dans une architecture pilotée par les événements (ou ***Event-driven Architecture (EDA)***), les composants communiquent entre eux à l'aide de message :
 
+<div class="illustration">
+
+![h:250px](img/archi-eda.drawio.png)
+
+Illustration du principe d'une architecture pilotée par les événements.
+
+</div>
+
+---
+
+## Les styles d'architecture
+
+### Architecture pilotée par les événements (EDA) (2/2)
+
+Nous distinguerons deux approches :
+
+- **Publication/abonnement (*Pub/sub*)** où les consommateurs s'abonnent à un canal pour recevoir les messages.
+- **flux d'événement (*Event streaming*)** où les événements sont journalisées et où les consommateurs peuvent lire les messages.
+
+> Nous discuterons l'intérêt et les défis de ce type d'architecture à travers des cas d'utilisations en séance.
 
 ---
 
@@ -397,7 +424,7 @@ Illustration du principe des architectures n-tiers avec la répartition de charg
 
 ### Architecture orientée services (SOA)
 
-Dans une architecture orientée services (SOA), les applications communiquent entre elles à travers un [Enterprise Service Bus](https://fr.wikipedia.org/wiki/Enterprise_service_bus) qui offre un **cadre pour l'interface de services hétérogènes** :
+Dans une architecture orientée services (SOA), les applications communiquent entre elles à travers un [Enterprise Service Bus](https://fr.wikipedia.org/wiki/Enterprise_service_bus) qui offre un **cadre pour l'interfaçage de services hétérogènes** :
 
 <div class="illustration">
 
@@ -407,7 +434,7 @@ Illustration du principe de l'ESB dans les architectures SOA.
 
 </div>
 
-> Nous en discuterons l'intérêt et les limites en scéance.
+> Nous en discuterons l'intérêt et les limites en scéance en faisant le lien avec EDA et pour introduire la partie suivante.
 
 ---
 
@@ -435,22 +462,22 @@ En pratique, il sera souvent question de coupler une approche par **microservice
 
 ## Les spécificités liées aux données géographiques
 
-* La diversité des données (images, nuages de points, données vectorielles, métadonnées...)
-* Le volume des données
-* Les standards dédiés (INSPIRE, CNIG, OCG,...)
-* Les formats et services spécifiques
+- La diversité des données (images, nuages de points, données vectorielles, métadonnées...)
+- Le volume des données
+- Les standards dédiés (INSPIRE, CNIG, OCG,...)
+- Les formats et services spécifiques
 
 > (GML, GeoJSON, métadonnées ISO 19115...) + (WMS, WMTS/TMS,...)
 
 > "Spatial is not special" mais les formats ont tendances à mettre la géométrie sur un piédestal (feature GML / feature GeoJSON vs sérialisation des géométrie en XML / JSON).
 
-* La diversité des acteurs (collaboratif (OSM), institutions (INSEE, IGN, collectivités,...), entreprises (Google Maps, LaPoste,...),...)
-* La diversité des modes de production des données (centralisée vs décentralisée)
-  * La validation et d'agrégation des données (GéoPortail de l'Urbanisme, BAN,...)
-  * La gestion des identifiants (avec des objets qui fusionnent ou que l'on découpe)
+- La diversité des acteurs (collaboratif (OSM), institutions (INSEE, IGN, collectivités,...), entreprises (Google Maps, LaPoste,...),...)
+- La diversité des modes de production des données (centralisée vs décentralisée)
+  - La validation et d'agrégation des données (GéoPortail de l'Urbanisme, BAN,...)
+  - La gestion des identifiants (avec des objets qui fusionnent ou que l'on découpe)
 
-* Une asymétrie entre la production et la consommation des données (-> CQRS)
-* Des services de calcul gourmand en ressources (calcul géométrique, rendu cartographique, calcul d'itinéraire et d'isochrone,...)
+- Une asymétrie entre la production et la consommation des données (-> CQRS)
+- Des services de calcul gourmand en ressources (calcul géométrique, rendu cartographique, calcul d'itinéraire et d'isochrone,...)
 
 ---
 
