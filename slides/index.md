@@ -507,10 +507,11 @@ Les données géographiques prennent **différentes formes** avec des **volumes 
 
 ### La diversité des acteurs
 
-Il convient d'être conscient de la diversité des acteurs produisant des données géographiques :
+Il convient d'être conscient de la diversité des acteurs qui produisent des données géographiques :
 
 - Les acteurs collaboratifs (OSM)
-- Les acteurs publics nationaux (INSEE, IGN, BRGM...) et infra-nationaux (régions, départements, regroupement de communes, communes,...)
+- Les acteurs publics nationaux (INSEE, IGN, BRGM...)
+- Les collectivités territoriales (régions, départements, regroupement de communes, communes,...)
 - Les entreprises privées (Google Maps, Waze, LaPoste,...)
 
 ---
@@ -530,12 +531,13 @@ Cette diversité induira une diversité des modes de production des données ave
 
 ### La directive INSPIRE
 
-Dans ce contexte, nous soulignerons l'importance de la [directive européenne INSPIRE](https://www.ecologie.gouv.fr/politiques-publiques/directive-europeenne-inspire) qui impose pour les données géographiques :
+Dans ce contexte, nous soulignerons l'importance de la [directive européenne INSPIRE](https://www.ecologie.gouv.fr/politiques-publiques/directive-europeenne-inspire) (1) qui impose [pour certains thèmes](http://formations-geomatiques.developpement-durable.gouv.fr/NAT009/Inspire/directive_inspire_neophytes/co/directive_inspire_neophytes_7.html) :
 
-- Le **catalogage des données** via les métadonnées pour **permettre la connaissance de l'ensemble des données déjà produites** (1).
+- Le **catalogage des données** via les métadonnées pour **permettre la connaissance de l'ensemble des données déjà produites** (2).
 - L'utilisation de **standards pour diffusion des données** (ex : [les standards OGC](https://www.ogc.org/standards/)) pour permettre l'intéropérabilité entre les différentes plateformes.
 
-> (1) Nous remarquerons toutefois que c'est insuffisant pour permettre la construction de référentiel nationaux à partir des productions locales (problématique d'agrégation des données, de validation de la conformité aux standards, de gestion des identifiants...)
+> (1) Voir [formations-geomatiques.developpement-durable.gouv.fr - La directive Inspire pour les néophytes](http://formations-geomatiques.developpement-durable.gouv.fr/NAT009/Inspire/directive_inspire_neophytes/co/directive_inspire_neophytes_1.html)
+> (2) Ceci sera toutefois insuffisant pour permettre la construction de référentiel nationaux à partir des productions locales (problématique d'agrégation des données, de validation de la conformité aux standards, de gestion des identifiants...)
 
 ---
 
@@ -608,12 +610,12 @@ TODO
 
 Une IDG sera amener à stocker des données sous plusieurs formes avec principalement :
 
-* Des **fichiers (PDF, ZIP, Excels, CSV,...)** :
-    * Système de **fichiers classiques ou en réseau** (partage, NFS, Samba, FTP,...).
-  * Systèume de stockage objet (S3, Google Cloud Storage,...)
-* Des **bases de données** :
-  * SQL (PostgreSQL, Oracle,...) offrant des garanties ACID
-  * NoSQL (base orientée document, clé/valeur, recherche plein texte, graphe,...)
+- Des **fichiers (PDF, ZIP, Excels, CSV,...)** avec :
+  - Système de **fichiers classiques ou en réseau** (partage, NFS, Samba, FTP,...).
+  - Système de **stockage objet** (S3, Google Cloud Storage,...)
+- Des **bases de données** :
+  - **SQL** (PostgreSQL, Oracle,...) offrant des garanties ACID
+  - **NoSQL** (base orientée document, clé/valeur, recherche plein texte, graphe,...)
 
 ---
 
@@ -623,8 +625,8 @@ Une IDG sera amener à stocker des données sous plusieurs formes avec principal
 
 Nous noterons qu'il sera potentiellement intéressant de :
 
-* Partitionner les données (notamment en cas de production décentralisée)
-* Versionner les données
+- **Partitionner les données** (notamment en cas de production décentralisée)
+- **Versionner les données** (i.e. conserver l'historique des modifications)
 
 
 ---
@@ -635,9 +637,9 @@ Nous noterons qu'il sera potentiellement intéressant de :
 
 Modéliser numériquement les données permettra de :
 
-* **Décrire les données** pour aider les utilisateurs à les exploiter.
-* **Valider des données** dans le cadre des imports de données.
-* **Générer des formulaires** pour guider les producteurs dans la saisie.
+- **Décrire les données** pour aider les utilisateurs à les exploiter.
+- **Valider des données** dans le cadre des imports de données.
+- **Générer des formulaires** pour guider les producteurs dans la saisie.
 
 
 ---
@@ -648,14 +650,10 @@ Modéliser numériquement les données permettra de :
 
 Nous inspecterons et discuterons en séances les différentes appproches possibles :
 
-* Les **diagrammes de classes UML** (ex : [INSPIRE UML models - AdministrativeUnit](https://inspire-mif.github.io/uml-models/approved/html/index.htm?guid=85BF8670-5D59-4f6c-A1B4-F95DC0AF6876))
-* Les **documents incluants des diagrammes UML et description de table** (ex : [CNIG - Standard CNIG PLU v2024](https://cnig.gouv.fr/IMG/pdf/231220_standard_cnig_plu_v2024-01.pdf))
-* ... TODO ...
-
-
-
-
-
+- Les **diagrammes de classes UML** (ex : [INSPIRE UML models - AdministrativeUnit](https://inspire-mif.github.io/uml-models/approved/html/index.htm?guid=85BF8670-5D59-4f6c-A1B4-F95DC0AF6876))
+- Les **documents incluants des diagrammes UML et description de table** (ex : [CNIG - Standard CNIG PLU v2024](https://cnig.gouv.fr/IMG/pdf/231220_standard_cnig_plu_v2024-01.pdf))
+- Les méta-modèles (ex : [Table Schema](https://specs.frictionlessdata.io/table-schema/) mis en avant sur [schema.data.gouv.fr](https://schema.data.gouv.fr/))
+- Les fiches descriptives (ex : [wiki.openstreetmap.org - Key:building](https://wiki.openstreetmap.org/wiki/Key:building))
 
 
 
