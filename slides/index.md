@@ -631,10 +631,26 @@ Nous noterons qu'il sera potentiellement intéressant de :
 
 ## Les infrastructures de données géographiques
 
-### Modélisation des données
+### Modélisation des données (1/2)
 
-> TODO
+Modéliser numériquement les données permettra de :
 
+* **Décrire les données** pour aider les utilisateurs à les exploiter.
+* **Valider des données** dans le cadre des imports de données.
+* **Générer des formulaires** pour guider les producteurs dans la saisie.
+
+
+---
+
+## Les infrastructures de données géographiques
+
+### Modélisation des données (2/2)
+
+Nous inspecterons et discuterons en séances les différentes appproches possibles :
+
+* Les **diagrammes de classes UML** (ex : [INSPIRE UML models - AdministrativeUnit](https://inspire-mif.github.io/uml-models/approved/html/index.htm?guid=85BF8670-5D59-4f6c-A1B4-F95DC0AF6876))
+* Les **documents incluants des diagrammes UML et description de table** (ex : [CNIG - Standard CNIG PLU v2024](https://cnig.gouv.fr/IMG/pdf/231220_standard_cnig_plu_v2024-01.pdf))
+* ... TODO ...
 
 
 
