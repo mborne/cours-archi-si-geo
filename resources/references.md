@@ -59,3 +59,21 @@ Microservices :
 ## Serverless
 
 * [cloud.google.com - Sans serveur](https://cloud.google.com/serverless?hl=fr)
+
+
+## Infrastructure de données géographiques
+
+
+* [www.afigeo.asso.fr - LES PLATEFORMES TERRITORIALES DE DONNÉES GÉOGRAPHIQUES - ÉTAT DES LIEUX, ENJEUX ET PERSPECTIVES, Juin 2023](https://www.afigeo.asso.fr/publication-les-plateformes-territoriales-de-donnees-geographiques-etat-des-lieux-enjeux-et-perspectives-2023/)
+* [www.arxit.com - Conseil & Mise en oeuvre IDG](https://www.arxit.com/conseil-ids-idg/)
+
+* [formations-geomatiques.developpement-durable.gouv.fr - Les plateformes régionales pour l'information géographique](http://formations-geomatiques.developpement-durable.gouv.fr/MIG/Infrastructure_nationale/co/17_plateformes_regionales.html)
+
+> Pointe différents exemples basés sur PRODIGE et GeOrchestra.
+
+* [igm.univ-mlv.fr - Infrastructure de Données Géographiques (IDG)](https://igm.univ-mlv.fr/~dr/XPOSE2014/IDG/pages/idg.html)
+
+> Illustre la transformation d'une base de données métiers en base de données de diffusion INSPIRE.
+
+* [www.geoinformations.developpement-durable.gouv.fr - Présentation de PRODIGE](https://www.geoinformations.developpement-durable.gouv.fr/presentation-de-prodige-a1568.html)
+* [www.georchestra.org - Projet](https://www.georchestra.org/fr/projet.html)

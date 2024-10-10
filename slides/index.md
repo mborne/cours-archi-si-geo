@@ -27,9 +27,10 @@ header: '<div><img src="img/logo-ensg.png" alt="ENSG" height="64px"/></div>'
 
 ### Définition d'un SI
 
-Selon [fr.wikipedia.org](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27information) :
 
-> Le **système d'information (SI)** est un ensemble organisé de ressources qui permet de collecter, stocker, traiter et distribuer de l'information, en général grâce à un réseau d'ordinateurs.
+> « Le **système d'information (SI)** est un ensemble organisé de ressources qui permet de collecter, stocker, traiter et distribuer de l'information, en général grâce à un réseau d'ordinateurs. »
+> 
+> Source [fr.wikipedia.org](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27information)
 
 Le SI se décompose en un **système organisationnel** et un **système technique** : Le **système informatique** (le matériel informatique, les logiciels, les données, les services, les réseaux,...)
 
@@ -55,7 +56,7 @@ Nous trouverons plusieurs types de systèmes d'information :
 
 Le SIG sera un type de SI se focalisant sur la gestion des données spatiales :
 
-> "Un **système d'information géographique ou SIG** est un système d'information conçu pour recueillir, stocker, traiter, analyser, gérer et présenter tous les types de données spatiales et géographiques"
+> « Un **système d'information géographique ou SIG** est un système d'information conçu pour recueillir, stocker, traiter, analyser, gérer et présenter tous les types de données spatiales et géographiques »
 > 
 > (Source : [fr.wikipedia.org - Système d'information géographique](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27information_g%C3%A9ographique))
 
@@ -587,11 +588,53 @@ Il sera donc intéressant de :
 
 ### Définition
 
-« Une infrastructure de données géographiques est une structure de mutualisation, d’échange et de diffusion de données géographiques à l’échelle d’un territoire et au bénéfice d’acteurs publics, et indirectement des citoyens. », Source : Afigeo
+> « Une infrastructure de données géographiques est une structure de mutualisation, d’échange et de diffusion de données géographiques à l’échelle d’un territoire et au bénéfice d’acteurs publics, et indirectement des citoyens. »
+> 
+> Source : Afigeo
 
 ---
 
+## Les infrastructures de données géographiques
+
+### Objectifs
+
 TODO
+
+---
+
+## Les infrastructures de données géographiques
+
+### Stockage des données (1/2)
+
+Une IDG sera amener à stocker des données sous plusieurs formes avec principalement :
+
+* Des **fichiers (PDF, ZIP, Excels, CSV,...)** :
+    * Système de **fichiers classiques ou en réseau** (partage, NFS, Samba, FTP,...).
+  * Systèume de stockage objet (S3, Google Cloud Storage,...)
+* Des **bases de données** :
+  * SQL (PostgreSQL, Oracle,...) offrant des garanties ACID
+  * NoSQL (base orientée document, clé/valeur, recherche plein texte, graphe,...)
+
+---
+
+## Les infrastructures de données géographiques
+
+### Stockage des données (2/2)
+
+Nous noterons qu'il sera potentiellement intéressant de :
+
+* Partitionner les données (notamment en cas de production décentralisée)
+* Versionner les données
+
+
+---
+
+## Les infrastructures de données géographiques
+
+### Modélisation des données
+
+> TODO
+
 
 
 
