@@ -77,3 +77,8 @@ Microservices :
 
 * [www.geoinformations.developpement-durable.gouv.fr - Présentation de PRODIGE](https://www.geoinformations.developpement-durable.gouv.fr/presentation-de-prodige-a1568.html)
 * [www.georchestra.org - Projet](https://www.georchestra.org/fr/projet.html)
+
+
+## INSPIRE
+
+* [www.afigeo.asso.fr - Convergence Inspire et Open Data, ESRI, 07/02/2022](https://www.afigeo.asso.fr/wp-content/uploads/2022/02/09/afigeo-plateformes-innovation-convergence-inspire-opendata-esrifrance-compressed.pdf)

@@ -608,7 +608,7 @@ TODO
 
 ### Stockage des données (1/2)
 
-Une IDG sera amener à stocker des données sous plusieurs formes avec principalement :
+Une IDG sera amener à stocker des données sous plusieurs formes :
 
 - Des **fichiers (PDF, ZIP, Excels, CSV,...)** avec :
   - Système de **fichiers classiques ou en réseau** (partage, NFS, Samba, FTP,...).
@@ -628,6 +628,8 @@ Nous noterons qu'il sera potentiellement intéressant de :
 - **Partitionner les données** (notamment en cas de production décentralisée)
 - **Versionner les données** (i.e. conserver l'historique des modifications)
 
+> Nous aborderons en séance l'historique du partionnement des données au sein du [Géoportail de l'Urbanisme](https://www.geoportail-urbanisme.gouv.fr/) ainsi que les mécanismes d'historisation exploité par l'IGN dans le cadre de la production de la BDTOPO.
+
 
 ---
 
@@ -635,7 +637,7 @@ Nous noterons qu'il sera potentiellement intéressant de :
 
 ### Modélisation des données (1/2)
 
-Modéliser numériquement les données permettra de :
+Modéliser les données permettra de :
 
 - **Décrire les données** pour aider les utilisateurs à les exploiter.
 - **Valider des données** dans le cadre des imports de données.
@@ -648,13 +650,141 @@ Modéliser numériquement les données permettra de :
 
 ### Modélisation des données (2/2)
 
-Nous inspecterons et discuterons en séances les différentes appproches possibles :
+Nous discuterons en séance différentes appproches possibles :
 
 - Les **diagrammes de classes UML** (ex : [INSPIRE UML models - AdministrativeUnit](https://inspire-mif.github.io/uml-models/approved/html/index.htm?guid=85BF8670-5D59-4f6c-A1B4-F95DC0AF6876))
-- Les **documents incluants des diagrammes UML et description de table** (ex : [CNIG - Standard CNIG PLU v2024](https://cnig.gouv.fr/IMG/pdf/231220_standard_cnig_plu_v2024-01.pdf))
-- Les méta-modèles (ex : [Table Schema](https://specs.frictionlessdata.io/table-schema/) mis en avant sur [schema.data.gouv.fr](https://schema.data.gouv.fr/))
-- Les fiches descriptives (ex : [wiki.openstreetmap.org - Key:building](https://wiki.openstreetmap.org/wiki/Key:building))
+- Les **documents incluants des diagrammes UML et descriptions de table** (ex : [CNIG - Standard CNIG PLU v2024](https://cnig.gouv.fr/IMG/pdf/231220_standard_cnig_plu_v2024-01.pdf))
+- Les **tables décrivant les valeurs codifiées** (ex : [www.insee.fr - Liste de modalités des fichiers téléchargeables du COG ](https://www.insee.fr/fr/information/7766169))
+- Les **méta-modèles** (ex : [Table Schema](https://specs.frictionlessdata.io/table-schema/) mis en avant sur [schema.data.gouv.fr](https://schema.data.gouv.fr/) et celui du [validateur IGN](https://ignf.github.io/validator/validator-core/src/main/resources/schema/) développé pour valider les standards CNIG)
+- Les **fiches descriptives** (ex : [wiki.openstreetmap.org - Key:building](https://wiki.openstreetmap.org/wiki/Key:building) côté OSM complété par [id-tagging-schema](https://github.com/openstreetmap/id-tagging-schema/tree/main?tab=readme-ov-file#background)) 
+
+---
+
+## Les infrastructures de données géographiques
+
+### Catalogage (1/2)
+
+Les mécanismes de **catalogage** mis en oeuvre dans le cadre de la directive INSPIRE se repose sur :
+
+- La rédaction de **fiche de métadonnées au format ISO 19115** pour les jeux de données et les services
+- Le **moissonnage de ces fiches** par le [www.geocatalogue.fr](https://www.geocatalogue.fr/geonetwork/srv/fre/catalog.search#/home)
+- Le moissonnage des catalogues nationaux à l'échelle Européenne ( c.f. [inspire-geoportal.ec.europa.eu](https://inspire-geoportal.ec.europa.eu/srv/fre/catalog.search#/home) )
+
+> Nous prendrons le temps en scéance d'inspecter quelques fiches de métadonnées, le modèle correspondant et les mécanismes de profilage de ISO 19115 au niveau INSPIRE et éventuellement CNIG ([ignf.github.io - Metadata](https://ignf.github.io/validator/doc/metadata.html)).
+
+---
+
+## Les infrastructures de données géographiques
+
+### Catalogage (2/2)
+
+En terme d'outillage, nous noterons :
+
+- La présence d'une [API de validation des métadonnées](https://inspire.ec.europa.eu/validator/home/index.html) au niveau INSPIRE.
+- L'utilisation fréquente de [GeoNetwork](https://geonetwork-opensource.org/) dans les IGD pour **stocker les fiches de métadonnées** et implémenter les services [CSW et CSW-T](https://docs.geonetwork-opensource.org/3.12/fr/api/csw/).
+
+> Nous mentionnerons l'existence d'alternatives à ISO 19115 (c.f. [doc.data.gouv.fr - Moissonnage DCAT](https://doc.data.gouv.fr/moissonnage/dcat/)) avec des travaux en cours au niveau INSPIRE (c.f. [GeoDCAT-AP](https://knowledge-base.inspire.ec.europa.eu/evolution/good-practice-library/geodcat-ap_en), [OGC API Record (Draft)](https://ogcapi.ogc.org/records/))
+>
+> Nous noterons aussi qu'il est possible pour une plateforme de **collecter les informations à renseigner dans les métadonnées** et de **générer des fiches conformes** (nous en aborderons l'intérêt en séance avec un RETEX : doublon d'identifiants, CSW vs ElasticSearch,...).
 
 
+---
+
+## Les infrastructures de données géographiques
+
+### Diffusion vecteur (1/2)
+
+Pour l'accès aux données vectorielles, nous noterons que :
+
+- La directive INSPIRE amène généralement à mettre en oeuvre le [standard WFS](https://fr.wikipedia.org/wiki/Web_Feature_Service).
+- Il sera possible de s'appuyer sur des outils libres tels [GeoServer](https://geoserver.org/) ou [MapServer](https://mapserver.org/) pour la mise en oeuvre.
+
+Nous inspecterons quelques exemples de requête en séance :
+
+- [data.geopf.fr - wfs - GetCapabilities](https://data.geopf.fr/wfs?service=WFS&request=GetCapabilities)
+- [data.geopf.fr - wfs - DescribeFeatureType](https://data.geopf.fr/wfs?service=WFS&request=DescribeFeatureType&typename=BDTOPO_V3:batiment&outputFormat=application/json) avec réponse JSON.
+- [data.geopf.fr - wfs - GetFeature](https://data.geopf.fr/wfs?service=WFS&request=GetFeature&typename=BDTOPO_V3:batiment&outputFormat=application/json&count=1) sur `BDTOPO_V3:batiment` avec réponse GeoJSON.
 
 
+---
+
+## Les infrastructures de données géographiques
+
+### Diffusion vecteur (2/2)
+
+Nous remarquerons ainsi qu'**un service WFS est une API REST** avec des capacités intéressantes (notamment en présence de l'extension [cql_filter](https://docs.geoserver.org/stable/en/user/tutorials/cql/cql_tutorial.html) de GeoServer).
+
+Nous mentionnerons toutefois :
+
+- Le **côté vieillissant de GetCapabilities** et les travaux de modernisation en cours via [OGC API - Features](https://ogcapi.ogc.org/features/).
+- Les **limitations fonctionnelles de WFS** par rapport à des API REST telle l'[API Explore d'Opendatasoft](https://help.opendatasoft.com/apis/ods-explore-v2/#section/Opendatasoft-Query-Language-(ODSQL)) (ex : opérateur d'aggrégation tels "group by", "sum",...)
+- Le **droit d'utiliser des API REST/JSON métiers en complément de WFS dans son système!** (pour répondre aux besoins métiers et aux obligations INSPIRE)
+
+---
+
+## Les infrastructures de données géographiques
+
+### Diffusion cartographique (1/3)
+
+Pour la diffusion cartographique, nous mettrons principalement en oeuvre :
+
+- Des services [WMS](https://www.ogc.org/standard/wms/) permettant d'obtenir une image pour une **emprise arbitraire**.
+- Des services [WMTS](https://docs.qgis.org/3.34/en/docs/server_manual/services/wmts.html) (voire [TMS](https://wiki.osgeo.org/wiki/Tile_Map_Service_Specification)) permettant d'obtenir une [**tuile dans une pyramide d'image**](https://geoservices.ign.fr/documentation/services/services-deprecies/images-tuilees-wmts-ogc#877).
+
+Nous insisterons sur le fait que :
+
+- Le **rendu cartographique** est une **opération coûteuse**.
+- **WMS** implique un **rendu à la demande**.
+- **WMTS et TMS** permettent la **mise en cache** ou le **pré-calcul** des tuiles.
+
+---
+
+## Les infrastructures de données géographiques
+
+### Diffusion cartographique (2/3)
+
+En matière d'outil :
+
+- WMS pourra être mis en oeuvre à l'aide d'outils tels [GeoServer](https://docs.geoserver.org/main/en/user/services/wms/reference.html), [MapServer](https://mapserver.org/ogc/wms_server.html), [Mapnik](https://mapnik.org/) avec [mod_mapnik_wms](https://wiki.openstreetmap.org/wiki/Mod_mapnik_wms),...)
+- WMTS pourra être implémenté en surcouche à l'aide d'outils tels [MapProxy](https://www.mapproxy.org/), [GeoWebCache](https://docs.geoserver.org/latest/en/user/geowebcache/index.html), [MapCache](https://mapserver.org/mapcache/),...
+
+Nous noterons :
+
+- La présence d'un standard [SLD](https://docs.geoserver.org/main/en/user/styling/sld/index.html) pour la définition des styles avec des variantes en fonction des outils (c.f. [SLD Extensions in GeoServer](https://docs.geoserver.org/main/en/user/styling/sld/extensions/index.html)).
+- L'existence d'un projet ciblant la rédaction de styles génériques : [GeoStyler](https://geostyler.org/)
+
+<!--
+Les capacités de symbolisation et la complexité du langage de symbolisation pourront guider dans le choix
+-->
+
+---
+
+## Les infrastructures de données géographiques
+
+### Diffusion cartographique (3/3)
+
+Enfin, nous mentionnerons la possibilité de diffuser des cartes sous formes de [tuiles vectorielles](https://docs.qgis.org/3.34/fr/docs/user_manual/working_with_vector_tiles/vector_tiles.html).
+
+Nous noterons que cette approche :
+
+- Offre une **grande liberté dans la symbolisation et les intéractions** en reportant le **rendu côté client**.
+- Reprend le **principe de la pyramide** WMTS avec des données dans un format basé sur [Protocol Buffers](https://protobuf.dev/) (c.f. [Vector tiles standards](https://docs.mapbox.com/data/tilesets/guides/vector-tiles-standards/))
+
+> Mise en garde : Une trop grande complexité dans les géométries ne permettra pas d'exploiter efficacement cette technologie.
+
+---
+
+## Les infrastructures de données géographiques
+
+### Autres services
+
+Nous trouverons potentiellement d'**autres services** dans une architecture. Par exemple :
+
+- Un service de géocodage
+- Un service de calcul d'itinéraire
+- Un service de calcul d'isochrone
+- ...
+
+Nous noterons l'existence d'un standard [OGC Web Processing Service (WPS)](https://www.ogc.org/standard/wps/) et de son successeur [OGC API - Processes](https://ogcapi.ogc.org/processes/) pour mettre en oeuvre de tels services.
+
+Toutefois, nous rencontrerons **la plupart du temps des API REST/JSON**.
