@@ -73,43 +73,61 @@ Pour cette introduction à l'architecture des SI :
 
 ## Les principaux défis
 
-- [L'hétérogénéité des acteurs](#lhétérogénéité-des-acteurs)
-- [Documenter l'architecture](#documenter-larchitecture-13)
-- [Documenter précisément les interfaces](#documenter-précisément-les-interfaces)
-- [Standardiser sans figer](#gouverner-sans-bloquer-linnovation)
-- [Faire communiquer efficacement les services](#faire-communiquer-efficacement-les-services)
+- [Hétérogénéité des acteurs](#hétérogénéité-des-acteurs-12)
+- [Documentation de l'architecture](#documentation-de-larchitecture-14)
+- [Documentation des interfaces](#documentation-des-interfaces)
+- [Gouvernance et agilité](#gouvernance-et-agilité-13)
+- [Sécurité et conformité](#sécurité-et-conformité)
+- [Gestion des systèmes hérités (legacy)](#gestion-des-systèmes-hérités-legacy)
+- [Performance et stabilité](#performance-et-stabilité)
 
 ---
 
-### L'hétérogénéité des acteurs
+### Hétérogénéité des acteurs (1/2)
 
-La conception d'une architecture devra prendre en compte :
+La conception d'une architecture devra **prendre en compte de nombreux acteurs** :
 
-- Les **clients** (internes ou externes)
-- Le(s) **métier**(s)
-- La **sécurité**
-- La **politique** de l'organisation
+- Les **utilisateurs** (internes ou externes)
+- Les **représentants des utilisateurs métiers** ("MOA")
+- Les **développeurs** ("MOE")
+- La **sécurité** (RSSI, DPO,...)
+- Les **décideurs**
+- Les **partenaires**
+- Les **prestataires**
 - ...
 
-Or, ces acteurs auront souvent des objectifs divergents.
+---
+
+### Hétérogénéité des acteurs (2/2)
+
+En particulier, il conviendra de :
+
+- Préciser les **rôles et responsabilités des différents acteurs** (ex : [rédiger un RACI](https://fr.wikipedia.org/wiki/RACI))
+- Répondre aux **objectifs et intérêts souvent divergents** de ces différents acteurs.
+- Traiter des **injonctions techniques** qui ne seront **pas toujours optimales** :
+
+  - Confusion fréquente entre l'**expression d'un besoin fonctionnel** (ex : je veux partager des fichiers) et l'**expression d'une solution technique** (ex : je veux utiliser dropbox, google drive ou équivalent)
+  - **Lien étroit entre la politique et des décisions techniques structurantes** (1).
+
+> (1) Nous donnerons quelques exemples (à l'oral) et nous concentrerons sur les problèmes admettant une solution technique ou organisationnelle à l'échelle d'une organisation.
 
 ---
 
 ## Les principaux défis
 
-### Documenter l'architecture (1/3)
+### Documentation de l'architecture (1/3)
 
-Il sera important de **documenter l'architecture** tant sur le plan **logique** que **technique**. Nous pourrons pour ce faire nous appuyer sur :
+Pour **avoir vision complète et partagée du système** et **pouvoir discuter les évolutions**, il sera important de **documenter l'architecture** tant sur :
 
-- Les **diagrammes UML de cas d'utilisation** pour décrire les fonctionnalités.
-- Les **diagrammes UML de composants** pour décrire l'architecture logique et les interfaces.
-- Les **diagrammes UML de déploiement** pour décrire l'architecture technique.
+- Le plan **métier** : Quelles sont les fonctionnalités dans mon SI?
+- Le plan **logique** : Quels sont les outils, services et traitements utilisés pour implémenter ces fonctionnalités?
+- Le plan **technique** : Comment sont-ils installés et exécutés? Sur quelle(s) infrastructure(s) technique(s)?
 
 ---
 
 ## Les principaux défis
 
-### Documenter l'architecture (2/3)
+### Documentation de l'architecture (2/3)
 
 Nous noterons qu'il est **théoriquement possible de documenter l'intégralité d'un SI avec des schéma UML**. C'est l'objet du modèle 4 + 1 vues proposé par Philippe Kruchten en 1995 :
 
@@ -125,26 +143,24 @@ Source : [www.irisa.fr - Représentation des vues d’architecture avec UML - Pi
 
 ## Les principaux défis
 
-### Documenter l'architecture (3/3)
+### Documentation de l'architecture (3/3)
 
 Toutefois :
 
-- La maintenance d'une **documentation UML complète et rigoureuse à l'échelle d'un SI est utopique** au regard de la **fréquence des évolutions sur un SI** (1)
+- La maintenance d'une **documentation UML complète et rigoureuse à l'échelle d'un SI est utopique** au regard de la **fréquence des évolutions**
 - **Présenter le bon niveau de détail aux différents acteurs ne sera pas évident** d'où :
-  - Des approches telles [C4 model](https://c4model.com)
-  - L'intérêt d'**utiliser des approches modernes en matière de documentation** (2)
+  - Des approches hiérarchiques telles [C4 model](https://c4model.com)
+  - L'intérêt d'**utiliser des approches modernes en matière de documentation** (1)
 
-> (1) Il sera plus réaliste de se concentrer sur la vue d'ensemble, de cibler **une cartographie dynamique à l'échelle des déploiements**, de poser un **cadre pour l'orchestration des traitements**,...
->
-> (2) A ce stade, bien comprendre la **puissance des pages HTML par rapport aux documents classiques (.docx, .pdf, .odt) pour offrir plusieurs niveaux de lecture!**
+> (1) A ce stade, bien comprendre la **puissance des pages HTML par rapport aux documents classiques (.docx, .pdf, .odt) pour offrir plusieurs niveaux de lecture!**
 
 ---
 
 ## Les principaux défis
 
-### Documenter précisément les interfaces
+### Documentation des services
 
-Il conviendra de **documenter précisément les interfaces**.
+Il conviendra de **documenter précisément les interfaces** des différents services du SI.
 
 Pour les API REST/JSON, nous systématiserons par exemple la rédaction de spécifications au format [OpenAPI](https://swagger.io/specification/).
 
@@ -154,29 +170,95 @@ Pour les API REST/JSON, nous systématiserons par exemple la rédaction de spéc
 
 ## Les principaux défis
 
-### Standardiser sans figer
+### Gouvernance et agilité (1/3)
 
-La nécessité d'**assurer la cohérence** et de **rationnaliser** à l'échelle du SI induira un besoin de **standardisation**.
-
-Toutefois, **imposer un cadre technique précis et figé** induira un **risque de blocage de l'innovation** et de [Shadow IT](https://fr.wikipedia.org/wiki/Shadow_IT). A ce titre, il sera intéressant de :
-
-- **Décrire le cadre technique** (sans le figer)
-- Poser un **cadre pour gérer les évolutions** (ex : [Architecture Decision Record (ADR)](https://blog.octo.com/architecture-decision-record))
-- Poser un **cadre pour cartographier dynamiquement** le SI (voir [backstage de spotify et son métamodèle](https://backstage.io/docs/features/software-catalog/descriptor-format))
+La nécessité d'**assurer la cohérence** et de **rationnaliser** (i.e. éviter les silos technologiques) à l'échelle du SI induira un besoin de **standardisation**.
 
 ---
 
 ## Les principaux défis
 
-### Faire communiquer efficacement les services
+### Gouvernance et agilité (2/3)
 
-La recherche d'une communication efficace entre les services se retrouve dans l'évolution des formats et protocoles au niveau des services web :
+Nous noterons l'existence de cadres rigoureux tels [TOGAF (The Open Group Architecture Framework)](https://fr.wikipedia.org/wiki/The_Open_Group_Architecture_Framework) pour maîtriser l'architecture des SI d'entreprise et piloter les évolutions.
 
-* Fin des années 90, le **format [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language)** domine avec **[WSDL](https://fr.wikipedia.org/wiki/Web_Services_Description_Language)** (Web Services Description Language) et **[SOAP](https://fr.wikipedia.org/wiki/SOAP)** (Simple Object Access Protocol).
-* Depuis ~2005, les API [REST](https://fr.wikipedia.org/wiki/Representational_state_transfer) et le **format [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation)** gagnent du terrain.
-* 2011, [WebSocket](https://fr.wikipedia.org/wiki/WebSocket) permet une communication bidirectionnelle.
-* 2012, [GraphQL](https://graphql.org/) vise à limiter le nombre de requêtes et le volume de données transférées.
-* 2015, gRPC s'appuie sur le **format [Protocol Buffers](https://protobuf.dev/)** et HTTP/2.
+---
+
+## Les principaux défis
+
+### Gouvernance et agilité (3/3)
+
+Toutefois :
+
+- **TOGAF sera difficilement applicable à toutes les échelles d'un SI**.
+- **Imposer un cadre technique précis et figé** induira deux risques :
+  - Le blocage de l'innovation
+  - Le [Shadow IT](https://fr.wikipedia.org/wiki/Shadow_IT).
+
+---
+
+## Les principaux défis
+
+### Gouvernance et agilité (2/2)
+
+A ce titre, il sera plus intéressant de :
+
+- Mettre en place des **standards flexibles**.
+- **Décrire le cadre technique** (sans le figer)
+- Poser un **cadre pour gérer les évolutions** (ex : [Architecture Decision Record (ADR)](https://blog.octo.com/architecture-decision-record))
+
+
+---
+
+## Les principaux défis
+
+### Sécurité et conformité
+
+La conception d'une architecture devra prendre en compte le besoin de :
+
+- Garantir la **confidentialité**, l'**intégrité** et la **disponibilité** des données.
+- Respecter la **réglementation** (RGPD, [sécurité des systèmes d'information](https://cyber.gouv.fr/sinformer-sur-la-reglementation), directive INSPIRE,...)
+
+Il conviendra de **prendre en compte ces besoins** :
+
+- **Dès la conception** et **dans le cycle de vie des projets** (1).
+- **Prioriser et arbitrer** par rapport à la réponse aux besoins métiers.
+
+> (1) Nous aborderons par la suite ***security by design*** et dans le cours suivant l'approche **DevSecOps**.
+
+
+---
+
+## Les principaux défis
+
+### Gestion des systèmes hérités (legacy)
+
+Les organisations devront souvent avec la présence de **systèmes avec une conception obsolète** qui peuvent jouer un rôle central dans le SI.
+
+Il conviendra de **"refactorer" propressivement le SI** pour **traiter cette dette technique au cas par cas** :
+
+- Modernisation de la méthode d'authentification (ex : LDAP -> OIDC)
+- Remplacement d'un service obsolète par un nouveau (1)
+- ...
+
+> (1) Voir [patron figuier étrangleur](https://docs.aws.amazon.com/en_en/prescriptive-guidance/latest/modernization-decomposing-monoliths/strangler-fig.html) qui illustre ce point.
+
+---
+
+## Les principaux défis
+
+### Performance et stabilité
+
+La conception du système devra être conçu pour répondre à **plusieurs objectifs de performance** :
+
+- Minimiser la durée d'exécution des traitements.
+- Minimiser la consommation en ressources systèmes (CPU, RAM, stockage et réseau) qui ont un coût.
+
+En outre, le système devra :
+
+- **Supporter la montée en charge** sans perte de performance.
+- **Contrinuer de fonctionner** en cas de panne matérielle et de défaillance d'un service tiers.
+
 
 ---
 
@@ -204,6 +286,8 @@ La recherche d'une communication efficace entre les services se retrouve dans l'
 - [Observabilité](#observabilité)
 - [Résilience et tolérance aux pannes](#résilience-et-tolérance-aux-pannes)
 - [Intégrer la sécurité dans la conception](#intégrer-la-sécurité-dans-la-conception)
+- [Utiliser des protocoles efficaces](#utiliser-des-protocoles-efficaces)
+- [Maximiser l'automatisation](#maximiser-lautomatisation)
 
 </div>
 
@@ -367,6 +451,31 @@ Par exemple, l'approche [*secure by design*](https://www.oracle.com/fr/security/
 - Adopter une **stratégie de défense en profondeur**
 - Prendre des précautions vis-à-vis des services tiers
 
+---
+
+## Les principes d'architecture
+
+### Utiliser des protocoles efficaces
+
+La recherche d'une communication efficace entre les services se retrouve dans l'évolution des formats et protocoles au niveau des services web :
+
+* Fin des années 90, le **format [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language)** domine avec **[WSDL](https://fr.wikipedia.org/wiki/Web_Services_Description_Language)** (Web Services Description Language) et **[SOAP](https://fr.wikipedia.org/wiki/SOAP)** (Simple Object Access Protocol).
+* Depuis ~2005, les API [REST](https://fr.wikipedia.org/wiki/Representational_state_transfer) et le **format [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation)** gagnent du terrain.
+* 2011, [WebSocket](https://fr.wikipedia.org/wiki/WebSocket) permet une communication bidirectionnelle.
+* 2012, [GraphQL](https://graphql.org/) vise à limiter le nombre de requêtes et le volume de données transférées.
+* 2015, gRPC s'appuie sur le **format [Protocol Buffers](https://protobuf.dev/)** et HTTP/2.
+
+---
+
+## Les principes d'architecture
+
+### Maximiser l'automatisation
+
+Il conviendra d'**automatiser un maximum d'aspect dans la gestion du SI**.
+
+En matière de documentation, il sera plus réaliste de **cibler une cartographie dynamique du SI** (voir [backstage de spotify et son métamodèle](https://backstage.io/docs/features/software-catalog/descriptor-format)) que d'envisager maintenir des diagrammes UML pour les déploiements.
+
+Nous verrons dans le cours DevOps que l'automatisation sera une des clés pour la **scalabilité**, la **haute disponibilité** et pour **éviter les goûlots d'étranglement** humain dans l'exécution des procédures.
 
 ---
 
