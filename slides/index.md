@@ -26,11 +26,12 @@ header: '<div><img src="img/logo-ensg.png" alt="ENSG" height="64px"/></div>'
 - [Définition d'un SI](#définition-dun-si)
 - [Les différents types de SI](#les-différents-types-de-si)
 - [Le système d'information géographique (SIG)](#le-système-dinformation-géographique-sig)
+- [Par où commencer?](#par-où-commencer-12)
+- [Comment allons nous procéder?](#comment-allons-nous-procéder-12)
 
 ---
 
 ### Définition d'un SI
-
 
 > « Le **système d'information (SI)** est un ensemble organisé de ressources qui permet de collecter, stocker, traiter et distribuer de l'information, en général grâce à un réseau d'ordinateurs. »
 > 
@@ -64,10 +65,54 @@ Le SIG sera un type de SI se focalisant sur la gestion des données spatiales :
 > 
 > (Source : [fr.wikipedia.org - Système d'information géographique](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27information_g%C3%A9ographique))
 
-Pour cette introduction à l'architecture des SI :
+---
 
-- Nous nous concentrerons sur l'architecture des SI avec une forte composante spatiale.
-- Nous remarquerons que la composante spatiale peut toutefois être exploitée dans d'autres types de SI (ex : cartographie dans un système d'aide à la décision). 
+## Introduction
+
+### Par où commencer? (1/2)
+
+En pratique, nous serons amené à traiter des problématiques d'architecture à plusieurs échelles :
+
+- Une **application**
+- Une **solution**
+- Une **entreprise**
+
+---
+
+## Introduction
+
+### Par où commencer? (2/2)
+
+Or :
+
+- L'architecture des SI est une discipline qu'il est difficile d'aborder sans une expérience des applications et des solutions.
+- Il y a de nombreux de points intéressants à aborder (c.f. [roadmap.sh - Software Architect](https://roadmap.sh/software-architect))...
+
+---
+
+## Introduction
+
+### Comment allons nous procéder? (1/2)
+
+Dans cette introduction, nous tâcherons d'abord avoir une vision précise :
+
+- Des **principaux défis à relever**.
+- Des **principes d'architecture** qui guideront dans la recherche d'une solution.
+- Des **différents styles d'architecture** classiques.
+
+Nous ferons ensuite un focus sur l'**architecture <u>logique</u> des SI** avec une forte **composante spatiale** en :
+
+- Précisant les **spécificités des données géographiques**.
+- Analysant l'**architecture d'une infrastructure de données géographique (IDG)**
+
+
+---
+
+## Introduction
+
+### Comment allons nous procéder (2/2)
+
+Les éléments relatifs à l'**architecture <u>technique</u>** et à la **gestion du cycle de vie des applications** seront traités dans le **cours DevOps**.
 
 ---
 
@@ -79,7 +124,7 @@ Pour cette introduction à l'architecture des SI :
 - [Gouvernance et agilité](#gouvernance-et-agilité-13)
 - [Sécurité et conformité](#sécurité-et-conformité)
 - [Gestion des systèmes hérités (legacy)](#gestion-des-systèmes-hérités-legacy)
-- [Performance et stabilité](#performance-et-stabilité)
+- [Performance et stabilité](#performance-et-stabilité-12)
 
 ---
 
@@ -88,7 +133,7 @@ Pour cette introduction à l'architecture des SI :
 La conception d'une architecture devra **prendre en compte de nombreux acteurs** :
 
 - Les **utilisateurs** (internes ou externes)
-- Les **représentants des utilisateurs métiers** ("MOA")
+- Les **métiers** ("MOA")
 - Les **développeurs** ("MOE")
 - La **sécurité** (RSSI, DPO,...)
 - Les **décideurs**
@@ -102,14 +147,14 @@ La conception d'une architecture devra **prendre en compte de nombreux acteurs**
 
 En particulier, il conviendra de :
 
-- Préciser les **rôles et responsabilités des différents acteurs** (ex : [rédiger un RACI](https://fr.wikipedia.org/wiki/RACI))
 - Répondre aux **objectifs et intérêts souvent divergents** de ces différents acteurs.
+- Préciser les **rôles et responsabilités des différents acteurs** (ex : [rédiger un RACI](https://fr.wikipedia.org/wiki/RACI))
 - Traiter des **injonctions techniques** qui ne seront **pas toujours optimales** :
 
-  - Confusion fréquente entre l'**expression d'un besoin fonctionnel** (ex : je veux partager des fichiers) et l'**expression d'une solution technique** (ex : je veux utiliser dropbox, google drive ou équivalent)
+  - Confusion fréquente entre l'**expression d'un besoin fonctionnel** (ex : je veux partager des fichiers) et la **proposition d'une solution technique** (ex : je veux utiliser dropbox, google drive ou équivalent)
   - **Lien étroit entre la politique et des décisions techniques structurantes** (1).
 
-> (1) Nous donnerons quelques exemples (à l'oral) et nous concentrerons sur les problèmes admettant une solution technique ou organisationnelle à l'échelle d'une organisation.
+> (1) Nous verrons quelques exemples (à l'oral).
 
 ---
 
@@ -119,9 +164,10 @@ En particulier, il conviendra de :
 
 Pour **avoir vision complète et partagée du système** et **pouvoir discuter les évolutions**, il sera important de **documenter l'architecture** tant sur :
 
-- Le plan **métier** : Quelles sont les fonctionnalités dans mon SI?
-- Le plan **logique** : Quels sont les outils, services et traitements utilisés pour implémenter ces fonctionnalités?
-- Le plan **technique** : Comment sont-ils installés et exécutés? Sur quelle(s) infrastructure(s) technique(s)?
+- Le plan **métier** (les fonctionnalités)
+- Le plan **organisationnel** (les équipes, les processus, les procédures,...)
+- Le plan **logique** (les outils, les services, les traitements,...)
+- Le plan **technique** (les zones, les réseaux, les machines...)
 
 ---
 
@@ -191,8 +237,8 @@ Nous noterons l'existence de cadres rigoureux tels [TOGAF (The Open Group Archit
 Toutefois :
 
 - **TOGAF sera difficilement applicable à toutes les échelles d'un SI**.
-- **Imposer un cadre technique précis et figé** induira deux risques :
-  - Le blocage de l'innovation
+- **Imposer un cadre technique trop strict et trop figé** induira deux risques :
+  - Le **blocage de l'innovation**
   - Le [Shadow IT](https://fr.wikipedia.org/wiki/Shadow_IT).
 
 ---
@@ -233,11 +279,11 @@ Il conviendra de **prendre en compte ces besoins** :
 
 ### Gestion des systèmes hérités (legacy)
 
-Les organisations devront souvent avec la présence de **systèmes avec une conception obsolète** qui peuvent jouer un rôle central dans le SI.
+Les organisations posséderont souvent des **systèmes avec une conception obsolète** pouvant jouer un rôle central dans le SI.
 
 Il conviendra de **"refactorer" propressivement le SI** pour **traiter cette dette technique au cas par cas** :
 
-- Modernisation de la méthode d'authentification (ex : LDAP -> OIDC)
+- Modernisation de la méthode d'authentification (ex : login/password -> OIDC)
 - Remplacement d'un service obsolète par un nouveau (1)
 - ...
 
@@ -247,12 +293,19 @@ Il conviendra de **"refactorer" propressivement le SI** pour **traiter cette det
 
 ## Les principaux défis
 
-### Performance et stabilité
+### Performance et stabilité (1/2)
 
 La conception du système devra être conçu pour répondre à **plusieurs objectifs de performance** :
 
 - Minimiser la durée d'exécution des traitements.
-- Minimiser la consommation en ressources systèmes (CPU, RAM, stockage et réseau) qui ont un coût.
+- Minimiser la consommation en ressources systèmes (CPU, RAM, stockage et réseau)
+- Minimiser le coût.
+
+---
+
+## Les principaux défis
+
+### Performance et stabilité (2/2)
 
 En outre, le système devra :
 
@@ -284,10 +337,10 @@ En outre, le système devra :
 - [Portabilité](#portabilité)
 - [Scalabilité](#scalabilité)
 - [Observabilité](#observabilité)
-- [Résilience et tolérance aux pannes](#résilience-et-tolérance-aux-pannes)
-- [Intégrer la sécurité dans la conception](#intégrer-la-sécurité-dans-la-conception)
-- [Utiliser des protocoles efficaces](#utiliser-des-protocoles-efficaces)
-- [Maximiser l'automatisation](#maximiser-lautomatisation)
+- [Résilience](#résilience)
+- [Automatisation](#automatisation)
+- [Sécurité intégrée dans la conception](#sécurité-intégrée-dans-la-conception)
+- [Protocoles efficaces](#protocoles-efficaces-12)
 
 </div>
 
@@ -308,23 +361,29 @@ A l'échelle du système, **chaque composant doit avoir une responsabilité clai
 
 ### Modularité
 
-En corrolaire du point précédent, le **système est décomposé en plusieurs modules** qui peuvent être **développés, testés et maintenus séparément**.
+Le **système est décomposé en plusieurs modules** qui peuvent être **développés, testés et maintenus séparément**.
 
 ---
 
 ## Les principes d'architecture
 
-### Abstraction
+### Abstraction (1/2)
 
-L'**abstraction** est un processus consistant à **se concentrer sur les caractéristisques essentielles** d'un composant ou d'un système **en ignorant les détails**.
+L'**abstraction** est un processus consistant à **se concentrer sur les caractéristisques essentielles** d'un composant ou d'un système **tout en ignorant les détails**.
 
-Il sera principalement question de **nommer et de modéliser des concepts**.
+---
 
-Nous la retrouverons sous plusieurs formes à l'échelle d'un SI en considérant :
+## Les principes d'architecture
+
+### Abstraction (2/2)
+
+L'abstraction intervient à toutes les échelles d'un système :
 
 - Les **classes et interfaces** d'un **composant**.
-- Les **services** composant ce **système**.
-- Les différentes **couches d'un système** (interface graphique, logique métier, persistence des données)
+- Les **services** d'un **système**.
+- Les différentes **couches du système** (interface graphique, logique métier, persistance des données)
+
+La principale difficulté consistera à **nommer et modéliser des concepts**.
 
 ---
 
@@ -334,7 +393,7 @@ Nous la retrouverons sous plusieurs formes à l'échelle d'un SI en considérant
 
 Les **interactions entre modules** se font uniquement **via des interfaces bien définies**. Les détails internes sont cachés aux autres modules.
 
-> A l'échelle d'un SI, nous encapsulerons par exemple une fonctionnalité en la mettant à disposition via une API.
+Par exemple, nous pourrons **encapsuler une fonctionnalité** en mettant à disposition une **API**.
 
 ---
 
@@ -344,7 +403,7 @@ Les **interactions entre modules** se font uniquement **via des interfaces bien 
 
 Les modules doivent être aussi indépendants que possible les uns des autres. Un **couplage faible** facilite la **modification ou le remplacement de modules** sans affecter les autres parties du système.
 
-> Le couplage prendra plusieurs formes (couplage par message ou événement, couplage par interface, couplage par données, couplage par contrôle, couplage temporel...)
+> Le couplage peut prendre plusieurs formes (couplage par message ou événement, couplage par interface, couplage par données, couplage par contrôle, couplage temporel...)
 
 
 ---
@@ -379,7 +438,7 @@ Les composants doivent être **capables de communiquer entre eux** même s'ils p
 
 ### Conformité aux normes
 
-Le respect des standards (ex : [standards OGC](https://www.ogc.org/standards/)) et bonnes pratiques de l’industrie (ex : REST/JSON + OpenAPI) facilitera l'**interopérabilité**, la **réutilisation**, et la **maintenabilité**.
+Le respect des standards (ex : [standards OGC](https://www.ogc.org/standards/)) et bonnes pratiques de l’industrie (ex : REST/JSON + OpenAPI) facilite l'**interopérabilité**, la **réutilisation**, et la **maintenabilité**.
 
 ---
 
@@ -407,12 +466,12 @@ Les composants doivent être **capables de fonctionner dans différents environn
 
 ### Scalabilité
 
-L'architecture doit être conçue pour **supporter la montée en charge** (évolution du nombre de clients, du volume des données,...). Nous trouverons deux stratégies :
+L'architecture doit être conçue pour **supporter la montée en charge** (évolution du nombre de clients, du volume des données,...).
+
+Nous trouverons deux stratégies :
 
 - La **scalabilité verticale** (modification du dimensionnement des machines).
-- La **scalabilité horizontale** (multiplication du nombre de machines).
-
-Nous noterons que la deuxième approche sera généralement plus intéressante mais plus complexe à mettre en oeuvre (1).
+- La **scalabilité horizontale** (multiplication du nombre de machines), plus intéressante mais plus complexe à mettre en oeuvre (1).
 
 > (1) Nous détaillerons le cas des **services sans état** dans le cadre du cours DevOps. Le cas des **services de stockage** sera laissé au cours sur le stockage NoSQL qui abordera à priori la **réplication et la distribution du stockage** et le [théorème CAP](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_CAP)
 
@@ -430,52 +489,63 @@ Le système doit être instrumenté pour **permettre l'identification et résolu
 
 ## Les principes d'architecture
 
-### Résilience et tolérance aux pannes
+### Résilience
 
 Le système doit être conçu pour **continuer à fonctionner (ou se dégrader de façon contrôlée) en cas de défaillance** d’un ou plusieurs composants.
 
-> Nous inspecterons le [patron de conception "nouvelle tentative" (retry)](https://learn.microsoft.com/fr-fr/azure/architecture/patterns/retry) qui traite le cas d'une indisponibilité temporaire d'un service tiers. La **réplication des services** pour limiter le **risque d'indisponibilité** sera détaillé dans le cours DevOps.
->
-> Le cas plus complexe d'un **service de stockage** sera laissé au cours sur le stockage NoSQL qui abordera à priori la **réplication et la distribution du stockage** et le [théorème CAP](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_CAP).
+Par exemple, pour traiter le cas d'une **indisponibilité temporaire d'un service tiers**, nous trouvons le [patron "**nouvelle tentative**" (retry)](https://learn.microsoft.com/fr-fr/azure/architecture/patterns/retry).
+
+Sinon, pour assurer la **disponibilité en cas de problème**, nous trouvons principalement deux stratégies qui seront détaillées dans le cours DevOps :
+
+- **Réplication** des services
+- **Redémarrage automatique**
 
 ---
 
 ## Les principes d'architecture
 
-### Intégrer la sécurité dans la conception
+### Automatisation
+
+Il convient d'**automatiser un maximum d'aspect dans la gestion du SI**.
+
+Par exemple, en matière de documentation, **cibler une cartographie dynamique du SI** (voir [backstage de spotify et son métamodèle](https://backstage.io/docs/features/software-catalog/descriptor-format)) sera plus réaliste que produire et maintenir diagrammes UML pour les déploiements.
+
+Nous verrons dans le cours DevOps que **l'automatisation est requise pour mettre en oeuvre la scalabilité et la résilience**.
+
+---
+
+## Les principes d'architecture
+
+### Sécurité intégrée dans la conception
 
 Par exemple, l'approche [*secure by design*](https://www.oracle.com/fr/security/secure-by-design/) invite entre autre à :
 
-- **Minimiser la surface d'attaque**
-- Appliquer le **principe de moindre privilège** (i.e. prévoir des mécanismes d'authentification et d'autorisations)
-- Adopter une **stratégie de défense en profondeur**
-- Prendre des précautions vis-à-vis des services tiers
+- **Minimiser la surface d'attaque** (minimiser l'exposition de service, utiliser des frameworks évitant les failles courantes,...)
+- Appliquer le **principe de moindre privilège**.
+- Adopter une **stratégie de défense en profondeur** (ne pas se contenter de la sécurité périmétrique!).
+- Prendre des précautions vis-à-vis des services tiers.
 
 ---
 
 ## Les principes d'architecture
 
-### Utiliser des protocoles efficaces
+### Protocoles efficaces (1/2)
 
-La recherche d'une communication efficace entre les services se retrouve dans l'évolution des formats et protocoles au niveau des services web :
+Pour les **performance**, il conviendra d'**utiliser des protocoles efficaces et adaptés au contexte**.
+
+---
+
+## Les principes d'architecture
+
+### Protocoles efficaces (2/2)
+
+Dans le cas **des services web**, la recherche de l'efficacité se retrouve dans l'**évolution des formats et protocoles** :
 
 * Fin des années 90, le **format [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language)** domine avec **[WSDL](https://fr.wikipedia.org/wiki/Web_Services_Description_Language)** (Web Services Description Language) et **[SOAP](https://fr.wikipedia.org/wiki/SOAP)** (Simple Object Access Protocol).
 * Depuis ~2005, les API [REST](https://fr.wikipedia.org/wiki/Representational_state_transfer) et le **format [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation)** gagnent du terrain.
 * 2011, [WebSocket](https://fr.wikipedia.org/wiki/WebSocket) permet une communication bidirectionnelle.
 * 2012, [GraphQL](https://graphql.org/) vise à limiter le nombre de requêtes et le volume de données transférées.
 * 2015, gRPC s'appuie sur le **format [Protocol Buffers](https://protobuf.dev/)** et HTTP/2.
-
----
-
-## Les principes d'architecture
-
-### Maximiser l'automatisation
-
-Il conviendra d'**automatiser un maximum d'aspect dans la gestion du SI**.
-
-En matière de documentation, il sera plus réaliste de **cibler une cartographie dynamique du SI** (voir [backstage de spotify et son métamodèle](https://backstage.io/docs/features/software-catalog/descriptor-format)) que d'envisager maintenir des diagrammes UML pour les déploiements.
-
-Nous verrons dans le cours DevOps que l'automatisation sera une des clés pour la **scalabilité**, la **haute disponibilité** et pour **éviter les goûlots d'étranglement** humain dans l'exécution des procédures.
 
 ---
 
@@ -587,7 +657,7 @@ Illustration du principe d'une architecture pilotée par les événements.
 Nous distinguerons deux approches :
 
 - **Publication/abonnement (*Pub/sub*)** où les consommateurs s'abonnent à un canal pour recevoir les messages.
-- **flux d'événement (*Event streaming*)** où les événements sont journalisées et où les consommateurs peuvent lire les messages.
+- **flux d'événement (*Event streaming*)** où les événements sont journalisées et où les consommateurs peuvent lire les anciens messages.
 
 > Nous discuterons l'intérêt et les défis de ce type d'architecture à travers des cas d'utilisations en séance (traitement asynchrone, orchestrateur de traitements,...).
 
@@ -672,12 +742,13 @@ Les données géographiques prennent **différentes formes** avec des **volumes 
 
 ### La diversité des acteurs
 
-Il convient aussi d'être conscient de la diversité des acteurs qui produisent des données géographiques :
+De nombreux acteurs produisent des données géographiques :
 
 - Les **acteurs collaboratifs** (OSM)
 - Les **acteurs publics nationaux** (INSEE, IGN, BRGM...)
 - Les **collectivités territoriales** (régions, départements, regroupement de communes, communes,...)
 - Les **entreprises privées** (Google Maps, Waze, LaPoste,...)
+
 
 ---
 
@@ -685,10 +756,10 @@ Il convient aussi d'être conscient de la diversité des acteurs qui produisent 
 
 ### La diversité des modes de production
 
-Cette diversité induira une diversité des modes de production des données avec en particulier :
+Cette diversité induit une **diversité des modes de production des données** avec en particulier :
 
-- Une **production centralisée** (directement dans une base nationale ou mondiale)
-- Une **production décentralisée** (à l'échelle infra-nationale) nécessitant une **aggrégation** à l'échelle nationale pour être pleinement exploitable.
+- Une **production centralisée** (dans une base nationale ou mondiale)
+- Une **production décentralisée** (à l'échelle infra-nationale) nécessitant une **agrégation** à l'échelle nationale pour être pleinement exploitable.
 
 ---
 
@@ -699,7 +770,7 @@ Cette diversité induira une diversité des modes de production des données ave
 Dans ce contexte, nous soulignerons l'importance de la [directive européenne INSPIRE du 14 mars 2007](https://www.ecologie.gouv.fr/politiques-publiques/directive-europeenne-inspire) (1) qui impose [pour certains thèmes](http://formations-geomatiques.developpement-durable.gouv.fr/NAT009/Inspire/directive_inspire_neophytes/co/directive_inspire_neophytes_7.html) :
 
 - Le **catalogage des données** via les métadonnées pour **permettre la connaissance de l'ensemble des données déjà produites** (2).
-- L'utilisation de **standards pour diffusion des données** (ex : [les standards OGC](https://www.ogc.org/standards/)) pour permettre l'intéropérabilité entre les différentes plateformes.
+- L'utilisation de **standards pour diffusion des données** (ex : [les standards OGC](https://www.ogc.org/standards/)) pour permettre l'**intéropérabilité**.
 
 > (1) Voir [formations-geomatiques.developpement-durable.gouv.fr - La directive Inspire pour les néophytes](http://formations-geomatiques.developpement-durable.gouv.fr/NAT009/Inspire/directive_inspire_neophytes/co/directive_inspire_neophytes_1.html)
 
@@ -709,14 +780,11 @@ Dans ce contexte, nous soulignerons l'importance de la [directive européenne IN
 
 ### Les standards CNIG
 
-S'assurer d'être en mesure de rechercher des jeux de données et s'assurer d'être en mesure de les agréger sont deux choses différentes.
+Pouvoir **rechercher des jeux de données** et **permettre l'agrégation des jeux de données** sont **deux choses différentes**.
 
-Le [Conseil national de l'information géolocalisée (CNIG)](https://cnig.gouv.fr/) se charge à ce titre de la production de standards complémentaires pour permettre l'aggrégation :
+Le [Conseil national de l'information géolocalisée (CNIG)](https://cnig.gouv.fr/) se charge à ce titre de la production de standards complémentaires à ceux d'INSPIRE.
 
-- Des PLU, PLUi, POS, CC,... dans une base nationale au niveau du [GéoPortail de l'Urbanisme](https://www.geoportail-urbanisme.gouv.fr/).
-- Des données [Plan du Corps de Rue Simplifié (PCRS)](https://github.com/cnigfr/PCRS?tab=readme-ov-file#pcrs)
-- ...
-
+Par exemple, la possibilité d'agréger des documents d'urbanisme (PLU, PLUi, CC,...) dans une base nationale au niveau du [GéoPortail de l'Urbanisme](https://www.geoportail-urbanisme.gouv.fr/) dépend de l'existence et du respect de ces standards CNIG.
 
 ---
 
@@ -724,7 +792,7 @@ Le [Conseil national de l'information géolocalisée (CNIG)](https://cnig.gouv.f
 
 ### Des formats dédiés
 
-Nous aurons des **formats dédiés** pour :
+Les données géographiques s'appuient sur des **formats dédiés** pour :
 
 - Les **données vectorielles** (GML basé sur XML, GeoJSON basé sur JSON,...) <span style="font-size: 20px">avec une fâcheuse tendance à réinventer les formats pour mettre en avant la composante spatiale (1)</span>.
 - Les **fiches de métadonnées** (XML / ISO 19115)
@@ -738,7 +806,7 @@ Nous aurons des **formats dédiés** pour :
 
 ### Des services dédiés
 
-De même, nous aurons aussi des **services standardisés** pour :
+De même, nous avons des **services standardisés** pour :
 
 - L'accès aux **données images (WMS/WMTS/WCS)**
 - L'accès aux **données vectorielles (WFS)** et aux **traitements (WPS)**
@@ -746,7 +814,7 @@ De même, nous aurons aussi des **services standardisés** pour :
 
 Nous noterons que :
 
-- Les **standards en vigueur** ont une **forte dépendance aux technologies XML (XSD, WSDL,...)** qui étaient à la pointe en 2007.
+- Les **standards en vigueur** ont une **forte dépendance aux technologies XML (XSD, WSDL,...)** <span style="font-size: 20px">qui étaient à la pointe en 2007</span>.
 - Des travaux de modernisation de ces standards sont en cours avec [OGC API](https://ogcapi.ogc.org/)
 
 ---
@@ -755,11 +823,12 @@ Nous noterons que :
 
 ### Des services gourmands en ressources (1/2)
 
-Les services **manipulant des données géographiques** seront souvent **gourmand en ressources** :
+Les services **manipulant des données géographiques** sont souvent **gourmands en ressources systèmes** :
 
-- Calculs géométriques
+- Calcul géométrique
 - Rendu cartographique
-- Calcul d'itinéraire et d'isochrone
+- Calcul d'itinéraire
+- Calcul d'isochrone
 - ...
 
 ---
@@ -770,11 +839,12 @@ Les services **manipulant des données géographiques** seront souvent **gourman
 
 Au niveau de l'architecture, il sera donc important de :
 
-- **Porter une attention particulière à la scalabilité**
+- **Porter une attention particulière à la scalabilité.**
+- **Mettre en oeuvre des mécanismes de cache.**
 - **Profiter de l'asymétrie entre la production et la consommation des données** en s'appuyant sur des patrons tels [CQRS](https://learn.microsoft.com/fr-fr/azure/architecture/patterns/cqrs).
 - **Distinguer** le **respect des obligations INSPIRE** et la **réponse au besoin des utilisateurs** (1).
 
-> (1) INSPIRE n'impose de concevoir un système de recherche interne à une application sur la base des fiches de métadonnées. INSPIRE n'impose pas non plus de concevoir des applications en surcouche de WFS (où il faut télécharger toutes les données pour connaître les valeurs possibles d'un attribut).
+> (1) NB : INSPIRE n'impose pas de concevoir ses applications en surcouche de WFS (où il faut télécharger toutes les données pour connaître les valeurs possibles d'un attribut).
 
 ---
 
@@ -807,14 +877,14 @@ Au niveau de l'architecture, il sera donc important de :
 
 ### Objectifs
 
-La mise en oeuvre d'une IDG répondra potentiellement à plusieurs objectifs :
+La mise en oeuvre d'une IDG répondra à plusieurs objectifs :
 
-- Centraliser et **standardiser la gestion des données géographiques**, y compris le catalogage
+- **Centraliser et standardiser la gestion des données géographiques**, y compris le catalogage
 - Offrir des **services facilitant l'accès, la transformation et l'exploitation des données**.
 - Promouvoir le **partage et la réutilisation des données géographiques**.
 - Se mettre en **conformité avec la directive INSPIRE**.
-- Mutualiser les coûts liés à l’acquisition et à la gestion des données.
-- Encourager la collaboration transversale entre services internes et partenaires.
+- **Mutualiser les coûts** liés à l’acquisition et à la gestion des données.
+- Encourager la collaboration autour des données.
 
 ---
 
@@ -822,7 +892,9 @@ La mise en oeuvre d'une IDG répondra potentiellement à plusieurs objectifs :
 
 ### Comment ça marche?
 
-Dans ce cours qui traite des sujets d'architecture SI, nous allons tâcher d'avoir une vision précise du fonctionnement d'une infrastructure d'une IDG en analysant différents thèmes du stockage à la diffusion des données.
+Dans ce cours sur l'architecture des SI, nous allons tâcher d'avoir une vision précise de la conception d'une infrastructure d'une IDG.
+
+Nous allons traiter thèmes par thèmes, du stockage à la diffusion des données.
 
 ---
 
@@ -830,10 +902,11 @@ Dans ce cours qui traite des sujets d'architecture SI, nous allons tâcher d'avo
 
 ### Stockage des données (1/2)
 
-Une IDG sera amener à stocker des données sous plusieurs formes :
+Une IDG est amenée à stocker des données sous plusieurs formes :
 
 - Des **fichiers (PDF, ZIP, Excels, CSV,...)** avec plusieurs options de stockage :
-  - Un **système de fichiers classiques ou en réseau** (partage, NFS, Samba, FTP,...).
+  - Le **stockage classique** sur disque.
+  - Le **stockage en réseau** (partage, NFS, FTP,...).
   - Le **stockage objet** (S3, Google Cloud Storage,...)
 - Des **bases de données** :
   - **SQL** (PostgreSQL, Oracle,...) offrant des garanties ACID
@@ -845,13 +918,13 @@ Une IDG sera amener à stocker des données sous plusieurs formes :
 
 ### Stockage des données (2/2)
 
-Nous noterons qu'il sera potentiellement intéressant de :
+Nous noterons qu'il peut être intéressant de :
 
 - **Partitionner les données** en cas de production décentralisée
 
-> Nous aborderons en séance l'historique du partionnement des données au sein du [Géoportail de l'Urbanisme](https://www.geoportail-urbanisme.gouv.fr/)
+> Nous décrirons en séance le partionnement des données au sein du [Géoportail de l'Urbanisme](https://www.geoportail-urbanisme.gouv.fr/)
 
-- **Versionner les données** (i.e. conserver l'historique des modifications) pour permettre une **réplication incrémentale**, améliorer la **traçabilité des changements** et **pouvoir les annuler**.
+- **Versionner les données** (i.e. conserver l'historique des modifications) pour améliorer la **traçabilité des changements**, **pouvoir les annuler** et permettre une **réplication incrémentale**.
 
 > Nous verrons aussi le principe exploité par l'IGN dans le cadre de la production de la BDTOPO. Vous pourrez aussi inspecter le [schéma de la base OSM](https://wiki.openstreetmap.org/wiki/Openstreetmap-website/Database_schema) où nous retrouvons une gestion de l'historique ("changeset", "nodes", "current_nodes",...)
 
@@ -866,7 +939,7 @@ Nous noterons principalement deux stratégies en matière d'alimentation en donn
 - La **publication des données** par téléversement de fichiers ou via une API telle l'[API entrepot de la GéoPlateforme](https://geoplateforme.github.io/entrepot/production/) (1)
 - Le **moissonnage de services tiers**
 
-Nous analyserons en séance le cas de la [publication de données vecteurs](https://geoplateforme.github.io/tutoriels/production/vecteur/base/) et le principe de fonctionnement de l'entrepot GéoPlateforme.
+> (1) Nous analyserons en séance le cas de la [publication de données vecteurs](https://geoplateforme.github.io/tutoriels/production/vecteur/base/).
 
 ---
 
@@ -874,7 +947,7 @@ Nous analyserons en séance le cas de la [publication de données vecteurs](http
 
 ### Alimentation en données (2/2)
 
-Nous mentionnerons un besoin récurrent dans le cadre de ces publications de données : **Valider les données**.
+Nous mentionnerons un **besoin récurrent** dans le cas de la publications de données : **Valider les données**.
 
 ---
 
@@ -882,11 +955,12 @@ Nous mentionnerons un besoin récurrent dans le cadre de ces publications de don
 
 ### Modélisation des données (1/3)
 
-Nous noterons que documenter le modèle (conceptuel) et le schéma (implémentation) des données sera utile pour :
+Documenter le **modèle (conceptuel)** des données permet **l'exploitation des données** par les utilisateurs.
 
-- **Permettre l'exploitation des données** par les utilisateurs.
-- **Valider des données** dans le cadre des publications de données.
-- **Générer des formulaires** pour guider les contributeurs dans la saisie (génération de formulaire d'édition ou de signalement d'anomalie).
+Mettre à dispositon le **schéma (implémentation)** des données dans un **format exploitable** permet d'automatiser :
+
+- La **validation des données** dans le cadre des publications de données.
+- La **génération des formulaires** pour **guider dans la saisie**.
 
 ---
 
@@ -914,31 +988,45 @@ Nous insisterons ainsi sur l'importance de la diffusion de schémas exploitables
 
 ## Les infrastructures de données géographiques
 
-### Catalogage (1/2)
+### Catalogage (1/3)
 
 Les mécanismes de **catalogage** mis en oeuvre dans le cadre de la directive INSPIRE se reposent sur :
 
-- La rédaction de **fiche de métadonnées au format ISO 19115** pour les jeux de données et les services
-- Le **moissonnage de ces fiches** par le [www.geocatalogue.fr](https://www.geocatalogue.fr/geonetwork/srv/fre/catalog.search#/home)
-- Le moissonnage des catalogues nationaux à l'échelle Européenne ( c.f. [inspire-geoportal.ec.europa.eu](https://inspire-geoportal.ec.europa.eu/srv/fre/catalog.search#/home) )
+- La rédaction de **fiche de métadonnées au format ISO 19115** pour les jeux de données et les services.
+- Le **moissonnage de ces fiches** par le [www.geocatalogue.fr](https://www.geocatalogue.fr/geonetwork/srv/fre/catalog.search#/home).
+- Le moissonnage des catalogues nationaux à l'échelle Européenne ( c.f. [inspire-geoportal.ec.europa.eu](https://inspire-geoportal.ec.europa.eu/srv/fre/catalog.search#/home) ).
 
-> Nous prendrons le temps en scéance d'inspecter quelques fiches de métadonnées, le modèle correspondant et les mécanismes de profilage de ISO 19115 au niveau INSPIRE et éventuellement CNIG ([ignf.github.io - Metadata](https://ignf.github.io/validator/doc/metadata.html)).
+> Nous prendrons le temps d'inspecter quelques fiches de métadonnées et le modèle correspondant ([ignf.github.io - Metadata](https://ignf.github.io/validator/doc/metadata.html)).
 
 ---
 
 ## Les infrastructures de données géographiques
 
-### Catalogage (2/2)
+### Catalogage (2/3)
 
 En terme d'outils, nous noterons :
 
 - La présence d'une [API de validation des métadonnées](https://inspire.ec.europa.eu/validator/home/index.html) au niveau INSPIRE.
-- L'utilisation fréquente de [GeoNetwork](https://geonetwork-opensource.org/) dans les IGD pour **stocker les fiches de métadonnées** et implémenter les services [CSW et CSW-T](https://docs.geonetwork-opensource.org/3.12/fr/api/csw/).
+- L'utilisation fréquente de [GeoNetwork](https://geonetwork-opensource.org/) pour **stocker les fiches de métadonnées** et implémenter les services [CSW et CSW-T](https://docs.geonetwork-opensource.org/3.12/fr/api/csw/).
 
-> Nous mentionnerons l'existence d'alternatives à ISO 19115 (c.f. [doc.data.gouv.fr - Moissonnage DCAT](https://doc.data.gouv.fr/moissonnage/dcat/)) avec des travaux en cours au niveau INSPIRE (c.f. [GeoDCAT-AP](https://knowledge-base.inspire.ec.europa.eu/evolution/good-practice-library/geodcat-ap_en), [OGC API Record (Draft)](https://ogcapi.ogc.org/records/))
->
-> Nous noterons aussi qu'il est possible pour une plateforme de **collecter les informations à renseigner dans les métadonnées** et de **générer des fiches conformes** (nous en aborderons l'intérêt en séance avec un RETEX : doublon d'identifiants, CSW vs ElasticSearch,...).
+Aussi, nous mentionnerons :
 
+- L'existence d'alternatives à ISO 19115 (c.f. [doc.data.gouv.fr - Moissonnage DCAT](https://doc.data.gouv.fr/moissonnage/dcat/)) avec une déclinaison au niveau INSPIRE ([GeoDCAT-AP](https://knowledge-base.inspire.ec.europa.eu/evolution/good-practice-library/geodcat-ap_en))
+- Les travaux [OGC API Record (Draft)](https://ogcapi.ogc.org/records/) pour un successeur à CSW/CSW-T.
+
+
+---
+
+## Les infrastructures de données géographiques
+
+### Catalogage (3/3)
+
+Vu la complexité du modèle XML, nous noterons aussi qu'il est possible pour une plateforme de :
+
+- **Collecter les informations à renseigner dans les métadonnées.** 
+- **Générer des fiches conformes.**
+
+> Dans le cas contraire, s'attendre à faire face à de malheureux utilisateurs tentant comme ils le peuvent de remplir ces fiches (en prenant modèle sur les fiches existantes et en oubliant de modifier les identifiants)
 
 ---
 
@@ -949,7 +1037,7 @@ En terme d'outils, nous noterons :
 Pour l'accès aux données vectorielles, nous noterons que :
 
 - La directive INSPIRE amène généralement à mettre en oeuvre le [standard WFS](https://fr.wikipedia.org/wiki/Web_Feature_Service).
-- Il sera possible de s'appuyer sur des outils libres tels [GeoServer](https://geoserver.org/) ou [MapServer](https://mapserver.org/) pour la mise en oeuvre.
+- Il est possible de s'appuyer sur des outils libres tels [GeoServer](https://geoserver.org/) ou [MapServer](https://mapserver.org/) pour la mise en oeuvre.
 
 ---
 
@@ -957,7 +1045,7 @@ Pour l'accès aux données vectorielles, nous noterons que :
 
 ### Diffusion vecteur (2/4)
 
-Nous inspecterons quelques exemples en séance :
+Nous inspecterons quelques exemples de requête WFS en séance :
 
 - [data.geopf.fr - wfs - GetCapabilities](https://data.geopf.fr/wfs?service=WFS&request=GetCapabilities)
 - [data.geopf.fr - wfs - DescribeFeatureType](https://data.geopf.fr/wfs?service=WFS&request=DescribeFeatureType&typename=BDTOPO_V3:batiment&outputFormat=application/json) avec réponse JSON.
@@ -981,7 +1069,7 @@ Nous remarquerons ainsi qu'**un service WFS est une API REST** avec des capacit�
 Nous mentionnerons toutefois :
 
 - Le **côté vieillissant de GetCapabilities** et les travaux de modernisation en cours via [OGC API - Features](https://ogcapi.ogc.org/features/).
-- Les **limitations fonctionnelles de WFS** par rapport à des API REST telle l'[API Explore d'Opendatasoft](https://help.opendatasoft.com/apis/ods-explore-v2/#section/Opendatasoft-Query-Language-(ODSQL)) (ex : opérateur d'aggrégation tels "group by", "sum",...)
+- Les **limitations fonctionnelles de WFS** par rapport à des API REST/JSON telle l'[API Explore d'Opendatasoft](https://help.opendatasoft.com/apis/ods-explore-v2/#section/Opendatasoft-Query-Language-(ODSQL)) (ex : opérateur d'agrégation tels "group by", "sum",...)
 - Le **droit d'utiliser des API REST/JSON métiers en complément de WFS dans son système!** (pour répondre aux besoins métiers et aux obligations INSPIRE)
 
 ---
@@ -1005,7 +1093,7 @@ Nous insisterons sur le fait que :
 
 - Le **rendu cartographique** est une **opération coûteuse**.
 - **WMS** implique un **rendu à la demande**.
-- **WMTS et TMS** permettent la **mise en cache** ou le **pré-calcul** des tuiles.
+- **WMTS et TMS** permettent la **mise en cache** ou le **pré-calcul** des tuiles de la pyramide d'image.
 
 ---
 
@@ -1015,8 +1103,8 @@ Nous insisterons sur le fait que :
 
 En matière d'outils :
 
-- WMS pourra être mis en oeuvre à l'aide d'outils tels [GeoServer](https://docs.geoserver.org/main/en/user/services/wms/reference.html), [MapServer](https://mapserver.org/ogc/wms_server.html), [Mapnik](https://mapnik.org/) avec [mod_mapnik_wms](https://wiki.openstreetmap.org/wiki/Mod_mapnik_wms),...)
-- WMTS pourra être implémenté en surcouche de WMS à l'aide d'outils tels [MapProxy](https://www.mapproxy.org/), [GeoWebCache](https://docs.geoserver.org/latest/en/user/geowebcache/index.html), [MapCache](https://mapserver.org/mapcache/),...
+- WMS peut être mis en oeuvre à l'aide d'outils tels [GeoServer](https://docs.geoserver.org/main/en/user/services/wms/reference.html), [MapServer](https://mapserver.org/ogc/wms_server.html), [Mapnik](https://mapnik.org/) avec [mod_mapnik_wms](https://wiki.openstreetmap.org/wiki/Mod_mapnik_wms),...)
+- WMTS peut être implémenté en surcouche de WMS à l'aide d'outils tels [MapProxy](https://www.mapproxy.org/), [GeoWebCache](https://docs.geoserver.org/latest/en/user/geowebcache/index.html), [MapCache](https://mapserver.org/mapcache/),...
 
 ---
 
@@ -1035,14 +1123,14 @@ Enfin, en matière de symbolisation, nous noterons :
 
 ### Diffusion cartographique (5/5)
 
-Enfin, nous mentionnerons la possibilité de diffuser des cartes sous formes de [tuiles vectorielles](https://docs.qgis.org/3.34/fr/docs/user_manual/working_with_vector_tiles/vector_tiles.html).
+Enfin, il est possible de diffuser des cartes sous formes de [tuiles vectorielles](https://docs.qgis.org/3.34/fr/docs/user_manual/working_with_vector_tiles/vector_tiles.html).
 
-Nous noterons que cette approche :
+Cette technologie :
 
 - Offre une **grande liberté dans la symbolisation et les intéractions** en reportant le **rendu côté client**.
 - Reprend le **principe de la pyramide** WMTS avec des données dans un format basé sur [Protocol Buffers](https://protobuf.dev/) (c.f. [Vector tiles standards](https://docs.mapbox.com/data/tilesets/guides/vector-tiles-standards/))
 
-> Mise en garde : Une trop grande complexité dans les géométries ne permettra pas d'exploiter efficacement cette technologie.
+> **Mise en garde** : Des **géométries de taille et de complexité variables** ne permettront pas d'exploiter efficacement cette technologie (généralisation cartographique non triviale).
 
 ---
 
@@ -1056,7 +1144,7 @@ Nous trouverons potentiellement des **services de calcul** dans une architecture
 - Un service de calcul d'isochrone
 - ...
 
-Nous noterons l'existence d'un standard [OGC Web Processing Service (WPS)](https://www.ogc.org/standard/wps/) et de son successeur [OGC API - Processes](https://ogcapi.ogc.org/processes/) pour mettre en oeuvre de tels services.
+Le standard [OGC Web Processing Service (WPS)](https://www.ogc.org/standard/wps/) et de son successeur [OGC API - Processes](https://ogcapi.ogc.org/processes/) peuvent être utilisés pour mettre en oeuvre de tels services.
 
 Toutefois, nous rencontrerons **la plupart du temps des API REST/JSON**.
 
