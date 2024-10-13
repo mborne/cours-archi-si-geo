@@ -82,3 +82,9 @@ Microservices :
 ## INSPIRE
 
 * [www.afigeo.asso.fr - Convergence Inspire et Open Data, ESRI, 07/02/2022](https://www.afigeo.asso.fr/wp-content/uploads/2022/02/09/afigeo-plateformes-innovation-convergence-inspire-opendata-esrifrance-compressed.pdf)
+
+
+## Autres cours
+
+* [tcoupin.github.io - Architecture des systèmes d'informations](https://tcoupin.github.io/presentations/asi-ensg/#/)
+* [dduportal.github.io - Architecture des systèmes d'informations](https://dduportal.github.io/cours/ensg-asi-2015/)
