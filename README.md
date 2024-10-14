@@ -2,7 +2,7 @@
 
 ## Description
 
-Ce cours est une introduction à l'**architecture des SI** avec un focus sur la composante spatiale au profit du master DESIGEO de l'ENSG.
+Ce cours est une **introduction à l'architecture des SI avec un focus sur la gestion des données spatiales** au profit du master DESIGEO de l'ENSG.
 
 ## Structure du cours
 
@@ -24,7 +24,8 @@ Nous faisons le **focus sur la composante spatiale dans un second temps** avec :
 * Les éléments relatifs à l'**architecture technique**, aux déploiements et la gestion du cycle de vie des applications seront traités dans le [**cours DevOps**](https://mborne.github.io/cours-devops/#2).
 * Nous n'entrons pas dans le détail des systèmes de **stockage distribué** sachant qu'un **cours dédiés aux bases de données NoSQL** est prévu dans la suite du cursus.
 
+## Licence
 
-
+[LICENSE](LICENSE)
 
 
