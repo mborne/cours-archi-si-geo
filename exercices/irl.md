@@ -1,4 +1,4 @@
-# IRL
+# IRL - un jeu qui varie les défis dans le monde réel!
 
 ## Contexte
 
@@ -23,21 +23,21 @@ Nous distinguerons deux rôles :
 
 Un **utilisateur** devra :
 
-- S'inscrire avec un email et un mot de passe.
-- Se connecter (les utilisateurs non connectés seront redirigés vers la page de connexion ou d'inscription).
+- **S'inscrire** avec un email et un mot de passe.
+- **Se connecter** (les utilisateurs non connectés seront redirigés vers la page de connexion ou d'inscription).
 
 **Une fois connecté, l'utilisateur** pourra, à l'aide d'une carte :
 
-- Visualiser les défis dans un rayon de 5 km autour de lui.
-- Visualiser les détails d'un défi.
-- Valider un défi en soumettant une preuve.
+- **Rechercher les défis** dans un rayon de 5 km autour de lui.
+- **Consuler les détails d'un défi**.
+- **Valider un défi** en soumettant une preuve.
 
 Un **administrateur** pourra de son côté :
 
-- Gérer les utilisateurs.
-- Gérer les défis.
+- **Gérer les utilisateurs**.
+- **Gérer les défis**.
 
-## Choix d'architecture initiaux
+## Phase 1 - Un monolithe pour le MVP
 
 Pour valider le concept :
 
@@ -48,8 +48,6 @@ Pour valider le concept :
 - Nous préparerons la croissance avec une **API REST/JSON** pour :
   - La **recherche des défis** dans un rayon de 5 km (`GET /api/challenges?lon=...&lat=...`).
   - La **validation des défis** par soumission d'une preuve (`POST /api/challenges/{id}/validate`).
-
-## Phase 1 - Un monolithe pour le MVP
 
 Exercice :
 

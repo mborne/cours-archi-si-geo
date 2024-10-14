@@ -592,7 +592,7 @@ Pour illustrer le concept, nous analyserons les avantages et inconvénients avec
 - L'[API Overpass](https://overpass-turbo.eu/), ["*a database engine to query the OpenStreetMap data.*"](https://github.com/drolbr/Overpass-API)
 - [GeoServer](https://geoserver.org/) et ses nombreux services (administration, WFS, WMS, WMTS, stockage,...)
 
-
+Pour mettre en pratique, nous débuterons l'étude d'un cas concret : [IRL - un jeu qui varie les défis dans le monde réel!](https://github.com/mborne/cours-archi-si-geo/blob/master/exercices/irl.md#irl).
 
 ---
 
