@@ -9,7 +9,7 @@ Ce cours est une **introduction à l'architecture des SI avec un focus sur la ge
 Nous nous efforcerons de traiter le sujet de manière **générique dans un premier temps** avec :
 
 * L'**introduction** qui donne la définition d'un SI, mentionne l'existence de différents types de SI (dont SIG) et présente l'organisation du cours.
-* **Les principaux défis** qui présente les défis liés à la conception un SI.
+* **Les principaux défis** qui s'efforce de présenter les principales problématiques à traiter dans la conception un SI.
 * **Les principes d'architecture** qui décrit les objectifs à cibler dans la conception d'une architecture.
 * **Les styles d'architecture** qui présente les architectures classiques (monolithique, n-tiers, EDA, microservices, serverless...)
 
