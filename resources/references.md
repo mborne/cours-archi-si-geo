@@ -66,6 +66,14 @@ Serverless :
 * [www.silicon.fr - Sécurité by-design : analyse des 3 grands principes](https://www.silicon.fr/Thematique/cybersecurite-1371/Breves/Securite-by-design-analyse-des-3-grands-principes-458430.htm)
 * [cyber.gouv.fr - Systèmes d’information hybrides et sécurité, un retour à la réalité](https://cyber.gouv.fr/publications/systemes-dinformation-hybrides-et-securite-un-retour-la-realite)
 
+
+## INSPIRE
+
+* [www.ecologie.gouv.fr - La directive européenne Inspire](https://www.ecologie.gouv.fr/politiques-publiques/directive-europeenne-inspire)
+* [formations-geomatiques.developpement-durable.gouv.fr, La directive Inspire pour les néophytes, F. Merrien, M. Léobet, M. Francès](http://formations-geomatiques.developpement-durable.gouv.fr/NAT009/Inspire/directive_inspire_neophytes/co/directive_inspire_neophytes.html)
+* [www.afigeo.asso.fr - Convergence Inspire et Open Data, ESRI, 07/02/2022](https://www.afigeo.asso.fr/wp-content/uploads/2022/02/09/afigeo-plateformes-innovation-convergence-inspire-opendata-esrifrance-compressed.pdf)
+
+
 ## Infrastructure de données géographiques
 
 * [formations-geomatiques.developpement-durable.gouv.fr - Les plateformes régionales pour l'information géographique](http://formations-geomatiques.developpement-durable.gouv.fr/MIG/Infrastructure_nationale/co/17_plateformes_regionales.html) qui pointe différents exemples basés sur PRODIGE et GeOrchestra.
@@ -92,11 +100,6 @@ Les sites suivants traitent des exemples de conception d'architecture à la poin
 
 * [www.codekarle.com](https://www.codekarle.com/)
 * [highscalability.com](https://highscalability.com/)
-
-
-## INSPIRE
-
-* [www.afigeo.asso.fr - Convergence Inspire et Open Data, ESRI, 07/02/2022](https://www.afigeo.asso.fr/wp-content/uploads/2022/02/09/afigeo-plateformes-innovation-convergence-inspire-opendata-esrifrance-compressed.pdf)
 
 ## Autres cours
 
