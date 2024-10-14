@@ -1,4 +1,4 @@
-# IRL
+# IRL - un jeu qui varie les défis dans le monde réel!
 
 ## Contexte
 
