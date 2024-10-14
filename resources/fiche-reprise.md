@@ -47,14 +47,5 @@ Devoir sur table / projet
 
 ## Bibliographie/Webographie
 
-* https://www.arxit.com/conseil-ids-idg/
-* http://igm.univ-mlv.fr/~dr/XPOSE2014/IDG/pages/idg.html
-* Joel De Rosnay, Le Macroscope : vers une vision globale, Éditions du Seuil, 1975
-* Rosenthal-Sabroux C., Grundstein M., 2009 ]et [Palmius J., 2005 – 2007, …
-* Matthieu Noucher, “Infrastructures de données géographiques et flux d’information environnementale”, Netcom, 27-1/2 | 2013, 120-147.
-* de Sède-Marceau, Marie-Hélène. François, Stéphane. Pauc, Benjamin. (2018) OPTEER, un dispositif de 
-connaissance et d’analyse territoriale par et pour les acteurs de la transition énergétique. Revue Internationale 
-de Géomatique, 28. DOI: 10.3166/rig.2017.00040
-* Rey-Valette, Hélène. Maurel, Pierre. Jabbour, Chady. Cousin, Camille. Luque, Sandra. Billaud, Olivier. Salles, 
-Jean Michel. (2020) Apport de l’information géospatiale dans les décisions d’aménagement du territoire. 
-Développement durable et territoires. DOI: 10.4000/developpementdurable.17778
+Voir [github.com - mborne/cours-archi-si-geo - resources/references.md](https://github.com/mborne/cours-archi-si-geo/blob/master/resources/references.md#r%C3%A9f%C3%A9rences)
+
