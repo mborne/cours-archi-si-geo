@@ -27,8 +27,6 @@ DevOps :
 * DevOps avec des conteneurs
 * DevOps avec des Kubernetes
 
-
-
 ## Historique des changements
 
 * "Introduction" remplace "Définitions d’un SI"

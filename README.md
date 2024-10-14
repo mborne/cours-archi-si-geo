@@ -1,70 +1,30 @@
-# cours-archi-sig
+# Introduction à l'architecture des SI
 
-Ce cours est une introduction à l'architecture des SI avec un focus sur la composante spatiale au profit du master DESIGEO de l'ENSG.
+## Description
 
-## Organisation du cours
+Ce cours est une introduction à l'**architecture des SI** avec un focus sur la composante spatiale au profit du master DESIGEO de l'ENSG.
 
-### Introduction
+## Structure du cours
 
-> Objectif : introduction 
+Nous nous efforcerons de traiter le sujet de manière **générique dans un premier temps** avec :
 
-* Définition d'un SI
-* Les différents types de SI
-* Le système d'information géographique (SIG)
+* L'**introduction** qui donne la définition d'un SI, mentionne l'existence de différents types de SI (dont SIG) et présente l'organisation du cours.
+* **Les principaux défis** qui présente les défis liés à la conception un SI.
+* **Les principes d'architecture** qui décrit les objectifs à cibler dans la conception d'une architecture.
+* **Les styles d'architecture** qui présente les architectures classiques (monolithique, n-tiers, EDA, microservices, serverless...)
 
-TODO : objectif du SI en 2
+Nous faisons le **focus sur la composante spatiale dans un second temps** avec :
 
-### Les principaux défis
+* **Les spécificités liées aux données géographiques** qui présente les points clés à prendre en compte dans la conception d'un SI diffusant des données spatiales.
+* **Les infrastructures de données géographiques** qui fait un focus sur la **conception des infrastructures de données géographique (IDG)** et plus généralement sur les **infrastructures de diffusion de données spatiales**.
 
-> Objectif : comprendre les 
+## Mise en garde
 
-* L'hétérogénéité des acteurs
-* Documenter l'architecture
-* Documenter précisément les interfaces
-* Gouverner sans bloquer l'innovation
-* Faire communiquer efficacement les services
+* Nous nous concentrons dans ce cours sur l'**architecture logique**.
+* Les éléments relatifs à l'**architecture technique**, aux déploiements et la gestion du cycle de vie des applications seront traités dans le [**cours DevOps**](https://mborne.github.io/cours-devops/#2).
+* Nous n'entrons pas dans le détail des systèmes de **stockage distribué** sachant qu'un **cours dédiés aux bases de données NoSQL** est prévu dans la suite du cursus.
 
-### Les principes d'architecture
 
-> Objectif : connaître les principaux principes d'architecture guidant les choix de conception.
 
-* Séparation des préoccupations
-* Modularité
-* Abstraction
-* Encapsulation
-* Couplage faible
-* Cohésion forte
-* Réutilisabilité
-* Interopérabilité
-* Conformité aux normes
-* Évolutivité
-* Portabilité
-* Scalabilité
-* Observabilité
-* Résilience et tolérance aux pannes
-* Intégrer la sécurité dans la conception
 
-### Les styles d'architecture
 
-> Objectif : connaître les principaux styles d'architecture, discuter l'intérêt et faire le lien avec les principes d'architecture présenté précédemment.
-
-* Architecture monolithique
-* Architecture client/serveur
-* Architecture 3-tiers
-* Architecture n-tiers
-* Event-Driven Architecture
-* Architecture orientée services (SOA)
-* Architecture microservices
-* Serverless Architecture
-
-### Les spécificités liées aux données géographiques
-
-> Objectif : identifier les spécificités des données spatiales impactant la conception des systèmes d'information géographique.
-
-**En cours**
-
-### Les infrastructures de données géographiques
-
-> Objectif : définir le concept d'infrastructure de données géographique (IDG) ou infrastructure de données spatiale (IDS), son intérêt et aborder les architectures classiques mise en oeuvre pour répondre à différents besoins.
-
-**En cours**
