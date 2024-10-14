@@ -104,6 +104,11 @@ Nous décidons donc de décomposer l'API en microservices avec :
 - Un **service de recherche des défis** exploitant une connexion en lecture seule.
 - Un **service de validation des défis** exploitant une connexion en lecture/écriture.
 
+Exercice :
+
+- a) Proposer un schéma de l'architecture.
+- b) Identifier les avantages et inconvénients de cette architecture.
+
 ## Phase 5 - Passage en EDA pour bannir les tricheurs !
 
 Nous lançons l'application mobile avec une opération de communication consistant à récompenser la résolution de défis !
