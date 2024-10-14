@@ -47,10 +47,9 @@ Le SI se décompose en un **système organisationnel** et un **système techniqu
 
 Nous trouverons plusieurs types de systèmes d'information :
 
-- Des **systèmes de traitement des transactions (TPS)** pour gérer les ventes, les paiements,...
 - Des **Systèmes d'Information des Ressources Humaines (SIRH)** pour gérer les absences, les paies, les recrutements... 
-- Des **Système d'entreprise ou ERP (Enterprise Resource Planning)** pour gérer les processus et les ressources
-- Des **Système d'aide à la décision** qui s'appuie sur des analyses de données internes ou externes
+- Des **systèmes d'entreprise ou ERP (Enterprise Resource Planning)** pour gérer les processus et les ressources.
+- Des **systèmes d'aide à la décision** s'appuyant sur des analyses de données internes ou externes
 - ...
 
 ---
@@ -59,9 +58,9 @@ Nous trouverons plusieurs types de systèmes d'information :
 
 ### Le système d'information géographique (SIG)
 
-Le SIG sera un type de SI se focalisant sur la gestion des données spatiales :
+Le **SIG** sera un type de SI se focalisant sur la **gestion des données spatiales** :
 
-> « Un **système d'information géographique ou SIG** est un système d'information conçu pour recueillir, stocker, traiter, analyser, gérer et présenter tous les types de données spatiales et géographiques »
+> « Un **système d'information géographique ou SIG** est un système d'information conçu pour **recueillir**, **stocker**, **traiter**, **analyser**, **gérer** et **présenter** tous les types de **données spatiales et géographiques** »
 > 
 > (Source : [fr.wikipedia.org - Système d'information géographique](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27information_g%C3%A9ographique))
 
@@ -71,7 +70,7 @@ Le SIG sera un type de SI se focalisant sur la gestion des données spatiales :
 
 ### Par où commencer? (1/2)
 
-En pratique, nous serons amené à traiter des problématiques d'architecture à plusieurs échelles :
+En pratique, nous traiterons des sujets d'architecture à plusieurs échelles :
 
 - Une **application**
 - Une **solution**
@@ -85,8 +84,8 @@ En pratique, nous serons amené à traiter des problématiques d'architecture à
 
 Or :
 
-- L'architecture des SI est une discipline qu'il est difficile d'aborder sans une expérience des applications et des solutions.
-- Il y a de nombreux de points intéressants à aborder (c.f. [roadmap.sh - Software Architect](https://roadmap.sh/software-architect))...
+- L'architecture des SI est une discipline qu'il est difficile d'aborder sans une expérience à l'échelle des applications et des solutions.
+- Il y a de nombreux de points intéressants à traiter (c.f. [roadmap.sh - Software Architect](https://roadmap.sh/software-architect))...
 
 ---
 
@@ -128,7 +127,7 @@ Les éléments relatifs à l'**architecture <u>technique</u>** et à la **gestio
 
 ---
 
-### Hétérogénéité des acteurs (1/2)
+### Hétérogénéité des acteurs (1/3)
 
 La conception d'une architecture devra **prendre en compte de nombreux acteurs** :
 
@@ -143,16 +142,21 @@ La conception d'une architecture devra **prendre en compte de nombreux acteurs**
 
 ---
 
-### Hétérogénéité des acteurs (2/2)
+### Hétérogénéité des acteurs (2/3)
 
 En particulier, il conviendra de :
 
 - Répondre aux **objectifs et intérêts souvent divergents** de ces différents acteurs.
 - Préciser les **rôles et responsabilités des différents acteurs** (ex : [rédiger un RACI](https://fr.wikipedia.org/wiki/RACI))
-- Traiter des **injonctions techniques** qui ne seront **pas toujours optimales** :
 
-  - Confusion fréquente entre l'**expression d'un besoin fonctionnel** (ex : je veux partager des fichiers) et la **proposition d'une solution technique** (ex : je veux utiliser dropbox, google drive ou équivalent)
-  - **Lien étroit entre la politique et des décisions techniques structurantes** (1).
+---
+
+### Hétérogénéité des acteurs (3/3)
+
+Aussi, il conviendra de traiter des **injonctions techniques** qui ne seront **pas toujours optimales** :
+
+- Confusion fréquente entre l'**expression d'un besoin fonctionnel** (ex : je veux partager des fichiers) et la **proposition d'une solution technique** (ex : je veux utiliser dropbox, google drive ou équivalent)
+- **Lien étroit entre la politique et des décisions techniques structurantes** (1).
 
 > (1) Nous verrons quelques exemples (à l'oral).
 
@@ -295,11 +299,13 @@ Il conviendra de **"refactorer" propressivement le SI** pour **traiter cette det
 
 ### Performance et stabilité (1/2)
 
-La conception du système devra être conçu pour répondre à **plusieurs objectifs de performance** :
+Le système doit être conçu pour répondre à **plusieurs objectifs de performance** :
 
 - Minimiser la durée d'exécution des traitements.
-- Minimiser la consommation en ressources systèmes (CPU, RAM, stockage et réseau)
-- Minimiser le coût.
+- Minimiser la consommation en ressources systèmes (CPU, RAM, stockage et réseau).
+- Minimiser le coût (1).
+
+> (1) Vu la complexité des modèles de facturation dans les environnements infonuagiques, ce dernier point sera l'objet d'une discipline à part entière connue sous le nom [FinOps](https://learn.microsoft.com/fr-fr/cloud-computing/finops/overview).
 
 ---
 
@@ -310,7 +316,7 @@ La conception du système devra être conçu pour répondre à **plusieurs objec
 En outre, le système devra :
 
 - **Supporter la montée en charge** sans perte de performance.
-- **Contrinuer de fonctionner** en cas de panne matérielle et de défaillance d'un service tiers.
+- **Continuer de fonctionner** en cas de panne matérielle et de défaillance d'un service tiers.
 
 
 ---
@@ -393,7 +399,13 @@ La principale difficulté consistera à **nommer et modéliser des concepts**.
 
 Les **interactions entre modules** se font uniquement **via des interfaces bien définies**. Les détails internes sont cachés aux autres modules.
 
-Par exemple, nous pourrons **encapsuler une fonctionnalité** en mettant à disposition une **API**.
+Par exemple, nous pourrons **encapsuler une fonctionnalité** en mettant à disposition une **API** qui pourra prendre plusieurs formes :
+
+- Une **API REST**.
+- Une **application en ligne de commande (CLI)**.
+- Une **interface dans une bibliothèque de programmation**.
+
+> Nous aborderons en séance les points forts et points faibles de ces différentes approches.
 
 ---
 
@@ -497,8 +509,8 @@ Par exemple, pour traiter le cas d'une **indisponibilité temporaire d'un servic
 
 Sinon, pour assurer la **disponibilité en cas de problème**, nous trouvons principalement deux stratégies qui seront détaillées dans le cours DevOps :
 
-- **Réplication** des services
-- **Redémarrage automatique**
+- **Réplication** des services.
+- **Redémarrage automatique** en cas de problème.
 
 ---
 
@@ -677,7 +689,7 @@ Illustration du principe de l'ESB dans les architectures SOA.
 
 </div>
 
-> Nous en discuterons l'intérêt et les limites en scéance en faisant le lien avec EDA et pour introduire la partie suivante.
+> Nous en discuterons l'intérêt et les limites en séance en faisant le lien avec EDA et pour introduire la partie suivante.
 
 ---
 
@@ -909,7 +921,7 @@ Une IDG est amenée à stocker des données sous plusieurs formes :
   - Le **stockage en réseau** (partage, NFS, FTP,...).
   - Le **stockage objet** (S3, Google Cloud Storage,...)
 - Des **bases de données** :
-  - **SQL** (PostgreSQL, Oracle,...) offrant des garanties ACID
+  - **SQL** (PostgreSQL, Oracle,...) offrant des garanties [ACID](https://fr.wikipedia.org/wiki/Propri%C3%A9t%C3%A9s_ACID)
   - **NoSQL** (base orientée document, clé/valeur, recherche plein texte, graphe,...)
 
 ---
@@ -972,7 +984,7 @@ Nous discuterons en séance différentes appproches possibles :
 
 - Les **diagrammes de classes UML** (ex : [INSPIRE UML models - AdministrativeUnit](https://inspire-mif.github.io/uml-models/approved/html/index.htm?guid=85BF8670-5D59-4f6c-A1B4-F95DC0AF6876))
 - Les **documents incluants des diagrammes UML et descriptions de table** (ex : [CNIG - Standard CNIG PLU v2024](https://www.geoportail-urbanisme.gouv.fr/manuals/#manuals_ab514d4b987fb135fc3eb6a196aef902))
-- Les **tables décrivant les valeurs codifiées** (ex : [www.insee.fr - Liste de modalités des fichiers téléchargeables du COG](https://www.insee.fr/fr/information/6800685))
+- Les **tables décrivant les valeurs codifiées** (ex : [www.insee.fr - COG](https://www.insee.fr/fr/information/6800685))
 - Les **méta-modèles** (ex : [Table Schema](https://specs.frictionlessdata.io/table-schema/), celui du [validateur IGN](https://ignf.github.io/validator/validator-core/src/main/resources/schema/), [id-tagging-schema](https://github.com/openstreetmap/id-tagging-schema/tree/main?tab=readme-ov-file#background),...)
 - Les **fiches descriptives** (ex : [wiki.openstreetmap.org - Key:building](https://wiki.openstreetmap.org/wiki/Key:building)) 
 
