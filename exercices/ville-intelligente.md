@@ -48,7 +48,7 @@ Nous exploitons les données en mettant en œuvre les fonctionnalités suivantes
   - **Ajouter un capteur** (en spécifiant sa position GPS et la vitesse limite autorisée).
   - **Modifier un capteur** (en cas de déplacement).
   - **Supprimer un capteur** (en cas de désinstallation).
-- **Calculer des statistiques** sur les 15 dernières minutes :
+- **Calculer des statistiques** sur les 15 dernières minutes pour chaque capteur :
   - Le nombre de véhicules observés.
   - La vitesse moyenne.
   - La vitesse maximale.
