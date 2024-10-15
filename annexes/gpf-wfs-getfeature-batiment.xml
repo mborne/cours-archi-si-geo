@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wfs:FeatureCollection xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:BDTOPO_V3="http://BDTOPO_V3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" numberMatched="50798878" numberReturned="1" timeStamp="2024-10-15T21:42:05.448Z" xsi:schemaLocation="http://www.opengis.net/wfs/2.0 https://data.geopf.fr/wfs/schemas/wfs/2.0/wfs.xsd http://BDTOPO_V3 https://data.geopf.fr/wfs/wfs?service=WFS&amp;version=2.0.0&amp;request=DescribeFeatureType&amp;typeName=BDTOPO_V3%3Abatiment http://www.opengis.net/gml/3.2 https://data.geopf.fr/wfs/schemas/gml/3.2.1/gml.xsd">
+  <wfs:boundedBy>
+    <gml:Envelope>
+      <gml:lowerCorner>44.077653 1.9063998</gml:lowerCorner>
+      <gml:upperCorner>44.07768205 1.90644455</gml:upperCorner>
+    </gml:Envelope>
+  </wfs:boundedBy>
+  <wfs:member>
+    <BDTOPO_V3:batiment gml:id="batiment.44978240">
+      <gml:boundedBy>
+        <gml:Envelope srsName="urn:ogc:def:crs:EPSG::4326" srsDimension="2">
+          <gml:lowerCorner>44.077653 1.9063998</gml:lowerCorner>
+          <gml:upperCorner>44.07768205 1.90644455</gml:upperCorner>
+        </gml:Envelope>
+      </gml:boundedBy>
+      <BDTOPO_V3:cleabs>BATIMENT0000002203227634</BDTOPO_V3:cleabs>
+      <BDTOPO_V3:nature>Indifférenciée</BDTOPO_V3:nature>
+      <BDTOPO_V3:usage_1>Résidentiel</BDTOPO_V3:usage_1>
+      <BDTOPO_V3:construction_legere>false</BDTOPO_V3:construction_legere>
+      <BDTOPO_V3:etat_de_l_objet>En service</BDTOPO_V3:etat_de_l_objet>
+      <BDTOPO_V3:date_creation>2019-06-26T11:53:24.307Z</BDTOPO_V3:date_creation>
+      <BDTOPO_V3:date_modification>2022-10-19T16:08:00.833Z</BDTOPO_V3:date_modification>
+      <BDTOPO_V3:date_d_apparition>1861-01-01Z</BDTOPO_V3:date_d_apparition>
+      <BDTOPO_V3:methode_d_acquisition_planimetrique>BDParcellaire recalée</BDTOPO_V3:methode_d_acquisition_planimetrique>
+      <BDTOPO_V3:methode_d_acquisition_altimetrique>Corrélation</BDTOPO_V3:methode_d_acquisition_altimetrique>
+      <BDTOPO_V3:precision_planimetrique>3.0</BDTOPO_V3:precision_planimetrique>
+      <BDTOPO_V3:precision_altimetrique>1.0</BDTOPO_V3:precision_altimetrique>
+      <BDTOPO_V3:nombre_de_logements>0</BDTOPO_V3:nombre_de_logements>
+      <BDTOPO_V3:nombre_d_etages>2</BDTOPO_V3:nombre_d_etages>
+      <BDTOPO_V3:materiaux_des_murs>10</BDTOPO_V3:materiaux_des_murs>
+      <BDTOPO_V3:materiaux_de_la_toiture>10</BDTOPO_V3:materiaux_de_la_toiture>
+      <BDTOPO_V3:hauteur>2.6</BDTOPO_V3:hauteur>
+      <BDTOPO_V3:altitude_minimale_sol>155.9</BDTOPO_V3:altitude_minimale_sol>
+      <BDTOPO_V3:altitude_minimale_toit>158.5</BDTOPO_V3:altitude_minimale_toit>
+      <BDTOPO_V3:altitude_maximale_toit>161.7</BDTOPO_V3:altitude_maximale_toit>
+      <BDTOPO_V3:altitude_maximale_sol>156.6</BDTOPO_V3:altitude_maximale_sol>
+      <BDTOPO_V3:origine_du_batiment>Cadastre</BDTOPO_V3:origine_du_batiment>
+      <BDTOPO_V3:appariement_fichiers_fonciers>C 0.4</BDTOPO_V3:appariement_fichiers_fonciers>
+      <BDTOPO_V3:identifiants_rnb>1AZKEHE6KT1Z</BDTOPO_V3:identifiants_rnb>
+      <BDTOPO_V3:geometrie>
+        <gml:MultiSurface srsName="urn:ogc:def:crs:EPSG::4326" srsDimension="3" gml:id="batiment.44978240.geometrie">
+          <gml:surfaceMember>
+            <gml:Polygon gml:id="batiment.44978240.geometrie.1">
+              <gml:exterior>
+                <gml:LinearRing>
+                  <gml:posList>44.07768205 1.90643438 158.5 44.07767225 1.90644455 158.5 44.077653 1.90640996 158.5 44.0776619 1.9063998 158.5 44.07768205 1.90643438 158.5</gml:posList>
+                </gml:LinearRing>
+              </gml:exterior>
+            </gml:Polygon>
+          </gml:surfaceMember>
+        </gml:MultiSurface>
+      </BDTOPO_V3:geometrie>
+    </BDTOPO_V3:batiment>
+  </wfs:member>
+</wfs:FeatureCollection>

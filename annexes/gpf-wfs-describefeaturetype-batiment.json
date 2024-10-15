@@ -1,0 +1,244 @@
+{
+    "elementFormDefault": "qualified",
+    "targetNamespace": "http://BDTOPO_V3",
+    "targetPrefix": "BDTOPO_V3",
+    "featureTypes": [
+        {
+            "typeName": "batiment",
+            "properties": [
+                {
+                    "name": "cleabs",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:string",
+                    "localType": "string"
+                },
+                {
+                    "name": "nature",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:string",
+                    "localType": "string"
+                },
+                {
+                    "name": "usage_1",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:string",
+                    "localType": "string"
+                },
+                {
+                    "name": "usage_2",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:string",
+                    "localType": "string"
+                },
+                {
+                    "name": "construction_legere",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:boolean",
+                    "localType": "boolean"
+                },
+                {
+                    "name": "etat_de_l_objet",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:string",
+                    "localType": "string"
+                },
+                {
+                    "name": "date_creation",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:date-time",
+                    "localType": "date-time"
+                },
+                {
+                    "name": "date_modification",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:date-time",
+                    "localType": "date-time"
+                },
+                {
+                    "name": "date_d_apparition",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:date",
+                    "localType": "date"
+                },
+                {
+                    "name": "date_de_confirmation",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:date",
+                    "localType": "date"
+                },
+                {
+                    "name": "sources",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:string",
+                    "localType": "string"
+                },
+                {
+                    "name": "identifiants_sources",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:string",
+                    "localType": "string"
+                },
+                {
+                    "name": "methode_d_acquisition_planimetrique",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:string",
+                    "localType": "string"
+                },
+                {
+                    "name": "methode_d_acquisition_altimetrique",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:string",
+                    "localType": "string"
+                },
+                {
+                    "name": "precision_planimetrique",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:number",
+                    "localType": "number"
+                },
+                {
+                    "name": "precision_altimetrique",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:number",
+                    "localType": "number"
+                },
+                {
+                    "name": "nombre_de_logements",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:int",
+                    "localType": "int"
+                },
+                {
+                    "name": "nombre_d_etages",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:int",
+                    "localType": "int"
+                },
+                {
+                    "name": "materiaux_des_murs",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:string",
+                    "localType": "string"
+                },
+                {
+                    "name": "materiaux_de_la_toiture",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:string",
+                    "localType": "string"
+                },
+                {
+                    "name": "hauteur",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:number",
+                    "localType": "number"
+                },
+                {
+                    "name": "altitude_minimale_sol",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:number",
+                    "localType": "number"
+                },
+                {
+                    "name": "altitude_minimale_toit",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:number",
+                    "localType": "number"
+                },
+                {
+                    "name": "altitude_maximale_toit",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:number",
+                    "localType": "number"
+                },
+                {
+                    "name": "altitude_maximale_sol",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:number",
+                    "localType": "number"
+                },
+                {
+                    "name": "origine_du_batiment",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:string",
+                    "localType": "string"
+                },
+                {
+                    "name": "appariement_fichiers_fonciers",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:string",
+                    "localType": "string"
+                },
+                {
+                    "name": "identifiants_rnb",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "xsd:string",
+                    "localType": "string"
+                },
+                {
+                    "name": "geometrie",
+                    "maxOccurs": 1,
+                    "minOccurs": 0,
+                    "nillable": true,
+                    "type": "gml:MultiPolygon",
+                    "localType": "MultiPolygon"
+                }
+            ]
+        }
+    ]
+}

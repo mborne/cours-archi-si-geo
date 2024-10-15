@@ -865,7 +865,7 @@ Au niveau de l'architecture, il sera donc important de :
 - [Définition](#définition)
 - [Objectifs](#objectifs)
 - [Stockage des données](#stockage-des-données-12)
-- [Alimentation en données](#alimentation-en-donnees)
+- [Alimentation en données](#alimentation-en-données-13)
 - [Modélisation des données](#modélisation-des-données-12)
 - [Catalogage](#catalogage-12)
 - [Diffusion vecteur](#diffusion-vecteur-14)
@@ -952,7 +952,7 @@ Pour gérer les données, nous pourrons exploiter les approches suivantes en en 
 - Utiliser un **ETL** (ex : FME, Pentaho,...)
 - Utiliser un **programme** (ex : ogr2ogr) ou un **script** (ex : import.py)
 
-> (1) Voire en présence de protocole donnant un contrôle total sur les données tel WFS-T.
+> (1) Voire en présence d'un protocole donnant un contrôle total sur les données tel WFS-T.
 
 ---
 
@@ -978,7 +978,7 @@ Plus souvent, une plateforme proposera de choisir entre deux stratégies :
 
 ### Alimentation en données (3/3)
 
-En offrant un contrôle limité, la plateforme pourra traiter un **besoin récurrent** : **Valider les données** avant leur intégration afin d'assurer l'intégrité de la base de données.
+En offrant un contrôle limité, la plateforme pourra ainsi traiter un **besoin récurrent** : **Valider les données** avant leur intégration afin d'assurer l'intégrité de la base de données.
 
 ---
 
@@ -1102,6 +1102,7 @@ Nous mentionnerons toutefois :
 - Le **côté vieillissant de GetCapabilities** et les travaux de modernisation en cours via [OGC API - Features](https://ogcapi.ogc.org/features/).
 - Les **limitations fonctionnelles de WFS** par rapport à des API REST/JSON telle l'[API Explore d'Opendatasoft](https://help.opendatasoft.com/apis/ods-explore-v2/#section/Opendatasoft-Query-Language-(ODSQL)) (ex : opérateur d'agrégation tels "group by", "sum",...)
 - Le **droit d'utiliser des API REST/JSON métiers en complément de WFS dans son système!** (pour répondre aux besoins métiers et aux obligations INSPIRE)
+- La **possibilité de développer ces API REST/JSON en proxy sur des WFS** (c'est l'approche retenue pour [apicarto.ign.fr](https://apicarto.ign.fr/api/doc/))
 
 ---
 
