@@ -944,22 +944,41 @@ Nous noterons qu'il peut être intéressant de :
 
 ## Les infrastructures de données géographiques
 
-### Alimentation en données (1/2)
+### Alimentation en données (1/3)
 
-Nous noterons principalement deux stratégies en matière d'alimentation en données :
+Pour gérer les données, nous pourrons exploiter les approches suivantes en en cas d'accès direct aux bases de données (1) :
 
-- La **publication des données** par téléversement de fichiers ou via une API telle l'[API entrepot de la GéoPlateforme](https://geoplateforme.github.io/entrepot/production/) (1)
-- Le **moissonnage de services tiers**
+- Utiliser un **SIG**
+- Utiliser un **ETL** (ex : FME, Pentaho,...)
+- Utiliser un **programme** (ex : ogr2ogr) ou un **script** (ex : import.py)
 
-> (1) Nous analyserons en séance le cas de la [publication de données vecteurs](https://geoplateforme.github.io/tutoriels/production/vecteur/base/).
+> (1) Voire en présence de protocole donnant un contrôle total sur les données tel WFS-T.
 
 ---
 
 ## Les infrastructures de données géographiques
 
-### Alimentation en données (2/2)
+### Alimentation en données (2/3)
 
-Nous mentionnerons un **besoin récurrent** dans le cas de la publications de données : **Valider les données**.
+Plus souvent, une plateforme proposera de choisir entre deux stratégies :
+
+- La **publication des données** (mode "push")
+  - Par téléversement un fichier
+  - Par appel d'une API telle l'[API entrepot de la GéoPlateforme](https://geoplateforme.github.io/entrepot/production/) (1)
+- Le **moissonnage de services tiers** (mode "pull") (2)
+
+> (1) Nous analyserons en séance le cas de la [publication de données vecteurs](https://geoplateforme.github.io/tutoriels/production/vecteur/base/).
+>
+> (2) Nous inspecterons le cas de [OpenDataSoft qui propose entre autre des moissonneurs](https://userguide.opendatasoft.com/l/fr/category/1x1sytwnvf-publier-de-la-donn-es)
+
+
+---
+
+## Les infrastructures de données géographiques
+
+### Alimentation en données (3/3)
+
+En offrant un contrôle limité, la plateforme pourra traiter un **besoin récurrent** : **Valider les données** avant leur intégration afin d'assurer l'intégrité de la base de données.
 
 ---
 
