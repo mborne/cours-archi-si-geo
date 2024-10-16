@@ -671,6 +671,8 @@ Nous distinguerons deux approches :
 - **Publication/abonnement (*Pub/sub*)** où les consommateurs s'abonnent à un canal pour recevoir les messages.
 - **flux d'événement (*Event streaming*)** où les événements sont journalisées et où les consommateurs peuvent lire les anciens messages.
 
+Nous inspecterons les possibilités offertes par [RabbitMQ](https://www.rabbitmq.com/tutorials) pour nous faire une idée précise.
+
 > Nous discuterons l'intérêt et les défis de ce type d'architecture à travers des cas d'utilisations en séance (traitement asynchrone, orchestrateur de traitements,...).
 
 ---
