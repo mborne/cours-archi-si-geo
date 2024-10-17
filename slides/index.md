@@ -1188,7 +1188,8 @@ Toutefois, nous rencontrerons **la plupart du temps des API REST/JSON**.
 
 ### Exemple d'architecture
 
-Avec une approche micro-service, nous aboutirons par exemple à l'architecture suivante :
+<div class="illustration">
 
-> TODO : schéma
+![h:400px](img/idg-vue-ensemble.drawio.png)
 
+</div>
