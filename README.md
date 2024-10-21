@@ -2,7 +2,7 @@
 
 ## Description
 
-Ce cours est une **introduction à l'architecture des SI avec un focus sur la gestion des données spatiales** au profit du master DESIGEO de l'ENSG.
+Ce cours est une **introduction à l'architecture des SI avec un focus sur la gestion des données spatiales** au profit du master GDS (anciennement DESIGEO) de l'ENSG.
 
 ## Structure du cours
 
