@@ -328,7 +328,7 @@ Le système devra aussi :
 - [Modularité](#modularité)
 - [Abstraction](#abstraction)
 - [Encapsulation](#encapsulation-12)
-- [Couplage faible](#couplage-faible)
+- [Couplage faible](#couplage-faible-12)
 - [Cohésion forte](#cohésion-forte)
 - [Réutilisabilité](#réutilisabilité)
 - [Interopérabilité](#interopérabilité)
@@ -422,11 +422,22 @@ En pratique, nous pourrons **encapsuler une fonctionnalité** en mettant à disp
 
 ## Les principes d'architecture
 
-### Couplage faible
+### Couplage faible (1/2)
 
 Les modules doivent être aussi indépendants que possible les uns des autres. Un **couplage faible** facilite la **modification ou le remplacement de modules** sans affecter les autres parties du système.
 
-> Le couplage peut prendre plusieurs formes (couplage par message ou événement, couplage par interface, couplage par données, couplage par contrôle, couplage temporel...)
+---
+
+## Les principes d'architecture
+
+### Couplage faible (2/2)
+
+Nous noterons que le couplage pourra prendre plusieurs formes :
+
+- **message ou événement** : producteurs et consommateurs partagant un canal et un format de message (ex : "location_change" pour une flotte de véhicule).
+- **Interface** : dépendance au contrat d'échange (ex : paramètres d'une API)
+- **Données** : dépendance au schéma ou au format partagé (ex : schéma ADMINEXPRESS).
+- **Temporel** : dépendance à un ordre ou un moment précis d’exécution (ex : intégration de données après génération d'un export).
 
 
 ---
