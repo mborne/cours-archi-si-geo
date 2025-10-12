@@ -213,13 +213,13 @@ Il conviendra de **documenter précisément les interfaces** des différents ser
 
 Pour les API REST/JSON, nous systématiserons par exemple la rédaction de spécifications au format [OpenAPI](https://swagger.io/specification/).
 
-> Nous utiliserons l'éditeur en ligne [editor.swagger.io](https://editor.swagger.io/) pour voir concrètement de quoi il est question.
+> Nous utiliserons l'éditeur en ligne [editor.swagger.io](https://editor.swagger.io/) pour voir concrètement de quoi il est question. Nous verrons un cas concret avec le [service d'autocomplétion de la Géoplateforme](https://geoservices.ign.fr/documentation/services/services-geoplateforme/autocompletion).
 
 ---
 
 ## Les principaux défis
 
-### Gouvernance et agilité (1/3)
+### Gouvernance et agilité (1/4)
 
 La nécessité d'**assurer la cohérence** et de **rationnaliser** (i.e. éviter les silos technologiques) à l'échelle du SI induira un besoin de **standardisation**.
 
@@ -227,7 +227,7 @@ La nécessité d'**assurer la cohérence** et de **rationnaliser** (i.e. éviter
 
 ## Les principaux défis
 
-### Gouvernance et agilité (2/3)
+### Gouvernance et agilité (2/4)
 
 Nous noterons l'existence de cadres rigoureux tels [TOGAF (The Open Group Architecture Framework)](https://fr.wikipedia.org/wiki/The_Open_Group_Architecture_Framework) pour maîtriser l'architecture des SI d'entreprise et piloter les évolutions.
 
@@ -235,7 +235,7 @@ Nous noterons l'existence de cadres rigoureux tels [TOGAF (The Open Group Archit
 
 ## Les principaux défis
 
-### Gouvernance et agilité (3/3)
+### Gouvernance et agilité (3/4)
 
 Toutefois :
 
@@ -248,7 +248,7 @@ Toutefois :
 
 ## Les principaux défis
 
-### Gouvernance et agilité (2/2)
+### Gouvernance et agilité (4/4)
 
 A ce titre, il sera plus intéressant de :
 
@@ -312,7 +312,7 @@ Le système doit être conçu pour répondre à **plusieurs objectifs de perform
 
 ### Performance et stabilité (2/2)
 
-En outre, le système devra :
+Le système devra aussi :
 
 - **Supporter la montée en charge** sans perte de performance.
 - **Continuer de fonctionner** en cas de panne matérielle et de défaillance d'un service tiers.
@@ -327,7 +327,7 @@ En outre, le système devra :
 - [Séparation des préoccupations](#séparation-des-préoccupations-separation-of-concerns)
 - [Modularité](#modularité)
 - [Abstraction](#abstraction)
-- [Encapsulation](#encapsulation)
+- [Encapsulation](#encapsulation-12)
 - [Couplage faible](#couplage-faible)
 - [Cohésion forte](#cohésion-forte)
 - [Réutilisabilité](#réutilisabilité)
@@ -359,6 +359,12 @@ En outre, le système devra :
 A l'échelle du système, **chaque composant doit avoir une responsabilité claire et unique**.
 
 > Nous retrouvons ce principe en P.O.O. dans le S de SOLID avec le **principe de responsabilité unique (*Single responsibility principle*)**.
+
+<!--
+Par exemple :
+- Nous utiliserons un service dédié pour gérer les authentifications (ex : AD LDAP, Keycloak, DEX,...)
+- Un service renvoyant l'altitude d'un point ne prendra pas paramètre une adresse mais une position.
+-->
 
 ---
 
@@ -394,17 +400,23 @@ La principale difficulté consistera à **nommer et modéliser des concepts**.
 
 ## Les principes d'architecture
 
-### Encapsulation
+### Encapsulation (1/2)
 
 Les **interactions entre modules** se font uniquement **via des interfaces bien définies**. Les détails internes sont cachés aux autres modules.
 
-Par exemple, nous pourrons **encapsuler une fonctionnalité** en mettant à disposition une **API** qui pourra prendre plusieurs formes :
+---
+
+## Les principes d'architecture
+
+### Encapsulation (2/2)
+
+En pratique, nous pourrons **encapsuler une fonctionnalité** en mettant à disposition une **API** qui pourra prendre plusieurs formes :
 
 - Une **API REST**.
 - Une **application en ligne de commande (CLI)**.
 - Une **interface dans une bibliothèque de programmation**.
 
-> Nous aborderons en séance les points forts et points faibles de ces différentes approches.
+> Nous aborderons en séance les points forts et points faibles de ces différentes approches en analysant quelques cas pratiques (recherche des communes par nom et code postal, simplification des géométries,...). Vous trouverez plus de détail dans la fiche [les API WEB et les autres](https://mborne.github.io/fiches/api/).
 
 ---
 
