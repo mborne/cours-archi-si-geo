@@ -329,7 +329,6 @@ Le système devra aussi :
 - [Abstraction](#abstraction)
 - [Encapsulation](#encapsulation-12)
 - [Couplage faible](#couplage-faible-12)
-- [Cohésion forte](#cohésion-forte)
 - [Réutilisabilité](#réutilisabilité)
 - [Interopérabilité](#interopérabilité)
 - [Conformité aux normes](#conformité-aux-normes)
@@ -352,7 +351,6 @@ Le système devra aussi :
 ---
 
 ## Les principes d'architecture
-
 
 ### Séparation des préoccupations (*Separation of Concerns*)
 
@@ -434,19 +432,11 @@ Les modules doivent être aussi indépendants que possible les uns des autres. U
 
 Nous noterons que le couplage pourra prendre plusieurs formes :
 
-- **message ou événement** : producteurs et consommateurs partagant un canal et un format de message (ex : "location_change" pour une flotte de véhicule).
+- **Message ou événement** : producteurs et consommateurs partagant un canal et un format de message (ex : "location_change" pour une flotte de véhicule).
 - **Interface** : dépendance au contrat d'échange (ex : paramètres d'une API)
 - **Données** : dépendance au schéma ou au format partagé (ex : schéma ADMINEXPRESS).
 - **Temporel** : dépendance à un ordre ou un moment précis d’exécution (ex : intégration de données après génération d'un export).
 
-
----
-
-## Les principes d'architecture
-
-### Cohésion forte
-
-Les composants d'un module doivent être **liés et centrés sur une tâche spécifique**. Cela rend le module plus compréhensible et maintenable.
 
 ---
 
