@@ -14,8 +14,8 @@ header: '<div><img src="img/logo-ensg.png" alt="ENSG" height="64px"/></div>'
 
 - [Introduction](#introduction)
 - [Les principaux défis](#les-principaux-défis)
-- [Les principes d'architecture](#les-principes-darchitecture)
 - [Les critères qualités](#les-critères-qualités)
+- [Les principes d'architecture](#les-principes-darchitecture)
 - [Les styles d'architecture](#les-styles-darchitecture)
 - [Les spécificités liées aux données géographiques](#les-spécificités-liées-aux-données-géographiques)
 - [Les infrastructures de données géographiques](#les-infrastructures-de-données-géographiques)
