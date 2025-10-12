@@ -15,6 +15,7 @@ header: '<div><img src="img/logo-ensg.png" alt="ENSG" height="64px"/></div>'
 - [Introduction](#introduction)
 - [Les principaux défis](#les-principaux-défis)
 - [Les principes d'architecture](#les-principes-darchitecture)
+- [Les critères qualités](#les-critères-qualités)
 - [Les styles d'architecture](#les-styles-darchitecture)
 - [Les spécificités liées aux données géographiques](#les-spécificités-liées-aux-données-géographiques)
 - [Les infrastructures de données géographiques](#les-infrastructures-de-données-géographiques)
@@ -93,11 +94,12 @@ Or :
 
 ### Comment allons nous procéder? (1/2)
 
-Dans cette introduction, nous tâcherons d'abord avoir une vision précise :
+Dans cette introduction, nous chercherons **à poser une vision claire de l'architecture des SI** en abordant :
 
-- Des **principaux défis à relever**.
-- Des **principes d'architecture** qui guideront dans la recherche d'une solution.
-- Des **différents styles d'architecture** classiques.
+- Les **principaux défis** à relever.
+- Les **objectifs visés**, définis à travers différents **critères qualités**.
+- Les **principes d'architecture** qui guideront dans la conception des solutions.
+- Les **styles d'architecture** classiques et leurs usages.
 
 ---
 
@@ -105,10 +107,10 @@ Dans cette introduction, nous tâcherons d'abord avoir une vision précise :
 
 ### Comment allons nous procéder (2/2)
 
-Nous ferons ensuite un focus sur l'**architecture <u>logique</u> des SI** avec une forte **composante spatiale** en :
+Nous ferons ensuite un focus sur l'**architecture <u>logique</u> des systèmes d'information géographique (SIG)** en abordant :
 
-- Précisant les **spécificités des données géographiques**.
-- Analysant l'**architecture d'une infrastructure de données géographique (IDG)**
+- Les **spécificités des données géographiques**.
+- L'**architecture d'une infrastructure de données géographique (IDG)**
 
 Les éléments relatifs à l'**architecture <u>technique</u>** et à la **gestion du cycle de vie des applications** seront traités dans le **cours DevOps**.
 
@@ -122,7 +124,7 @@ Les éléments relatifs à l'**architecture <u>technique</u>** et à la **gestio
 - [Gouvernance et agilité](#gouvernance-et-agilité-13)
 - [Sécurité et conformité](#sécurité-et-conformité)
 - [Gestion des systèmes hérités (legacy)](#gestion-des-systèmes-hérités-legacy)
-- [Performance et stabilité](#performance-et-stabilité-12)
+- [Prioriser les critères qualités](#prioriser-les-critères-qualités)
 
 ---
 
@@ -296,7 +298,80 @@ Il conviendra de **"refactorer" propressivement le SI** pour **traiter cette det
 
 ## Les principaux défis
 
-### Performance et stabilité (1/2)
+### Prioriser les critères qualités
+
+Concevoir un système parfait est une utopie. **Sans objectifs clairs**, nous risquons de concevoir des systèmes **trop complexes ou trop coûteux** par rapport au contexte (ex : 10 utilisateurs maximum, indisponibilités acceptables, perte totale des données acceptée...).
+
+Il est donc crucial de **définir et prioriser ces objectifs dès le départ** afin que les choix architecturaux soient guidés par des critères mesurables et pertinents.
+
+Toutefois, cet exercice sera loin d'être évident...
+
+> Par exemple, il faudra expliquer qu'un **système résistant indéfiniment à la charge** peut rapidement se traduire par une **facture cloud exorbitante**.
+
+---
+
+## Les critères qualités
+
+<div class="left">
+
+Conception et intégration :
+
+- [Évolutivité](#évolutivité)
+- [Réutilisabilité](#réutilisabilité)
+- [Interopérabilité](#interopérabilité)
+- [Conformité aux normes](#conformité-aux-normes)
+
+</div>
+
+<div class="right">
+
+Robustesse et exploitation :
+
+- [Performance](#performance)
+- [Résilience](#résilience)
+- [Scalabilité](#scalabilité)
+- [Observabilité](#observabilité)
+- [Portabilité](#portabilité)
+
+</div>
+
+---
+
+## Les critères qualités
+
+### Évolutivité
+
+L'architecture doit **permettre des évolutions futures** sans remettre en cause l'ensemble du système.
+
+---
+
+## Les critères qualités
+
+### Réutilisabilité
+
+Produire des **composants réutilisables** permet d'optimiser le développement et d'améliorer la qualité du SI en réduisant les redondances de code.
+
+---
+
+## Les critères qualités
+
+### Interopérabilité
+
+Les composants doivent être **capables de communiquer entre eux** même s'ils proviennent de **systèmes différents**.
+
+---
+
+## Les critères qualités
+
+### Conformité aux normes
+
+Le respect des standards (ex : [standards OGC](https://www.ogc.org/standards/)) et bonnes pratiques de l’industrie (ex : REST/JSON + OpenAPI) facilite l'**interopérabilité**, la **réutilisation**, et la **maintenabilité**.
+
+---
+
+## Les critères qualités
+
+### Performance
 
 Le système doit être conçu pour répondre à **plusieurs objectifs de performance** :
 
@@ -308,45 +383,65 @@ Le système doit être conçu pour répondre à **plusieurs objectifs de perform
 
 ---
 
-## Les principaux défis
+## Les critères qualités
 
-### Performance et stabilité (2/2)
+### Résilience
 
-Le système devra aussi :
+Le système doit être conçu pour **continuer à fonctionner (ou se dégrader de façon contrôlée) en cas de défaillance** d’un ou plusieurs composants.
 
-- **Supporter la montée en charge** sans perte de performance.
-- **Continuer de fonctionner** en cas de panne matérielle et de défaillance d'un service tiers.
+Par exemple, pour traiter le cas d'une **indisponibilité temporaire d'un service tiers**, nous trouvons le [patron "**nouvelle tentative**" (retry)](https://learn.microsoft.com/fr-fr/azure/architecture/patterns/retry).
 
+Sinon, pour assurer la **disponibilité en cas de problème**, nous trouvons principalement deux stratégies qui seront détaillées dans le cours DevOps :
+
+- **Réplication** des services.
+- **Redémarrage automatique** en cas de problème.
+
+---
+
+## Les critères qualités
+
+### Scalabilité
+
+L'architecture doit être conçue pour **supporter la montée en charge** (évolution du nombre de clients, du volume des données,...) sans perte de performance.
+
+Nous trouverons deux stratégies :
+
+- La **scalabilité verticale** (modification du dimensionnement des machines).
+- La **scalabilité horizontale** (multiplication du nombre de machines), plus intéressante mais plus complexe à mettre en oeuvre (1).
+
+> (1) Nous détaillerons le cas des **services sans état** dans le cadre du cours DevOps. Le cas des **services de stockage** sera laissé au cours sur le stockage NoSQL qui abordera à priori la **réplication et la distribution du stockage** et le [théorème CAP](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_CAP)
+
+---
+
+## Les critères qualités
+
+### Observabilité
+
+Le système doit être instrumenté pour **permettre l'identification et résolution** rapide des problèmes.
+
+> Nous détaillerons ce point dans le cadre du cours DevOps.
+
+---
+
+## Les critères qualités
+
+### Portabilité
+
+Les composants doivent être **capables de fonctionner dans différents environnements** (ex. cloud, on-premise) sans nécessiter de modifications majeures.
+
+> Nous verrons dans le cadre du cours DevOps que le respect des [12 facteurs](https://12factor.net/fr/) y contribue grandement.
 
 ---
 
 ## Les principes d'architecture
 
-<div class="left">
-
-- [Séparation des préoccupations](#séparation-des-préoccupations-separation-of-concerns)
-- [Modularité](#modularité)
-- [Abstraction](#abstraction)
-- [Encapsulation](#encapsulation-12)
-- [Couplage faible](#couplage-faible-12)
-- [Réutilisabilité](#réutilisabilité)
-- [Interopérabilité](#interopérabilité)
-- [Conformité aux normes](#conformité-aux-normes)
-
-</div>
-
-<div class="right">
-
-- [Évolutivité](#évolutivité)
-- [Portabilité](#portabilité)
-- [Scalabilité](#scalabilité)
-- [Observabilité](#observabilité)
-- [Résilience](#résilience)
-- [Automatisation](#automatisation)
+- [**Séparation des préoccupations**](#séparation-des-préoccupations-separation-of-concerns)
+- [**Modularité**](#modularité)
+- [**Abstraction**](#abstraction)
+- [**Encapsulation**](#encapsulation-12)
+- [**Couplage faible**](#couplage-faible-12)
 - [Sécurité intégrée dans la conception](#sécurité-intégrée-dans-la-conception)
-- [Protocoles efficaces](#protocoles-efficaces-12)
-
-</div>
+- [Utilisation de protocoles efficaces](#utilisation-de-protocoles-efficaces-12)
 
 ---
 
@@ -410,7 +505,7 @@ Les **interactions entre modules** se font uniquement **via des interfaces bien 
 
 En pratique, nous pourrons **encapsuler une fonctionnalité** en mettant à disposition une **API** qui pourra prendre plusieurs formes :
 
-- Une **API REST**.
+- Une **API WEB**.
 - Une **application en ligne de commande (CLI)**.
 - Une **interface dans une bibliothèque de programmation**.
 
@@ -432,109 +527,10 @@ Les modules doivent être aussi indépendants que possible les uns des autres. U
 
 Nous noterons que le couplage pourra prendre plusieurs formes :
 
-- **Message ou événement** : producteurs et consommateurs partagant un canal et un format de message (ex : "location_change" pour une flotte de véhicule).
+- **Message ou événement** : producteurs et consommateurs partagant un canal et un format de message (ex : "location_change" pour une flotte de véhicules).
 - **Interface** : dépendance au contrat d'échange (ex : paramètres d'une API)
-- **Données** : dépendance au schéma ou au format partagé (ex : schéma ADMINEXPRESS).
+- **Données** : dépendance au schéma ou au format partagé (ex : schéma BDTOPO).
 - **Temporel** : dépendance à un ordre ou un moment précis d’exécution (ex : intégration de données après génération d'un export).
-
-
----
-
-## Les principes d'architecture
-
-### Réutilisabilité
-
-Produire des **composants réutilisables** permet d'optimiser le développement et d'améliorer la qualité du SI en réduisant les redondances de code.
-
-> NB : Les possibilités de réutilisation varieront en fonction nature du composant (bibliothèque, API en ligne de commande, API REST,...).
-
----
-
-## Les principes d'architecture
-
-### Interopérabilité
-
-Les composants doivent être **capables de communiquer entre eux** même s'ils proviennent de **systèmes différents**.
-
----
-
-## Les principes d'architecture
-
-### Conformité aux normes
-
-Le respect des standards (ex : [standards OGC](https://www.ogc.org/standards/)) et bonnes pratiques de l’industrie (ex : REST/JSON + OpenAPI) facilite l'**interopérabilité**, la **réutilisation**, et la **maintenabilité**.
-
----
-
-## Les principes d'architecture
-
-### Évolutivité
-
-L'architecture doit **permettre des évolutions futures** sans remettre en cause l'ensemble du système.
-
-> Il sera par exemple intéressant de **versionner les API** en complément du respect des principes précédents (SoC, couplage faible,...)
-
----
-
-## Les principes d'architecture
-
-### Portabilité
-
-Les composants doivent être **capables de fonctionner dans différents environnements** (ex. cloud, on-premise) sans nécessiter de modifications majeures.
-
-> Nous verrons dans le cadre du cours DevOps que le respect des [12 facteurs](https://12factor.net/fr/) y contribue grandement.
-
----
-
-## Les principes d'architecture
-
-### Scalabilité
-
-L'architecture doit être conçue pour **supporter la montée en charge** (évolution du nombre de clients, du volume des données,...).
-
-Nous trouverons deux stratégies :
-
-- La **scalabilité verticale** (modification du dimensionnement des machines).
-- La **scalabilité horizontale** (multiplication du nombre de machines), plus intéressante mais plus complexe à mettre en oeuvre (1).
-
-> (1) Nous détaillerons le cas des **services sans état** dans le cadre du cours DevOps. Le cas des **services de stockage** sera laissé au cours sur le stockage NoSQL qui abordera à priori la **réplication et la distribution du stockage** et le [théorème CAP](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_CAP)
-
----
-
-## Les principes d'architecture
-
-### Observabilité
-
-Le système doit être instrumenté pour **permettre l'identification et résolution** rapide des problèmes.
-
-> Nous détaillerons ce point dans le cadre du cours DevOps.
-
----
-
-## Les principes d'architecture
-
-### Résilience
-
-Le système doit être conçu pour **continuer à fonctionner (ou se dégrader de façon contrôlée) en cas de défaillance** d’un ou plusieurs composants.
-
-Par exemple, pour traiter le cas d'une **indisponibilité temporaire d'un service tiers**, nous trouvons le [patron "**nouvelle tentative**" (retry)](https://learn.microsoft.com/fr-fr/azure/architecture/patterns/retry).
-
-Sinon, pour assurer la **disponibilité en cas de problème**, nous trouvons principalement deux stratégies qui seront détaillées dans le cours DevOps :
-
-- **Réplication** des services.
-- **Redémarrage automatique** en cas de problème.
-
----
-
-## Les principes d'architecture
-
-### Automatisation
-
-Il convient d'**automatiser un maximum d'aspect dans la gestion du SI**.
-
-Par exemple, en matière de documentation, **cibler une cartographie dynamique du SI** (voir [backstage de spotify et son métamodèle](https://backstage.io/docs/features/software-catalog/descriptor-format)) sera plus réaliste que produire et maintenir diagrammes UML pour les déploiements.
-
-Nous verrons dans le cours DevOps que **l'automatisation est requise pour mettre en oeuvre la scalabilité et la résilience**.
 
 ---
 
@@ -553,7 +549,7 @@ Par exemple, l'approche [*secure by design*](https://www.oracle.com/fr/security/
 
 ## Les principes d'architecture
 
-### Protocoles efficaces (1/2)
+### Utilisation de protocoles efficaces (1/2)
 
 Pour les **performance**, il conviendra d'**utiliser des protocoles efficaces et adaptés au contexte**.
 
@@ -561,7 +557,7 @@ Pour les **performance**, il conviendra d'**utiliser des protocoles efficaces et
 
 ## Les principes d'architecture
 
-### Protocoles efficaces (2/2)
+### Utilisation de protocoles efficaces (2/2)
 
 Dans le cas **des services web**, la recherche de l'efficacité se retrouve dans l'**évolution des formats et protocoles** :
 
@@ -685,7 +681,7 @@ Nous distinguerons deux approches :
 
 Nous inspecterons les possibilités offertes par [RabbitMQ](https://www.rabbitmq.com/tutorials) pour nous faire une idée précise.
 
-> Nous discuterons l'intérêt et les défis de ce type d'architecture à travers des cas d'utilisations en séance (traitement asynchrone, orchestrateur de traitements,...).
+> Nous discuterons l'intérêt et les défis de ce type d'architecture à travers des cas d'utilisations en séance (partage de position, traitement asynchrone, orchestrateur de traitements,...).
 
 ---
 
@@ -870,7 +866,7 @@ Au niveau de l'architecture, il sera donc important de :
 - **Profiter de l'asymétrie entre la production et la consommation des données** en s'appuyant sur des patrons tels [CQRS](https://learn.microsoft.com/fr-fr/azure/architecture/patterns/cqrs).
 - **Distinguer** le **respect des obligations INSPIRE** et la **réponse au besoin des utilisateurs** (1).
 
-> (1) NB : INSPIRE n'impose pas de concevoir ses applications en surcouche de WFS (où il faut télécharger toutes les données pour connaître les valeurs possibles d'un attribut).
+> (1) NB : INSPIRE n'impose pas de concevoir ses applications métiers en surcouche de WFS (où il faut télécharger "BDTOPO_V3:batiment" pour compter le nombre de bâtiments pour chaque "nature").
 
 ---
 
@@ -1071,7 +1067,7 @@ Vu la complexité du modèle XML, nous noterons aussi qu'il est possible pour un
 - **Collecter les informations à renseigner dans les métadonnées.** 
 - **Générer des fiches conformes.**
 
-> Dans le cas contraire, s'attendre à faire face à de malheureux utilisateurs tentant comme ils le peuvent de remplir ces fiches (en prenant modèle sur les fiches existantes et en oubliant de modifier les identifiants)
+> NB : Si vous demandez aux utilisateurs de remplir des fiches XML, vous avez de bonnes chances qu'ils copient/collent des fiches existants (sans penser à modifier les identifiants...)
 
 ---
 
