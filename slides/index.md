@@ -99,17 +99,16 @@ Dans cette introduction, nous tâcherons d'abord avoir une vision précise :
 - Des **principes d'architecture** qui guideront dans la recherche d'une solution.
 - Des **différents styles d'architecture** classiques.
 
-Nous ferons ensuite un focus sur l'**architecture <u>logique</u> des SI** avec une forte **composante spatiale** en :
-
-- Précisant les **spécificités des données géographiques**.
-- Analysant l'**architecture d'une infrastructure de données géographique (IDG)**
-
-
 ---
 
 ## Introduction
 
 ### Comment allons nous procéder (2/2)
+
+Nous ferons ensuite un focus sur l'**architecture <u>logique</u> des SI** avec une forte **composante spatiale** en :
+
+- Précisant les **spécificités des données géographiques**.
+- Analysant l'**architecture d'une infrastructure de données géographique (IDG)**
 
 Les éléments relatifs à l'**architecture <u>technique</u>** et à la **gestion du cycle de vie des applications** seront traités dans le **cours DevOps**.
 
@@ -168,10 +167,10 @@ Aussi, il conviendra de traiter des **injonctions techniques** qui ne seront **p
 
 Pour **avoir vision complète et partagée du système** et **pouvoir discuter les évolutions**, il sera important de **documenter l'architecture** tant sur :
 
-- Le plan **métier** (les fonctionnalités)
+- Le plan **métier** (les produits et leurs fonctionnalités)
 - Le plan **organisationnel** (les équipes, les processus, les procédures,...)
 - Le plan **logique** (les outils, les services, les traitements,...)
-- Le plan **technique** (les zones, les réseaux, les machines...)
+- Le plan **technique** (les centres de données, les zones, les réseaux, les machines...)
 
 ---
 
