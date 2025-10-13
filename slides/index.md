@@ -725,7 +725,7 @@ Illustration du principe d'une architecture pilotée par les événements.
 Nous distinguerons deux approches :
 
 - **Publication/abonnement (*Pub/sub*)** où les consommateurs s'abonnent à un canal pour recevoir les messages.
-- **flux d'événement (*Event streaming*)** où les événements sont journalisées et où les consommateurs peuvent lire les anciens messages.
+- **Flux d'événement (*Event streaming*)** où les événements sont journalisées et où les consommateurs peuvent lire les anciens messages.
 
 Nous inspecterons les possibilités offertes par [RabbitMQ](https://www.rabbitmq.com/tutorials) pour nous faire une idée précise.
 
@@ -737,17 +737,21 @@ Nous inspecterons les possibilités offertes par [RabbitMQ](https://www.rabbitmq
 
 ### Architecture orientée services (SOA)
 
-Dans une architecture orientée services (SOA), les applications communiquent entre elles à travers un [Enterprise Service Bus](https://fr.wikipedia.org/wiki/Enterprise_service_bus) qui offre un **cadre pour l'interfaçage de services hétérogènes** :
+> ⚠️ **Ancêtre des microservices — présenté ici pour la culture générale.** (nous en discuterons l'intérêt et les limites en séance en faisant le lien avec EDA et pour introduire la partie suivante)
 
-<div class="illustration">
+<div class="left">
 
-![h:200px](img/archi-soa-esb.drawio.png)
+Dans une **architecture orientée services (SOA)**, les applications communiquent entre elles à travers un [Enterprise Service Bus](https://fr.wikipedia.org/wiki/Enterprise_service_bus) qui offre un **cadre pour l'interfaçage de services hétérogènes** :
+
+</div>
+
+<div class="right illustration">
+
+![h:300px](img/archi-soa-esb.drawio.png)
 
 Illustration du principe de l'ESB dans les architectures SOA.
 
 </div>
-
-> Nous en discuterons l'intérêt et les limites en séance en faisant le lien avec EDA et pour introduire la partie suivante.
 
 ---
 
@@ -755,17 +759,23 @@ Illustration du principe de l'ESB dans les architectures SOA.
 
 ### Architecture microservices 
 
-L'application est décomposée en **services légers se concentrant sur une tâche spécifique**. Ils sont **développés et déployés indépendamment** et **peuvent communiquer entre eux**.
+<div class="left">
 
-<div class="illustration">
+Dans une **architecture en microservice**, l'application est décomposée en **services légers** se concentrant sur une **tâche spécifique**. Ils sont **développés et déployés indépendamment** et **peuvent communiquer entre eux**.
 
-![h:200px](img/archi-microservice.drawio.png)
+</div>
+
+<div class="right illustration">
+
+![h:300px](img/archi-microservice.drawio.png)
 
 Illustration du principe d'une architecture microservice.
 
 </div>
 
-> Nous analyserons en séance le cas de [GeoServer cloud](https://github.com/geoserver/geoserver-cloud?tab=readme-ov-file#geoserver-cloud) correspondant au découpage du monolithe en microservices. Nous discuterons aussi les avantages et inconvénients.
+<div style="clear: both" />
+
+> Nous analyserons en séance le cas de [GeoServer cloud](https://github.com/geoserver/geoserver-cloud?tab=readme-ov-file#geoserver-cloud) correspondant à son découpage en microservices. Nous discuterons aussi les avantages et inconvénients.
 
 ---
 
@@ -773,11 +783,16 @@ Illustration du principe d'une architecture microservice.
 
 ### Architecture serverless
 
+> ⚠️ **Davantage un mode de déploiement qu'un style architectural à part entière.**
+
 Dans une architecture **serverless**, les applications dépendent de services cloud pour exécuter des fonctions, stocker des données et gérer des événements **sans que les développeurs aient besoin de gérer directement les serveurs**.
 
-En pratique, le cadre correspondant amènera souvent à coupler une approche par **microservices** (1) avec une approche basée sur des **événements** (EDA) pour les traitements longs ou asynchrones.
+En pratique, ce modèle amène souvent à coupler :
 
-> (1) Hébergement de fonctions simples (AWS Lambda, Azure Functions, ou Google Cloud Functions) voire de conteneurs (ex : Google Cloud Run)
+- Une approche par **microservices** pour structurer les fonctionnalités (1)
+- Une approche basée sur des **événements** (EDA) pour les traitements asynchrones (ex : traitement long) ou déclenchés par des événements (ex : nouveau fichier déposé).
+
+> (1) Hébergement de fonctions simples (*AWS Lambda*, *Azure Functions*, ou *Google Cloud Functions*) ou de conteneurs (ex : *Google Cloud Run*)
 
 ---
 
