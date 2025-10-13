@@ -1,7 +1,7 @@
 ---
 theme: marp-ensg
 paginate: true
-footer: <a href="#plan">Introduction à l'architecture des SI</a> - octobre 2024
+footer: <a href="#plan">Introduction à l'architecture des SI</a> - octobre 2025
 header: '<div><img src="img/logo-ensg.png" alt="ENSG" height="64px"/></div>'
 ---
 
@@ -118,7 +118,7 @@ Les éléments relatifs à l'**architecture <u>technique</u>** et à la **gestio
 
 ## Les principaux défis
 
-- [Hétérogénéité des acteurs](#hétérogénéité-des-acteurs-12)
+- [Hétérogénéité des acteurs](#hétérogénéité-des-acteurs-13)
 - [Documentation de l'architecture](#documentation-de-larchitecture-14)
 - [Documentation des interfaces](#documentation-des-interfaces)
 - [Gouvernance et agilité](#gouvernance-et-agilité-13)
@@ -201,9 +201,9 @@ Toutefois :
 - La maintenance d'une **documentation UML complète et rigoureuse à l'échelle d'un SI est utopique** au regard de la **fréquence des évolutions**
 - **Présenter le bon niveau de détail aux différents acteurs ne sera pas évident** d'où :
   - Des approches hiérarchiques telles [C4 model](https://c4model.com)
-  - L'intérêt d'**utiliser des approches modernes en matière de documentation** (1)
+  - L'intérêt d'**utiliser des approches modernes en matière de documentation**
 
-> (1) A ce stade, bien comprendre la **puissance des pages HTML par rapport aux documents classiques (.docx, .pdf, .odt) pour offrir plusieurs niveaux de lecture!**
+> Nous détaillerons ce point dans le cours DevOps mais en substance, il sera plus intéressant de **produire et générer de la documentation au format HTML** (décomposition, liens, multiple niveau de lecture,...) que de s'évertuer à maintenir des documents classiques (.docx, .pdf, .odt).
 
 ---
 
@@ -223,7 +223,7 @@ Pour les API REST/JSON, nous systématiserons par exemple la rédaction de spéc
 
 ### Gouvernance et agilité (1/4)
 
-La nécessité d'**assurer la cohérence** et de **rationnaliser** (i.e. éviter les silos technologiques) à l'échelle du SI induira un besoin de **standardisation**.
+La nécessité d'**assurer la cohérence** et de **rationaliser** (éviter les silos technologiques et la multiplication des solutions) à l'échelle du SI induit un besoin de **standardisation**.
 
 ---
 
@@ -231,7 +231,7 @@ La nécessité d'**assurer la cohérence** et de **rationnaliser** (i.e. éviter
 
 ### Gouvernance et agilité (2/4)
 
-Nous noterons l'existence de cadres rigoureux tels [TOGAF (The Open Group Architecture Framework)](https://fr.wikipedia.org/wiki/The_Open_Group_Architecture_Framework) pour maîtriser l'architecture des SI d'entreprise et piloter les évolutions.
+Des cadres méthodoliques tels [TOGAF (The Open Group Architecture Framework)](https://fr.wikipedia.org/wiki/The_Open_Group_Architecture_Framework) permettent de **structurer la gouvernance du SI** et **piloter les évolutions** de manière cohérente.
 
 ---
 
@@ -241,10 +241,10 @@ Nous noterons l'existence de cadres rigoureux tels [TOGAF (The Open Group Archit
 
 Toutefois :
 
-- **TOGAF sera difficilement applicable à toutes les échelles d'un SI**.
-- **Imposer un cadre technique trop strict et trop figé** induira deux risques :
+- **TOGAF est difficilement applicables à toutes les échelles d'un SI**.
+- **Un cadre technique trop strict ou figé** comporte deux risques majeurs :
   - Le **blocage de l'innovation**
-  - Le [Shadow IT](https://fr.wikipedia.org/wiki/Shadow_IT).
+  - Le recours au [Shadow IT](https://fr.wikipedia.org/wiki/Shadow_IT).
 
 ---
 
@@ -252,31 +252,48 @@ Toutefois :
 
 ### Gouvernance et agilité (4/4)
 
-A ce titre, il sera plus intéressant de :
+À ce titre, il est préférable de :
 
-- Mettre en place des **standards flexibles**.
-- **Décrire le cadre technique** (sans le figer)
-- Poser un **cadre pour gérer les évolutions** (ex : [Architecture Decision Record (ADR)](https://blog.octo.com/architecture-decision-record))
+- Mettre en place des **standards flexibles** (éviter les règles trop prescriptives ou trop précises)
+- **Décrire le cadre technique** sans le figer (recensement et cartographie des solutions)
+- **Poser un cadre pour gérer les évolutions**, par exemple via des [Architecture Decision Records (ADR)](https://blog.octo.com/architecture-decision-record).
 
+
+En substance, **la gouvernance du SI ne doit pas brider l'agilité.** Elle doit l'**encadrer pour assurer la cohérence** des choix à l'échelle du SI.
 
 ---
 
 ## Les principaux défis
 
-### Sécurité et conformité
+### Sécurité et conformité (1/2)
 
 La conception d'une architecture devra prendre en compte le besoin de :
 
 - Garantir la **confidentialité**, l'**intégrité** et la **disponibilité** des données.
 - Respecter la **réglementation** (RGPD, [sécurité des systèmes d'information](https://cyber.gouv.fr/sinformer-sur-la-reglementation), directive INSPIRE,...)
 
-Il conviendra de **prendre en compte ces besoins** :
+Il conviendra de **prendre en compte ces exigences** :
 
-- **Dès la conception** et **dans le cycle de vie des projets** (1).
-- **Prioriser et arbitrer** par rapport à la réponse aux besoins métiers.
+- **Dès la conception** et **dans le cycle de vie des projets**.
+- En **priorisant** par rapport à la réponse aux besoins métiers.
 
-> (1) Nous aborderons par la suite ***security by design*** et dans le cours suivant l'approche **DevSecOps**.
 
+---
+
+## Les principaux défis
+
+### Sécurité et conformité (2/2)
+
+**💭 Un doute sur la nécessité de prioriser ?**
+
+À votre avis :
+
+- Pourquoi **le formulaire permettant de laisser un commentaire** permet parfois de **télécharger la liste des utilisateurs et leurs mots de passe** (injection SQL)?
+- Pourquoi **ouvrir un simple fichier bureautique** peut-il parfois **chiffrer tout un disque dur** ?
+- Pourquoi la **possibilité d'injecter des paramètres dans les journaux applicatifs** s'est transformée en **possibilité d'exécuter du code à distance** (faille [Log4Shell](https://fr.wikipedia.org/wiki/Log4Shell))?
+- ...
+
+> 🔎 **Un indice** : Vous connaissez tous le concept d'*user story*? Et celui d'*abuser story*?
 
 ---
 
@@ -284,15 +301,15 @@ Il conviendra de **prendre en compte ces besoins** :
 
 ### Gestion des systèmes hérités (legacy)
 
-Les organisations posséderont souvent des **systèmes avec une conception obsolète** pouvant jouer un rôle central dans le SI.
+Les organisations possédent souvent des **systèmes anciens ou obsolètes** qui jouent un rôle central dans le SI.
 
-Il conviendra de **"refactorer" propressivement le SI** pour **traiter cette dette technique au cas par cas** :
+Il conviendra de **refactorer propressivement le SI** afin de **traiter cette dette technique au cas par cas** :
 
-- Modernisation de la méthode d'authentification (ex : login/password -> OIDC)
-- Remplacement d'un service obsolète par un nouveau (1)
+- **Moderniser les mécanismes d'authentification** (ex : *login/password* -> OIDC)
+- **Remplacer d'un service obsolète par un nouveau composant** (1)
 - ...
 
-> (1) Voir [patron figuier étrangleur](https://docs.aws.amazon.com/en_en/prescriptive-guidance/latest/modernization-decomposing-monoliths/strangler-fig.html) qui illustre ce point.
+> (1) Voir le [patron figuier étrangleur](https://docs.aws.amazon.com/en_en/prescriptive-guidance/latest/modernization-decomposing-monoliths/strangler-fig.html) qui illustre cette approche progressive.
 
 ---
 
@@ -311,6 +328,8 @@ Toutefois, cet exercice sera loin d'être évident...
 ---
 
 ## Les critères qualités
+
+> **⚠️ Attention** : Cette liste n’est pas exhaustive : vous serez invités à proposer d’autres critères !
 
 <div class="left">
 
@@ -334,6 +353,17 @@ Robustesse et exploitation :
 - [Portabilité](#portabilité)
 
 </div>
+
+
+<!--
+Autres critères possibles :
+- Sécurité / Traçabilité
+- Simplicité / Maintenabilité
+- Durabilité
+- Accessibilité
+- Sobriété numérique / Éco-responsabilité
+- Ergonomie / Expérience utilisateur (UX)
+-->
 
 ---
 
@@ -433,11 +463,23 @@ Les composants doivent être **capables de fonctionner dans différents environn
 
 ---
 
+## Les critères qualités
+
+**À vous maintenant!**
+
+- Quels **critères** ajouteriez-vous?
+- Comment **priorisiez-vous** :
+    - Pour un **démonstrateur / POC**?
+    - Pour un **service transverse de géocodage**?
+    - Pour un **service transverse d'authentification**?
+
+---
+
 ## Les principes d'architecture
 
 - [**Séparation des préoccupations**](#séparation-des-préoccupations-separation-of-concerns)
 - [**Modularité**](#modularité)
-- [**Abstraction**](#abstraction)
+- [**Abstraction**](#abstraction-12)
 - [**Encapsulation**](#encapsulation-12)
 - [**Couplage faible**](#couplage-faible-12)
 - [Sécurité intégrée dans la conception](#sécurité-intégrée-dans-la-conception)
@@ -509,7 +551,7 @@ En pratique, nous pourrons **encapsuler une fonctionnalité** en mettant à disp
 - Une **application en ligne de commande (CLI)**.
 - Une **interface dans une bibliothèque de programmation**.
 
-> Nous aborderons en séance les points forts et points faibles de ces différentes approches en analysant quelques cas pratiques (recherche des communes par nom et code postal, simplification des géométries,...). Vous trouverez plus de détail dans la fiche [les API WEB et les autres](https://mborne.github.io/fiches/api/).
+> Nous aborderons en séance les points forts et points faibles de ces différentes approches en analysant quelques cas pratiques (recherche des communes par nom et code postal, simplification des géométries,...).
 
 ---
 
@@ -559,13 +601,19 @@ Pour les **performance**, il conviendra d'**utiliser des protocoles efficaces et
 
 ### Utilisation de protocoles efficaces (2/2)
 
-Dans le cas **des services web**, la recherche de l'efficacité se retrouve dans l'**évolution des formats et protocoles** :
+<div style="font-size: 0.9em">
 
-* Fin des années 90, le **format [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language)** domine avec **[WSDL](https://fr.wikipedia.org/wiki/Web_Services_Description_Language)** (Web Services Description Language) et **[SOAP](https://fr.wikipedia.org/wiki/SOAP)** (Simple Object Access Protocol).
-* Depuis ~2005, les API [REST](https://fr.wikipedia.org/wiki/Representational_state_transfer) et le **format [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation)** gagnent du terrain.
-* 2011, [WebSocket](https://fr.wikipedia.org/wiki/WebSocket) permet une communication bidirectionnelle.
-* 2012, [GraphQL](https://graphql.org/) vise à limiter le nombre de requêtes et le volume de données transférées.
-* 2015, gRPC s'appuie sur le **format [Protocol Buffers](https://protobuf.dev/)** et HTTP/2.
+Dans le cas **des services web**, la recherche de l'**efficacité** se retrouve dans l'**évolution des formats et protocoles** :
+
+* **Fin des années 90** : le **format [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language)** domine avec **[WSDL](https://fr.wikipedia.org/wiki/Web_Services_Description_Language)** et **[SOAP](https://fr.wikipedia.org/wiki/SOAP)**.
+* **Depuis ~2005** : les API [REST](https://fr.wikipedia.org/wiki/Representational_state_transfer) et le **format [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation)** gagnent du terrain en apportant plus de **simplicité** et de **légèreté**.
+* **2011** : [WebSocket](https://fr.wikipedia.org/wiki/WebSocket) introduit une **communication bidirectionnelle en temps réel**.
+* **2015** : [gRPC](https://grpc.io/), basé sur **[Protocol Buffers](https://protobuf.dev/)** et **HTTP/2**, renforce l'efficacité et la compacité des échanges (*retour au binaire*).
+
+> 🔗 Voir [Les API WEB exposées en HTTP](https://mborne.github.io/fiches/api/#les-api-web-exposees-en-http) pour plus de détail.
+> 💬 *spoiler* : Nous retrouverons Protocol Buffers dans les formats géo à la mode.
+
+</div>
 
 ---
 
