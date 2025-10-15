@@ -357,11 +357,15 @@ Robustesse et exploitation :
 
 <!--
 Autres critères possibles :
+- Coût de développement
+- Coût de déploiement
+- Facilité de déploiement (rapidité de livraison)
+- Maintenabilité (temps de prise en main du code)
+- Simplicité
 - Sécurité / Traçabilité
-- Simplicité / Maintenabilité
 - Durabilité
 - Accessibilité
-- Sobriété numérique / Éco-responsabilité
+- Sobriété numérique / Éco-responsabilité / Éco-conception / RSE
 - Ergonomie / Expérience utilisateur (UX)
 -->
 
@@ -767,7 +771,7 @@ Dans une **architecture en microservice**, l'application est décomposée en **s
 
 <div class="right illustration">
 
-![h:300px](img/archi-microservice.drawio.png)
+![h:320px](img/archi-microservice.drawio.png)
 
 Illustration du principe d'une architecture microservice.
 
@@ -785,6 +789,8 @@ Illustration du principe d'une architecture microservice.
 
 > ⚠️ **Davantage un mode de déploiement qu'un style architectural à part entière.**
 
+<div style="font-size: 0.9em">
+
 Dans une architecture **serverless**, les applications dépendent de services cloud pour exécuter des fonctions, stocker des données et gérer des événements **sans que les développeurs aient besoin de gérer directement les serveurs**.
 
 En pratique, ce modèle amène souvent à coupler :
@@ -793,6 +799,8 @@ En pratique, ce modèle amène souvent à coupler :
 - Une approche basée sur des **événements** (EDA) pour les traitements asynchrones (ex : traitement long) ou déclenchés par des événements (ex : nouveau fichier déposé).
 
 > (1) Hébergement de fonctions simples (*AWS Lambda*, *Azure Functions*, ou *Google Cloud Functions*) ou de conteneurs (ex : *Google Cloud Run*)
+
+</div>
 
 ---
 
