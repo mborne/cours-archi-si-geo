@@ -289,6 +289,9 @@ Il conviendra de **prendre en compte ces exigences** :
 À votre avis :
 
 - Pourquoi **le formulaire permettant de laisser un commentaire** permet parfois de **télécharger la liste des utilisateurs et leurs mots de passe** (injection SQL)?
+
+> ⚙️ Qu'est-ce qui peut poser problème avec [cette maquette](https://github.com/mborne/cours-archi-si-geo/blob/master/exercices/formulaire-contact.drawio.png)?
+
 - Pourquoi **ouvrir un simple fichier bureautique** peut-il parfois **chiffrer tout un disque dur** ?
 - Pourquoi la **possibilité d'injecter des paramètres dans les journaux applicatifs** s'est transformée en **possibilité d'exécuter du code à distance** (faille [Log4Shell](https://fr.wikipedia.org/wiki/Log4Shell))?
 - ...
