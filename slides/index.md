@@ -624,7 +624,7 @@ Dans le cas **des services web**, la recherche de l'**efficacité** se retrouve 
 ## Les styles d'architecture
 
 - [Architecture monolithique](#architecture-monolithique-12)
-- [Architecture client/serveur](#architecture-clientserveur-13)
+- [Architecture client/serveur](#architecture-clientserveur-12)
 - [Architecture 3-tiers](#architecture-3-tiers)
 - [Architecture n-tiers](#architecture-n-tiers)
 - [Architecture pilotée par les événements (EDA)](#architecture-pilotée-par-les-événements-eda-12)
@@ -659,7 +659,7 @@ Pour illustrer le concept, nous analyserons les avantages et inconvénients avec
 
 ## Les styles d'architecture
 
-### Architecture client/serveur (1/3)
+### Architecture client/serveur (1/2)
 
 L'architecture client / serveur est la plus simple **architecture en couche**.
 
@@ -675,31 +675,18 @@ Illustration d'une architecture Client / Server avec [QGIS](https://qgis.org/) b
 
 ## Les styles d'architecture
 
-### Architecture client/serveur (2/3)
+### Architecture client/serveur (2/2)
 
-Avec cette approche :
+Avec cette approche, le **principe de fonctionnement** est le suivant :
 
 - Le **serveur attend les connexions** sur un port réseau.
-- Le **client initie la connexion**.
-- La communication entre le serveur et le client se fait via un **protocole** (HTTP, DNS, SMTP,...).
-
-Nous distinguerons **deux modes de fonctionnement** :
-
-- Mode **connecté** : **session persistante** (ex. FTP, SSH, WebSocket).
-- Mode **stateless** : chaque requête est indépendante (ex. HTTP/1.1).
-
----
-
-## Les styles d'architecture
-
-### Architecture client/serveur (3/3)
-
-Le **principe de fonctionnement** sera ainsi le suivant :
-
-- Le client établit la **connexion**.
+- Le  **client initie la connexion**.
 - Il envoie une **requête** selon un protocole défini (HTTP, DNS, SMTP...).
 - Le serveur **traite la requête** et **renvoie une réponse**.
-- La **connexion est fermée ou maintenue** (stateless ou connecté).
+- La **connexion est fermée (stateless) ou maintenue (connecté)**.
+
+> Mode **stateless** : chaque requête est indépendante (ex : HTTP/1.1, DNS).
+> Mode **connecté** : **session persistante** (ex : FTP, SSH, WebSocket).
 
 > ⚙️ **Mise en pratique** : *Phase 2* du cas concret [IRL](https://github.com/mborne/cours-archi-si-geo/blob/master/exercices/irl.md#irl) où nous analyserons les avantages et inconvients.
 
