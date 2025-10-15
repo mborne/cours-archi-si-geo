@@ -624,7 +624,7 @@ Dans le cas **des services web**, la recherche de l'**efficacité** se retrouve 
 ## Les styles d'architecture
 
 - [Architecture monolithique](#architecture-monolithique-12)
-- [Architecture client/serveur](#architecture-clientserveur)
+- [Architecture client/serveur](#architecture-clientserveur-13)
 - [Architecture 3-tiers](#architecture-3-tiers)
 - [Architecture n-tiers](#architecture-n-tiers)
 - [Architecture pilotée par les événements (EDA)](#architecture-pilotée-par-les-événements-eda-12)
@@ -652,13 +652,14 @@ Pour illustrer le concept, nous analyserons les avantages et inconvénients avec
 - L'[API Overpass](https://overpass-turbo.eu/), ["*a database engine to query the OpenStreetMap data.*"](https://github.com/drolbr/Overpass-API)
 - [GeoServer](https://geoserver.org/) et ses nombreux services (administration, WFS, WMS, WMTS, stockage,...)
 
-Pour mettre en pratique, nous débuterons l'étude d'un cas concret : [IRL - un jeu qui varie les défis dans le monde réel!](https://github.com/mborne/cours-archi-si-geo/blob/master/exercices/irl.md#irl).
+
+> ⚙️ **Mise en pratique** : Nous débuterons l'étude d'un cas concret : [IRL - un jeu qui varie les défis dans le monde réel!](https://github.com/mborne/cours-archi-si-geo/blob/master/exercices/irl.md#irl).
 
 ---
 
 ## Les styles d'architecture
 
-### Architecture client/serveur
+### Architecture client/serveur (1/3)
 
 L'architecture client / serveur est la plus simple **architecture en couche**.
 
@@ -674,17 +675,59 @@ Illustration d'une architecture Client / Server avec [QGIS](https://qgis.org/) b
 
 ## Les styles d'architecture
 
+### Architecture client/serveur (2/3)
+
+Avec cette approche :
+
+- Le **serveur attend les connexions** sur un port réseau.
+- Le **client initie la connexion**.
+- La communication entre le serveur et le client se fait via un **protocole** (HTTP, DNS, SMTP,...).
+
+Nous distinguerons **deux modes de fonctionnement** :
+
+- Mode **connecté** : **session persistante** (ex. FTP, SSH, WebSocket).
+- Mode **stateless** : chaque requête est indépendante (ex. HTTP/1.1).
+
+---
+
+## Les styles d'architecture
+
+### Architecture client/serveur (3/3)
+
+Le **principe de fonctionnement** sera ainsi le suivant :
+
+- Le client établit la **connexion**.
+- Il envoie une **requête** selon un protocole défini (HTTP, DNS, SMTP...).
+- Le serveur **traite la requête** et **renvoie une réponse**.
+- La **connexion est fermée ou maintenue** (stateless ou connecté).
+
+> ⚙️ **Mise en pratique** : *Phase 2* du cas concret [IRL](https://github.com/mborne/cours-archi-si-geo/blob/master/exercices/irl.md#irl) où nous analyserons les avantages et inconvients.
+
+
+---
+
+## Les styles d'architecture
+
 ### Architecture 3-tiers
 
-L'architecture 3-tiers se matérialisera souvent par la présence d'un intermédiaire entre le client et le stockage :
+<div class="left">
 
-<div class="illustration">
+L'architecture 3-tiers se matérialisera souvent par la présence d'un **intermédiaire entre le client et le stockage**.
+
+</div>
+
+<div class="right illustration">
 
 ![h:300px](img/archi-3-tiers-osm.drawio.png)
 
 Illustration d'une architecture 3 tiers avec l'[API OSM](https://wiki.openstreetmap.org/wiki/API_v0.6).
 
 </div>
+
+<div style="clear: both" />
+
+> ⚙️ **Mise en pratique** : *Phase 3* du cas concret [IRL](https://github.com/mborne/cours-archi-si-geo/blob/master/exercices/irl.md#irl) où nous analyserons les avantages et inconvients.
+> **NB** : Un même composant jouera alors le rôle de client et de serveur (i.e. l'API joue le rôle de client de la BDD et de serveur pour JOSM).
 
 ---
 
@@ -696,7 +739,7 @@ En pratique, nous aurons plus souvent des **architecture n-tiers** avec par exem
 
 <div class="illustration">
 
-![h:220px](img/archi-ntiers-web.drawio.png)
+![h:240px](img/archi-ntiers-web.drawio.png)
 
 Illustration du principe des architectures n-tiers avec la répartition de charge.
 
