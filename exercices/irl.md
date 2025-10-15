@@ -43,7 +43,7 @@ Pour valider le concept :
 
 - Nous minimiserons les frais de développement en créant une **application web** (qui sera ouverte dans le navigateur du téléphone).
 - Nous minimiserons les frais d'hébergement en utilisant une **architecture monolithique** (une seule machine pour le site et sa BDD).
-- Nous exploiterons nos connaissances ENSG en utilisant le **SGBD PostgreSQL avec l'extension PostGIS** pour stocker des positions et des chemins.
+- Nous utiliserons une base de données Spatialite (fichier) pour éviter le déploiement d'un SGBD
 - Nous irons au plus simple pour l'inscription (`/register`) et la connexion (`/login`) avec des formulaires web classiques.
 - Nous préparerons la croissance avec une **API REST/JSON** pour :
   - La **recherche des défis** dans un rayon de 5 km (`GET /api/challenges?lon=...&lat=...`).
@@ -66,6 +66,7 @@ Toutefois, le début de croissance nous permet de vendre des QR codes à quelque
 Nous pouvons nous offrir un hébergement plus solide avec :
 
 - Une machine dédiée pour le site.
+- Le remplacement de Spatialite par PostgreSQL/PostGIS
 - Une base de données gérée par un hébergeur (SaaS).
 
 Exercice :
