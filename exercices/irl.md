@@ -126,3 +126,8 @@ Exercice :
 
 - a) Proposer un schéma de l'architecture.
 - b) Identifier les avantages et inconvénients de cette architecture.
+
+
+## Correction
+
+Voir [annexes/irl-site](https://github.com/mborne/cours-archi-si-geo/tree/master/annexes/irl-site).
