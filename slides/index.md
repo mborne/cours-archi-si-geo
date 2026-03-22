@@ -119,10 +119,10 @@ Les éléments relatifs à l'**architecture <u>technique</u>** et à la **gestio
 ## Les principaux défis
 
 - [Hétérogénéité des acteurs](#hétérogénéité-des-acteurs-13)
-- [Documentation de l'architecture](#documentation-de-larchitecture-14)
-- [Documentation des interfaces](#documentation-des-interfaces)
-- [Gouvernance et agilité](#gouvernance-et-agilité-13)
-- [Sécurité et conformité](#sécurité-et-conformité)
+- [Documentation de l'architecture](#documentation-de-larchitecture-13)
+- [Documentation des interfaces](#documentation-des-services)
+- [Gouvernance et agilité](#gouvernance-et-agilité-14)
+- [Sécurité et conformité](#sécurité-et-conformité-12)
 - [Gestion des systèmes hérités (legacy)](#gestion-des-systèmes-hérités-legacy)
 - [Prioriser les critères qualités](#prioriser-les-critères-qualités)
 
@@ -790,7 +790,7 @@ Illustration du principe de l'ESB dans les architectures SOA.
 
 ## Les styles d'architecture
 
-### Architecture microservices 
+### Architecture microservices
 
 <div class="left">
 
@@ -976,8 +976,8 @@ Au niveau de l'architecture, il sera donc important de :
 - [Objectifs](#objectifs)
 - [Stockage des données](#stockage-des-données-12)
 - [Alimentation en données](#alimentation-en-données-13)
-- [Modélisation des données](#modélisation-des-données-12)
-- [Catalogage](#catalogage-12)
+- [Modélisation des données](#modélisation-des-données-13)
+- [Catalogage](#catalogage-13)
 - [Diffusion vecteur](#diffusion-vecteur-14)
 - [Diffusion cartographique](#diffusion-cartographique-15)
 - [Services de calcul](#services-de-calcul)
@@ -1073,14 +1073,13 @@ Pour gérer les données, nous pourrons exploiter les approches suivantes en en 
 Plus souvent, une plateforme proposera de choisir entre deux stratégies :
 
 - La **publication des données** (mode "push")
-  - Par téléversement un fichier
-  - Par appel d'une API telle l'[API entrepot de la GéoPlateforme](https://geoplateforme.github.io/entrepot/production/) (1)
-- Le **moissonnage de services tiers** (mode "pull") (2)
+    - Par téléversement un fichier
+    - Par appel d'une API telle l'[API entrepot de la GéoPlateforme](https://geoplateforme.github.io/entrepot/production/) (1)
+- Le **moissonnage de services tiers** (mode "pull")
+    - [Huwise - Les connecteurs](https://userguide.huwise.com/fr/categories/480450)
+    - [Koumoul - Connecteurs de catalogues distants](https://docs.koumoul.com/pages/connecteurs-de-catalogues-distants)
 
 > (1) Nous analyserons en séance le cas de la [publication de données vecteurs](https://geoplateforme.github.io/tutoriels/production/vecteur/base/).
->
-> (2) Nous inspecterons le cas de [OpenDataSoft qui propose entre autre des moissonneurs](https://userguide.opendatasoft.com/l/fr/category/1x1sytwnvf-publier-de-la-donn-es)
-
 
 ---
 
@@ -1210,7 +1209,7 @@ Nous remarquerons ainsi qu'**un service WFS est une API REST** avec des capacit�
 Nous mentionnerons toutefois :
 
 - Le **côté vieillissant de GetCapabilities** et les travaux de modernisation en cours via [OGC API - Features](https://ogcapi.ogc.org/features/).
-- Les **limitations fonctionnelles de WFS** par rapport à des API REST/JSON telle l'[API Explore d'Opendatasoft](https://help.opendatasoft.com/apis/ods-explore-v2/#section/Opendatasoft-Query-Language-(ODSQL)) (ex : opérateur d'agrégation tels "group by", "sum",...)
+- Les **limitations fonctionnelles de WFS** par rapport à des API REST/JSON telle l'[API Explore d'Huwise (anciennement OpenDataSoft)](https://help.opendatasoft.com/apis/ods-explore-v2/) (ex : [opérateur d'agrégation tels "group by", "sum",...](https://help.opendatasoft.com/apis/ods-explore-v2/#section/ODSQL-aggregate-functions))
 - Le **droit d'utiliser des API REST/JSON métiers en complément de WFS dans son système!** (pour répondre aux besoins métiers et aux obligations INSPIRE)
 - La **possibilité de développer ces API REST/JSON en proxy sur des WFS** (c'est l'approche retenue pour [apicarto.ign.fr](https://apicarto.ign.fr/api/doc/))
 

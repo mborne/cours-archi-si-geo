@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "marp --html=true -s ./slides/",
-    "build": "rm -rf public && cp -r slides public && cd public && marp --theme=./marp-ensg.css --html=true index.md -o index.html"
+    "build": "rm -rf public && cp -r slides public && cd public && marp --theme=./marp-ensg.css --html=true index.md -o index.html",
+    "test": "markdown-link-check -c markdown-link-check.config.json slides"
   },
   "author": "Mickaël Borne <mborne@users.noreply.github.com>",
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
-    "@marp-team/marp-cli": "^4.2.3"
+    "@marp-team/marp-cli": "^4.3.1",
+    "markdown-link-check": "^3.14.2"
   }
 }
