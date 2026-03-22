@@ -613,7 +613,7 @@ Dans le cas **des services web**, la recherche de l'**efficacité** se retrouve 
 * **2011** : [WebSocket](https://fr.wikipedia.org/wiki/WebSocket) introduit une **communication bidirectionnelle en temps réel**.
 * **2015** : [gRPC](https://grpc.io/), basé sur **[Protocol Buffers](https://protobuf.dev/)** et **HTTP/2**, renforce l'efficacité et la compacité des échanges (*retour au binaire*).
 
-> 🔗 Voir [Les API WEB exposées en HTTP](https://mborne.github.io/fiches/api/#les-api-web-exposees-en-http) pour plus de détail.
+> 🔗 Voir [Les API WEB exposées en HTTP](https://mborne.github.io/architecture/api/#les-api-web-exposees-en-http) pour plus de détail.
 > 💬 *spoiler* : Nous retrouverons Protocol Buffers dans les formats géo à la mode.
 
 </div>
